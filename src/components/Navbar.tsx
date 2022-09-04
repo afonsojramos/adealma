@@ -1,22 +1,31 @@
-import { Section } from './elements';
-import { DestopNavbar } from './navbar/DesktopNavbar';
-import { MobileNavbar } from './navbar/MobileNavbar';
+import Link from 'next/link';
 
-const Navbar = () => {
+import { LanguageSwitcherDropdown } from './i18n';
+import { Logo } from './Logo';
+
+type INavbarProps = {
+  title?: string;
+};
+
+const Navbar = ({ title = '' }: INavbarProps) => {
   return (
-    <Section yPadding="py-10 sm:py-10">
-      <nav className="navbar px-2 sm:px-4 py-2.5">
-        <div className="navbar-start">
-          <MobileNavbar />
+    <nav className="flex tracking-widest fixed top-12 lg:top-20 inset-x-8 lg:inset-x-24 w-screen">
+      {title && (
+        <div className="flex-none md:ml-8 text-lg sm:text-xl">
+          <Link href="/">
+            <a>
+              <Logo />
+            </a>
+          </Link>
         </div>
-        <div className="navbar-center flex"></div>
-
-        <div className="navbar-end hidden lg:flex">
-          <DestopNavbar />
-          {/* <LanguageSwitcher /> */}
-        </div>
-      </nav>
-    </Section>
+      )}
+      <div className="grow text-left self-center pl-16 md:pl-32 lg:pl-64 text-lg sm:text-xl">
+        {title}
+      </div>
+      <div className="flex-none self-center mr-24 lg:mr-32 xl:mr-36">
+        <LanguageSwitcherDropdown />
+      </div>
+    </nav>
   );
 };
 
