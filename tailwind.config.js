@@ -1,23 +1,6 @@
 /* eslint-disable global-require */
 module.exports = {
   content: ['./src/**/*.{ts,tsx}'],
-  daisyui: {
-    themes: [
-      {
-        light: {
-          ...require('daisyui/src/colors/themes')['[data-theme=light]'],
-          primary: '#80d8da',
-          secondary: '#ff85c5',
-          accent: '#ffeb62',
-          neutral: '#312334',
-          info: '#779BE4',
-          success: '#2FD075',
-          warning: '#E3860D',
-          error: '#F23642',
-        },
-      },
-    ],
-  },
   theme: {
     fontSize: {
       xs: '0.75rem',
@@ -31,6 +14,12 @@ module.exports = {
       '5xl': '3rem',
       '6xl': '4rem',
       '7xl': '6rem',
+      '8xl': '7rem',
+      '9xl': '8rem',
+      '10xl': '8.25rem',
+      '11xl': '10rem',
+      '12xl': '12.5rem',
+      '13xl': '16rem',
     },
     extend: {
       colors: {
@@ -60,11 +49,23 @@ module.exports = {
       lineHeight: {
         hero: '4.5rem',
       },
+      height: {
+        '10v': '10vh',
+        '20v': '20vh',
+        '30v': '30vh',
+        '40v': '40vh',
+        '50v': '50vh',
+        '60v': '60vh',
+        '70v': '70vh',
+        '80v': '80vh',
+        '90v': '90vh',
+        '100v': '100vh',
+      },
       fontFamily: {
         sans: ['FavoritPro', 'sans'],
       },
     },
   },
   variants: {},
-  plugins: [require('daisyui')],
+  plugins: [require('@tailwindcss/line-clamp')],
 };
