@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Navbar, Hero, Meta, Banner, Footer } from 'Components';
 
-import Arrow from '../../public/assets/ARROW.svg';
+import Arrow from '../../public/assets/arrow.svg';
 
 const Index = () => {
   const { t } = useTranslation('common');
