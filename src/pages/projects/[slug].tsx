@@ -3,8 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 
-import { Navbar, Footer } from '../../components';
-import { Background, Meta, Section } from '../../components/elements';
+import { Navbar, Meta } from 'Components';
 
 const glob = require('glob');
 
@@ -18,12 +17,10 @@ export default function ProjectsTemplate(props: {
   const projects = useTranslation('projects');
 
   return (
-    <main className="antialiased text-gray-600">
+    <>
       <Meta title={props.frontmatter.title} description={'description'} />
-      <Background color="bg-gray-100" classnames="h-screen">
-        <Navbar />
-      </Background>
-      <Section yPadding="pt-20 pb-32">
+      <Navbar />
+      <main className="pt-20 pb-32">
         <h1 className="text-neutral-800 text-10xl">
           {projects.t(`${router.query.slug}`)}
         </h1>
@@ -32,9 +29,8 @@ export default function ProjectsTemplate(props: {
           {/* eslint-disable-next-line react/no-children-prop */}
           {/* <ReactMarkdown children={props.markdownBody} /> */}
         </div>
-      </Section>
-      <Footer />
-    </main>
+      </main>
+    </>
   );
 }
 
@@ -59,7 +55,7 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths() {
-  const languages = ['en', 'pt', 'fr'];
+  const languages = ['en', 'pt'];
 
   // get all .md files in the posts dir
   const blogs = glob.sync(`projects/**/*.md`);
