@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: 'FavoritPro';
+	src: url('/fonts/FavoritPro-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FavoritPro';
+	src: url('/fonts/FavoritPro-Light.otf') format('opentype');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FavoritPro';
+	src: url('/fonts/FavoritPro-Bold.otf') format('opentype');
+	font-weight: 600;
+	font-style: normal;
+}

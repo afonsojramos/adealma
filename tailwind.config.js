@@ -60,6 +60,9 @@ module.exports = {
       lineHeight: {
         hero: '4.5rem',
       },
+      fontFamily: {
+        sans: ['FavoritPro', 'sans'],
+      },
     },
   },
   variants: {},
