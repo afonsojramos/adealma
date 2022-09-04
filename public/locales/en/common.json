@@ -3,5 +3,10 @@
 	"title": "index",
 	"title_about": "who we are",
 	"title_projects": "projects",
-	"description": "To rehabilitate is to feel the identity of the place. It is wanting to hand over history to new protagonists. Rare houses then emerge, houses with soul, open to new plans of life."
+	"description": "To rehabilitate is to feel the identity of the place. It is wanting to hand over history to new protagonists. Rare houses then emerge, houses with soul, open to new plans of life.",
+	"projects": [
+		"Fully integrated into their surroundings, A de Alma houses are the result of demanding rehabilitation programmes. The restoration of iconic elements of the original architecture and the re-dimensioning of the space to meet current standards of well-being can be seen in them.",
+		"Both in the great architectural solutions and in the fusion between local tradition and new design, it is the noble materials that allow the ideals of enjoyment, functionality and comfort to be fulfilled.",
+		"Regardless the common criteria, each house has unique qualities, a charm that is all its own."
+	]
 }
