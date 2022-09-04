@@ -3,6 +3,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
+    "baseUrl": "src",
     "resolveJsonModule": true,
     "removeComments": true,
     "preserveConstEnums": true,
@@ -36,5 +37,5 @@
     "incremental": true
   },
   "exclude": ["./out/**/*", "./node_modules/**/*"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"]
 }
