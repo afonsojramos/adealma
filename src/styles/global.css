@@ -4,21 +4,21 @@
 
 @font-face {
 	font-family: 'FavoritPro';
-	src: url('/fonts/FavoritPro-Regular.otf') format('opentype');
+	src: url('/fonts/Favorit-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'FavoritPro';
-	src: url('/fonts/FavoritPro-Light.otf') format('opentype');
+	src: url('/fonts/Favorit-Light.woff2') format('woff2');
 	font-weight: 200;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'FavoritPro';
-	src: url('/fonts/FavoritPro-Bold.otf') format('opentype');
+	src: url('/fonts/Favorit-Bold.woff2') format('woff2');
 	font-weight: 600;
 	font-style: normal;
 }
