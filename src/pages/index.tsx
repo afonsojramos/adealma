@@ -1,21 +1,35 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Link from 'next/link';
 
-import { Navbar, Hero, Banner, Footer } from '../components';
-import { Background, Meta } from '../components/elements';
+import { Navbar, Hero, Meta, Banner, Footer } from 'Components';
+
+import Arrow from '../../public/assets/ARROW.svg';
 
 const Index = () => {
   const { t } = useTranslation('common');
+  const description = t('description');
   return (
-    <main className="antialiased text-black min-h-screen">
-      <Meta title={t('title')} description={t('description')} />
-      <Background color="bg-gray-100">
-        <Navbar />
-        <Hero />
-        <Banner />
-        <Footer />
-      </Background>
-    </main>
+    <>
+      <Meta title={t('title')} description={description} />
+      <Navbar />
+      <main className="flex flex-col">
+        <div className="grow h-screen">
+          <Banner />
+        </div>
+        <div className="flex flex-col bg-gray-100 w-full pb-32">
+          <div className="relative">
+            <Hero description={description} />
+            <Link href="/projects">
+              <a>
+                <Arrow className="absolute h-8 rotate-180 lg:right-14 lg:inset-y-1/4" />
+              </a>
+            </Link>
+          </div>
+          <Footer />
+        </div>
+      </main>
+    </>
   );
 };
 
