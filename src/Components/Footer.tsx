@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="p-10 text-sm md:text-lg">
+    <div className="p-10 md:py-20 text-sm md:text-lg">
       <p className="sm:pl-32">
         <span>@a_dealma</span>
         <span className="pl-16 sm:pl-32 lg:pl-64">info@adealma.com</span>
