@@ -14,7 +14,7 @@ const Index = () => {
   const description = t('description');
   const handlers = useSwipeable({
     onSwipedUp: (eventData) =>
-      eventData.deltaY < -200 && Router.replace('/projects'),
+      eventData.deltaY < -180 && Router.replace('/projects'),
     ...config,
   });
   return (
