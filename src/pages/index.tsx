@@ -21,11 +21,11 @@ const Index = () => {
     <>
       <Meta title={t('title')} description={description} />
       <Navbar />
-      <main className="flex flex-col" {...handlers}>
+      <main className="flex flex-col">
         <div className="grow h-screen">
           <Banner />
         </div>
-        <div className="flex flex-col bg-gray-100 w-full">
+        <div className="flex flex-col bg-gray-100 w-full" {...handlers}>
           <div id="scrollable" className="relative">
             <Hero description={description} />
             <Link href="/projects">
