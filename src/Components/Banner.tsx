@@ -10,7 +10,7 @@ const Banner = () => {
         className={`left-6 lg:left-8 xl:left-12 2xl:left-16 top-6 ${common}`}
       />
       <De
-        className={`right-6 lg:right-8 xl:right-12 2xl:right-16 inset-y-1/2 -mt-12 ${common}`}
+        className={`right-6 lg:right-8 xl:right-12 2xl:right-16 bottom-[43vh] lg:bottom-[41vh] xl:bottom-[39vh] ${common}`}
       />
       <Alma
         className={`bottom-6 lg:bottom-8 xl:bottom-12 2xl:bottom-16 left-6 lg:inset-x-1/2 lg:-ml-80 ${common}`}
