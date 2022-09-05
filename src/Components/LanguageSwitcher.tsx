@@ -3,16 +3,14 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { useRouter } from 'next/router';
 
-const LanguageSwitcherDropdown = () => {
+const LanguageSwitcher = () => {
   const languages = ['EN', 'PT'];
   const router = useRouter();
   return (
-    <Menu as="div" className="relative text-center">
-      <div>
-        <Menu.Button className="flex rounded-md items-center font-light">
-          <span>{router.locale?.toLocaleUpperCase()}</span>
-        </Menu.Button>
-      </div>
+    <Menu as="div" className="relative">
+      <Menu.Button className="font-light py-1">
+        <span>{router.locale?.toLocaleUpperCase()}</span>
+      </Menu.Button>
 
       <Transition
         as={Fragment}
@@ -50,4 +48,4 @@ const LanguageSwitcherDropdown = () => {
   );
 };
 
-export { LanguageSwitcherDropdown };
+export { LanguageSwitcher };
