@@ -21,7 +21,7 @@ const LanguageSwitcher = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="origin-top absolute -left-5 top-5 w-16 ring-opacity-5 focus:outline-none">
+        <Menu.Items className="origin-top absolute -left-4 top-5 w-16 ring-opacity-5 focus:outline-none">
           <>
             {languages
               .filter(
