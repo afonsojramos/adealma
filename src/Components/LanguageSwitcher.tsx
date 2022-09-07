@@ -1,15 +1,16 @@
 import { Fragment } from 'react';
 
 import { Menu, Transition } from '@headlessui/react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const LanguageSwitcher = () => {
   const languages = ['EN', 'PT'];
-  const router = useRouter();
+  const { locale, pathname, query } = useRouter();
   return (
     <Menu as="div" className="relative">
       <Menu.Button className="font-light py-1">
-        <span>{router.locale?.toLocaleUpperCase()}</span>
+        <span>{locale?.toLocaleUpperCase()}</span>
       </Menu.Button>
 
       <Transition
@@ -24,20 +25,21 @@ const LanguageSwitcher = () => {
         <Menu.Items className="origin-top absolute -left-4 top-5 w-16 ring-opacity-5 focus:outline-none">
           <>
             {languages
-              .filter(
-                (language) => language !== router.locale?.toLocaleUpperCase()
-              )
+              .filter((language) => language !== locale?.toLocaleUpperCase())
               .map((language) => {
                 return (
                   <Menu.Item key={language}>
-                    <a
-                      href={`${
-                        router.basePath
-                      }/${language.toLocaleLowerCase()}/${router.pathname}`}
-                      className={'block px-4 py-2 font-light text-gray-900'}
+                    <Link
+                      href={{
+                        pathname,
+                        query: { slug: query.slug },
+                      }}
+                      locale={language.toLocaleLowerCase()}
                     >
-                      {language}
-                    </a>
+                      <a className="block px-4 py-2 font-light text-gray-900">
+                        {language}
+                      </a>
+                    </Link>
                   </Menu.Item>
                 );
               })}
