@@ -1,11 +1,10 @@
-import matter from 'gray-matter';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
 
 import { Navbar, Meta } from 'Components';
 
-const glob = require('glob');
+import { IProject } from '.';
+import projectsData from '../../../public/projects.json';
 
 export default function ProjectsTemplate(props: {
   frontmatter: {

@@ -1,4 +1,3 @@
-import matter from 'gray-matter';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
@@ -84,33 +83,9 @@ const Projects = (props: {
 };
 
 export async function getStaticProps({ locale }: { locale: string }) {
-  const projects = ((context) => {
-    const keys = context.keys();
-    const values = keys.map(context);
-
-    const data = keys.map((key: string, index: number) => {
-      const slug = key
-        .replace(/^.*[\\/]/, '')
-        .split('.')
-        .slice(0, -1)
-        .join('.');
-
-      const value: any = values[index];
-
-      // Parse yaml metadata & markdownbody in document
-      const document = matter(value.default);
-      return {
-        frontmatter: document.data,
-        markdownBody: document.content,
-        slug,
-      };
-    });
-    return data;
-  })(require.context('../../../projects', true, /\.md$/));
-
   return {
     props: {
-      projects,
+      projects: content,
       ...(await serverSideTranslations(locale, ['common'])),
     },
   };

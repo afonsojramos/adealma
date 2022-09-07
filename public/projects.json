@@ -1,0 +1,23 @@
+[
+	{
+		"title": "casa do cristelo",
+		"location": "cristelo, caminha",
+		"status": "ongoing",
+		"date": "2019-07-10",
+		"slug": "casa-do-cristelo"
+	},
+	{
+		"title": "casas da matriz",
+		"location": "caminha",
+		"status": "ongoing",
+		"date": "2022-01-01",
+		"slug": "casas-da-matriz"
+	},
+	{
+		"title": "casas da matriz",
+		"location": "caminha",
+		"status": "ongoing",
+		"date": "2022-01-01",
+		"slug": "casa-do-pescador"
+	}
+]

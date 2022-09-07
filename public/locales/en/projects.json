@@ -1,4 +1,17 @@
 {
-  "proj1": "Test",
-  "proj2": ""
+	"casa-do-cristelo": {
+		"description": "Five minutes from Moledo beach and with a sea views, this three bedroom villa enjoys the rural tranquility of Cristelo and easy access to urban centers. Swimming pool, large garden and a central terrace, connecting the two modules of the house, invite to enjoy the outdoor life. The villa preserves the main façade and stone and wood elements of the original construction, which gives it a remarkable character.",
+		"floors": "Floor 0: living room with direct access to garden, dining room, equipped kitchen, laundry, entrance hall, toilet and bedroom | Floor 1: two suites and balcony | Outside: garden, pool, terrace, parking area",
+		"construction": "Plot size: 565.2 m2 | implementation area: 178.4m2 | total construction area: 253.6m2"
+	},
+	"casas-da-matriz": {
+		"description": "In the historic centre of Caminha, next to the parish church, the union of two buildings gave rise to five flats: two studio flats and three two-bedroom flats. Of the exemplary intervention, one must highlight the perfect distinction of the original façades, composing a classic frontage with the colours of Alto Minho, green and blue. It is also worth mentioning the construction of a lobby, which allowed the creation of an interior garden between flats. Stone and wood are the privileged materials.",
+		"floors": "Location: Rua Direita, Caminha village centre | Easy access to major road infrastructures and to the airports of Porto and Vigo (Galicia, Spain).",
+		"construction": "Local and regional qualities: built heritage | culture, gastronomy and traditions | beach, river and mountain destination | cosmopolitan and rural environments"
+	},
+	"casa-do-pescador": {
+		"description": "In an old fishing neighbourhood in Caminha, near the beach, modern architectural solutions have enhanced this modest-sized typical house, now a two-bedroom with kitchenette and optimised space. The open ceiling, with exposed wooden trusses, creates amplitude and luminosity. The façade and the mosaic on the patio floor are traditional elements that harmoniously combine with the minimalist design.",
+		"floors": "",
+		"construction": "Total area: 68m2 (56m2 of interior space + patio with 12m2)"
+	}
 }
