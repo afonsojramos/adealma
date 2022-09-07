@@ -26,10 +26,10 @@ const Index = () => {
           <Banner />
         </div>
         <div className="flex flex-col bg-gray-100 w-full" {...handlers}>
-          <div id="scrollable" className="relative">
+          <div className="relative">
             <Hero description={description} />
             <Link href="/projects">
-              <a>
+              <a title="projects">
                 <Arrow className="absolute h-6 md:h-8 rotate-180 right-6 lg:right-8 xl:right-12 2xl:right-14 bottom-2 md:inset-y-1/4" />
               </a>
             </Link>
