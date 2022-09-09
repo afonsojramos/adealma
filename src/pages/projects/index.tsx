@@ -1,82 +1,168 @@
+import { useState } from 'react';
+
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 
-import { Navbar, Meta } from 'Components';
+import { Navbar, Meta, Footer } from 'Components';
 
-const Projects = (props: {
-  projects: {
-    frontmatter: {
-      [key: string]: any;
-    };
-    markdownBody: string;
-    slug: string;
-  }[];
-}) => {
+import Arrow from '../../../public/assets/arrow.svg';
+import LinkChain from '../../../public/assets/link-chain.svg';
+import content from '../../../public/projects.json';
+
+export type IProject = {
+  title: string;
+  location: string;
+  status: string;
+  date: string;
+  slug: string;
+};
+
+enum Status {
+  Location,
+  InverseLocation,
+  Status,
+  InverseStatus,
+  Date,
+  InverseDate,
+}
+
+const Projects = ({ projects }: { projects: IProject[] }) => {
+  const [sort, setSort] = useState(Status.Date);
   const { t } = useTranslation('common');
-  const projectsIntro = t<string, string[]>('projects', {
+  const projectsDescription = t<string, string[]>('projects_description', {
     returnObjects: true,
   });
+
+  const sortRotation = (sortArrow: Status) => {
+    if (sort % 2 === 0)
+      return sort === sortArrow ? '-rotate-90' : '-rotate-90 opacity-0';
+    return sort === sortArrow + 1 ? 'rotate-90' : '-rotate-90 opacity-0';
+  };
+
+  const getProjectYear = (date: string) => {
+    return new Date(date).getFullYear();
+  };
+
+  const expandYear = (year: string) => {
+    const date = new Date();
+    const currentYear = date.getFullYear();
+    return year === currentYear.toString() ? t('current_year') : year;
+  };
+
   return (
     <>
-      <Meta title={t('title_projects')} description={t('description')} />
-      <Navbar title={t('title_projects')} />
-      <main className="inline-block w-full mt-32 lg:mt-48 rounded-lg relative overflow-x-auto">
+      <Meta title={t('projects_title')} description={t('description')} />
+      <Navbar title={t('projects_title')} />
+      <main className="inline-block w-full mt-32 lg:mt-48 rounded-lg overflow-x-auto">
         <div className="pl-8 md:pl-16 lg:pl-32 pr-32 md:pr-32 lg:pr-64 xl:pr-96 2xl:pr-[40rem] leading-[28px] md:leading-[30px] xl:leading-[40px] text-[22px] md:text-2xl xl:text-3xl line-clamp-5 hover:line-clamp-none mb-12">
-          {projectsIntro.map((paragraph, pNum) => (
+          {projectsDescription.map((paragraph, pNum) => (
             <p key={pNum} className="mb-2">
               {paragraph}
             </p>
           ))}
         </div>
-        <table className="table-fixed w-screen">
+        <table className="table-fixed w-screen text-left">
           <thead>
-            <tr>
-              <th
-                scope="col"
-                className="bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider"
-              ></th>
-              <th
-                scope="col"
-                className="bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider"
-              >
-                Location
+            <tr className="border-b-2 border-gray-400 tracking-widest text-sm font-normal">
+              <th className="hidden md:table-cell sm:w-72 lg:w-96" />
+              <th className="hidden md:table-cell sm:w-40 lg:w-80 lg:pl-20">
+                <button
+                  className="group flex flex-row items-center leading-10"
+                  onClick={() =>
+                    setSort(
+                      sort === Status.Location
+                        ? Status.InverseLocation
+                        : Status.Location
+                    )
+                  }
+                >
+                  <Arrow
+                    className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
+                      Status.Location
+                    )}`}
+                  />
+                  {t('location')}
+                </button>
               </th>
-              <th
-                scope="col"
-                className="bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider"
-              >
-                Type
+              <th className="hidden md:table-cell md:w-32 lg:w-32 xl:w-64 px-5">
+                <button
+                  className="group flex flex-row items-center leading-10"
+                  onClick={() =>
+                    setSort(
+                      sort === Status.Status
+                        ? Status.InverseStatus
+                        : Status.Status
+                    )
+                  }
+                >
+                  <Arrow
+                    className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
+                      Status.Status
+                    )}`}
+                  />
+                  {t('status')}
+                </button>
               </th>
-              <th
-                scope="col"
-                className="bg-gray-100 text-left text-xs font-bold text-gray-600 uppercase tracking-wider"
-              >
-                Date
+              <th className="flex items-center md:w-40 pl-8 md:px-5 lg:pr-24">
+                <button
+                  className="group inline-flex flex-row items-center leading-10"
+                  onClick={() =>
+                    setSort(
+                      sort === Status.Date ? Status.InverseDate : Status.Date
+                    )
+                  }
+                >
+                  <Arrow
+                    className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
+                      Status.Date
+                    )}`}
+                  />
+                  {t('year')}
+                </button>
               </th>
             </tr>
           </thead>
           <tbody>
-            {props.projects.map((project) => (
-              <tr key={project.slug}>
-                <td className="px-10 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  <Link href={`/projects/${project.slug}`}>
-                    {project.frontmatter.title}
+            {projects.map((project) => (
+              <tr
+                key={project.slug}
+                className="border-b-2 border-gray-400 tracking-widest text-xl"
+              >
+                <td className="hidden md:table-cell pl-16 lg:pl-32 pr-16 lg:pr-64 w-64">
+                  <Link href={`/projects/${project.slug}`} className="w-96">
+                    <a>
+                      <div className="flex flex-row items-center w-max group">
+                        <span>{project.title}</span>
+                        <LinkChain className="px-2 w-max opacity-0 group-hover:opacity-100 transform transition duration-500" />
+                      </div>
+                    </a>
                   </Link>
                 </td>
-                <td className="px-10 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  {project.frontmatter.location}
+                <td className="hidden md:table-cell lg:pl-20">
+                  {project.location}
                 </td>
-                <td className="px-10 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  {project.frontmatter.status}
-                </td>
-                <td className="px-10 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  {project.frontmatter.year}
+                <td className="hidden md:table-cell px-5">{project.status}</td>
+                <td className="text-center md:text-left px-5">
+                  <span className="hidden md:table-cell">
+                    {getProjectYear(project.date)}
+                  </span>
+                  <button
+                    className="md:hidden"
+                    onClick={() => expandYear(project.date)}
+                  >
+                    {getProjectYear(project.date)}
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <div className="flex flex-row w-screen justify-between">
+          <Arrow className="h-6 md:h-8 m-8" />
+          <Arrow className="h-6 md:h-8 m-8 rotate-180" />
+        </div>
+        <Footer />
       </main>
     </>
   );
