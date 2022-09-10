@@ -55,6 +55,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
       <Meta title={t('projects_title')} description={t('description')} />
       <Navbar title={t('projects_title')} />
       <main className="inline-block w-full mt-32 lg:mt-48 rounded-lg overflow-x-auto">
+        <Arrow className="absolute left-8 h-8 hidden lg:block" />
         <div className="pl-8 md:pl-16 lg:pl-32 pr-32 md:pr-32 lg:pr-64 xl:pr-96 2xl:pr-[40rem] leading-[28px] md:leading-[30px] xl:leading-[40px] text-[22px] md:text-2xl xl:text-3xl line-clamp-5 hover:line-clamp-none mb-12">
           {projectsDescription.map((paragraph, pNum) => (
             <p key={pNum} className="mb-2">
@@ -158,9 +159,12 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
             ))}
           </tbody>
         </table>
-        <div className="flex flex-row w-screen justify-between">
-          <Arrow className="h-6 md:h-8 m-8" />
-          <Arrow className="h-6 md:h-8 m-8 rotate-180" />
+        <div className="flex flex-row-reverse w-screen justify-between">
+          <Link href={`/projects/${projects[0]?.slug}`}>
+            <a>
+              <Arrow className="h-6 md:h-8 m-8 rotate-180" />
+            </a>
+          </Link>
         </div>
         <Footer />
       </main>
