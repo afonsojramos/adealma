@@ -126,36 +126,33 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
           </thead>
           <tbody>
             {projects.map((project) => (
-              <tr
-                key={project.slug}
-                className="border-b-2 border-gray-400 tracking-widest text-xl"
-              >
-                <td className="hidden md:table-cell pl-16 lg:pl-32 pr-16 lg:pr-64 w-64">
-                  <Link href={`/projects/${project.slug}`} className="w-96">
-                    <a>
-                      <div className="flex flex-row items-center w-max group">
-                        <span>{project.title}</span>
-                        <LinkChain className="px-2 w-max opacity-0 group-hover:opacity-100 transform transition duration-500" />
-                      </div>
-                    </a>
-                  </Link>
-                </td>
-                <td className="hidden md:table-cell lg:pl-20">
-                  {project.location}
-                </td>
-                <td className="hidden md:table-cell px-5">{project.status}</td>
-                <td className="text-center md:text-left px-5">
-                  <span className="hidden md:table-cell">
-                    {getProjectYear(project.date)}
-                  </span>
-                  <button
-                    className="md:hidden"
-                    onClick={() => expandYear(project.date)}
-                  >
-                    {getProjectYear(project.date)}
-                  </button>
-                </td>
-              </tr>
+              <Link key={project.slug} href={`/projects/${project.slug}`}>
+                <tr className="border-b-[1px] border-black tracking-widest text-2xl child:py-2 group child-hover:cursor-image">
+                  <td className="hidden md:table-cell pl-16 lg:pl-32 pr-16 lg:pr-64">
+                    <div className="flex flex-row items-center w-max">
+                      <span>{project.title}</span>
+                      <LinkChain className="px-2 w-max opacity-0 group-hover:opacity-100 transform transition duration-500" />
+                    </div>
+                  </td>
+                  <td className="hidden md:table-cell lg:pl-20">
+                    {project.location}
+                  </td>
+                  <td className="hidden md:table-cell px-5">
+                    {project.status}
+                  </td>
+                  <td className="text-center md:text-left px-5">
+                    <span className="hidden md:table-cell">
+                      {getProjectYear(project.date)}
+                    </span>
+                    <button
+                      className="md:hidden"
+                      onClick={() => expandYear(project.date)}
+                    >
+                      {getProjectYear(project.date)}
+                    </button>
+                  </td>
+                </tr>
+              </Link>
             ))}
           </tbody>
         </table>
