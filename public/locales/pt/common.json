@@ -10,5 +10,8 @@
 	],
 	"location": "Localização",
 	"status": "Status",
-	"year": "Ano"
+	"year": "Ano",
+	"sold": "vendido",
+	"ongoing": "em curso",
+	"on_sale": "para venda"
 }

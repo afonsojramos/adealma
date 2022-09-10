@@ -10,5 +10,8 @@
 	],
 	"location": "Location",
 	"status": "Status",
-	"year": "Year"
+	"year": "Year",
+	"sold": "sold",
+	"ongoing": "ongoing",
+	"on_sale": "on sale"
 }

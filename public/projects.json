@@ -1,22 +1,22 @@
 [
 	{
 		"title": "casa do cristelo",
-		"location": "cristelo, caminha",
+		"location": "caminha, portugal",
 		"status": "ongoing",
 		"date": "2019-07-10",
 		"slug": "casa-do-cristelo"
 	},
 	{
 		"title": "casas da matriz",
-		"location": "caminha",
+		"location": "caminha, portugal",
 		"status": "ongoing",
 		"date": "2022-01-01",
 		"slug": "casas-da-matriz"
 	},
 	{
-		"title": "casas da matriz",
-		"location": "caminha",
-		"status": "ongoing",
+		"title": "casa do pescador",
+		"location": "caminha, portugal",
+		"status": "sold",
 		"date": "2022-01-01",
 		"slug": "casa-do-pescador"
 	}

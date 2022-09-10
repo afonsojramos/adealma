@@ -138,7 +138,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                     {project.location}
                   </td>
                   <td className="hidden md:table-cell px-5">
-                    {project.status}
+                    {t(project.status)}
                   </td>
                   <td className="text-center md:text-left px-5">
                     <span className="hidden md:table-cell">
