@@ -65,11 +65,11 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
         </div>
         <table className="table-fixed w-screen text-left">
           <thead>
-            <tr className="border-b-2 border-gray-400 tracking-widest text-sm font-normal">
-              <th className="hidden md:table-cell sm:w-72 lg:w-96" />
-              <th className="hidden md:table-cell sm:w-40 lg:w-80 lg:pl-20">
+            <tr className="border-b-[1px] border-black tracking-widest text-lg child:font-light">
+              <th className="hidden md:table-cell md:w-80 lg:w-[29%]" />
+              <th className="hidden md:table-cell md:w-40 lg:w-[31%] lg:pl-20">
                 <button
-                  className="group flex flex-row items-center leading-10"
+                  className="group inline-flex items-center leading-10"
                   onClick={() =>
                     setSort(
                       sort === Status.Location
@@ -86,9 +86,9 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                   {t('location')}
                 </button>
               </th>
-              <th className="hidden md:table-cell md:w-32 lg:w-32 xl:w-64 px-5">
+              <th className="hidden md:table-cell md:w-32 lg:w-[20%] px-5">
                 <button
-                  className="group flex flex-row items-center leading-10"
+                  className="group inline-flex items-center leading-10"
                   onClick={() =>
                     setSort(
                       sort === Status.Status
@@ -105,9 +105,9 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                   {t('status')}
                 </button>
               </th>
-              <th className="flex items-center md:w-40 pl-8 md:px-5 lg:pr-24">
+              <th className="flex items-center md:w-40 lg:w-3/12 pl-8 md:px-5">
                 <button
-                  className="group inline-flex flex-row items-center leading-10"
+                  className="group inline-flex items-center leading-10"
                   onClick={() =>
                     setSort(
                       sort === Status.Date ? Status.InverseDate : Status.Date
