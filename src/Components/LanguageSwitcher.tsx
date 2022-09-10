@@ -36,7 +36,7 @@ const LanguageSwitcher = () => {
                       }}
                       locale={language.toLocaleLowerCase()}
                     >
-                      <a className="block px-4 py-2 font-light text-gray-900">
+                      <a className="block px-4 py-2 font-light text-primary-900">
                         {language}
                       </a>
                     </Link>

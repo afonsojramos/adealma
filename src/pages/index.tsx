@@ -25,7 +25,7 @@ const Index = () => {
         <div className="grow h-screen">
           <Banner />
         </div>
-        <div className="flex flex-col bg-gray-100 w-full" {...handlers}>
+        <div className="flex flex-col bg-primary-100 w-full" {...handlers}>
           <div className="relative">
             <Hero description={description} />
             <Link href="/projects">

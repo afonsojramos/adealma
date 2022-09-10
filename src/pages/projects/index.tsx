@@ -69,7 +69,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
         </div>
         <table className="table-fixed w-screen text-left">
           <thead>
-            <tr className="border-b-[1px] border-black tracking-widest text-lg child:font-light">
+            <tr className="border-b-[1px] border-primary-900 tracking-widest text-lg child:font-light">
               <th className="hidden md:table-cell md:w-80 lg:w-[29%]" />
               <th className="hidden md:table-cell md:w-40 lg:w-[31%] lg:pl-20">
                 <button
@@ -131,7 +131,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
           <tbody>
             {projects.map((project) => (
               <Link key={project.slug} href={`/projects/${project.slug}`}>
-                <tr className="border-b-[1px] border-black tracking-widest text-2xl child:py-2 group child-hover:cursor-image">
+                <tr className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group child-hover:cursor-image hover:bg-primary-300 hover:text-primary-100">
                   <td className="hidden md:table-cell pl-16 lg:pl-32 pr-16 lg:pr-64">
                     <div className="flex flex-row items-center w-max">
                       <span>{project.title}</span>
