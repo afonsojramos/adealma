@@ -149,6 +149,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                   plugins={[followCursor]}
                   delay={0}
                   placement="right"
+                  animation={false}
                 >
                   <tr className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group hover:bg-primary-300 hover:text-primary-100 hidden md:table-row">
                     <td className="hidden md:table-cell pl-8 lg:pl-24 xl:pl-48 pr-16 lg:pr-64">
