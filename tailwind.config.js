@@ -42,7 +42,6 @@ module.exports = {
   },
   variants: {},
   plugins: [
-    require('@tailwindcss/line-clamp'),
     ({ addVariant }) => {
       addVariant('child', '& > *');
       addVariant('child-hover', '& > *:hover');
