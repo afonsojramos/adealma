@@ -9,7 +9,7 @@ type INavbarProps = {
 
 const Navbar = ({ title = '' }: INavbarProps) => {
   return (
-    <nav className="flex tracking-widest fixed top-12 lg:top-20 inset-x-8 lg:inset-x-24 w-screen">
+    <nav className="flex tracking-widest fixed pt-8 lg:pt-8 pl-8 lg:pl-40 w-screen">
       {title && (
         <div className="flex-none md:ml-8 text-base sm:text-xl">
           <Link href="/">
@@ -22,7 +22,7 @@ const Navbar = ({ title = '' }: INavbarProps) => {
       <div className="grow text-left w-20 pl-16 md:pl-32 lg:pl-64 text-base sm:text-xl">
         {title}
       </div>
-      <div className="mr-14 lg:mr-32 xl:mr-36 2xl:mr-40 text-sm sm:text-base">
+      <div className="pr-8 md:pr-12 lg:pr-16 xl:pr-20 2xl:pr-24 text-base sm:text-lg">
         <LanguageSwitcher />
       </div>
     </nav>
