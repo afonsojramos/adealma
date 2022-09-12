@@ -10,7 +10,7 @@ type INavbarProps = {
 
 const Navbar = ({ title = '', secondaryTitle = '' }: INavbarProps) => {
   return (
-    <nav className="flex tracking-widest fixed pt-8 lg:pt-8 pl-8 lg:pl-40 w-screen">
+    <nav className="flex tracking-widest fixed pt-8 lg:pt-8 pl-8 lg:pl-40 w-screen z-10">
       {title && (
         <div className="flex-none md:ml-8 text-base sm:text-xl">
           <Link href="/">

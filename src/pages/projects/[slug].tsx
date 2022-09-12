@@ -26,7 +26,12 @@ export default function ProjectsTemplate({
   return (
     <>
       <Meta title={project.title} description={details.description} />
-      <Navbar title={`${t('projects_title')}`} secondaryTitle={project.title} />
+      <div className="child:bg-primary-100">
+        <Navbar
+          title={`${t('projects_title')}`}
+          secondaryTitle={project.title}
+        />
+      </div>
       <main className="pt-32 md:pt-24 pb-32">
         <Link href="/projects/">
           <a>
