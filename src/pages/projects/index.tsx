@@ -1,13 +1,10 @@
 import { useState } from 'react';
 
-import Tippy from '@tippyjs/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Image from 'next/image';
 import Link from 'next/link';
-import { followCursor } from 'tippy.js';
 
-import { Navbar, Meta, Footer } from 'Components';
+import { Navbar, Meta, Footer, Tooltip } from 'Components';
 
 import Arrow from '../../../public/assets/arrow.svg';
 import LinkChain from '../../../public/assets/link-chain.svg';
@@ -135,41 +132,25 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
           </thead>
           <tbody>
             {projects.map((project) => (
-              <Link key={project.slug} href={`/projects/${project.slug}`}>
-                <Tippy
-                  content={
-                    <Image
-                      src={`/assets/${project.slug}.png`}
-                      alt="tooltip"
-                      width="820px"
-                      height="1260px"
-                    />
-                  }
-                  followCursor={true}
-                  plugins={[followCursor]}
-                  delay={0}
-                  placement="right"
-                  animation={false}
-                >
-                  <tr className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group hover:bg-primary-300 hover:text-primary-100 hidden md:table-row">
-                    <td className="hidden md:table-cell pl-8 lg:pl-24 xl:pl-48 pr-16 lg:pr-64">
-                      <div className="flex flex-row items-center w-max">
-                        <span>{project.title}</span>
-                        <LinkChain className="px-2 w-max opacity-0 group-hover:opacity-100 transform transition duration-500 text-primary-100" />
-                      </div>
-                    </td>
-                    <td className="hidden md:table-cell">{project.location}</td>
-                    <td className="hidden md:table-cell px-5">
-                      {t(project.status)}
-                    </td>
-                    <td className="text-center md:text-left px-5">
-                      <span className="hidden md:table-cell">
-                        {getProjectYear(project.date)}
-                      </span>
-                    </td>
-                  </tr>
-                </Tippy>
-              </Link>
+              <Tooltip key={project.slug} slug={project.slug}>
+                <tr className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group hover:bg-primary-300 hover:text-primary-100 hidden md:table-row cursor-pointer">
+                  <td className="hidden md:table-cell pl-8 lg:pl-24 xl:pl-48 pr-16 lg:pr-64">
+                    <div className="flex flex-row items-center w-max">
+                      <span>{project.title}</span>
+                      <LinkChain className="px-2 w-max opacity-0 group-hover:opacity-100 transform transition duration-500 text-primary-100" />
+                    </div>
+                  </td>
+                  <td className="hidden md:table-cell">{project.location}</td>
+                  <td className="hidden md:table-cell px-5">
+                    {t(project.status)}
+                  </td>
+                  <td className="text-center md:text-left px-5">
+                    <span className="hidden md:table-cell">
+                      {getProjectYear(project.date)}
+                    </span>
+                  </td>
+                </tr>
+              </Tooltip>
             ))}
             {projects.map((project) => (
               <tr
