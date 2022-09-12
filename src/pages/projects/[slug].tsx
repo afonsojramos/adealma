@@ -87,6 +87,11 @@ export default function ProjectsTemplate({
               <Arrow className="h-6 m-8 rotate-180" />
             </a>
           </Link>
+          <Link href="/projects">
+            <a>
+              <Arrow className="h-6 m-8 flex lg:hidden" />
+            </a>
+          </Link>
         </div>
         <Footer />
       </main>
