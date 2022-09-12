@@ -48,12 +48,13 @@ const Meta = (props: IMetaProps) => {
         />
       </Head>
       <NextSeo
-        title={props.title || t('site_name')}
+        title={props.title}
         titleTemplate={`%s | ${t('site_name')}`}
+        defaultTitle={t('site_name')}
         description={props.description}
         canonical={props.canonical}
         openGraph={{
-          title: props.title || t('site_name'),
+          title: props.title,
           description: props.description,
           url: props.canonical,
           locale: router.locale,
