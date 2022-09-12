@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 type IMetaProps = {
-  title: string;
+  title?: string;
   description: string;
   canonical?: string;
 };
@@ -48,12 +48,12 @@ const Meta = (props: IMetaProps) => {
         />
       </Head>
       <NextSeo
-        title={props.title}
+        title={props.title || t('site_name')}
         titleTemplate={`%s | ${t('site_name')}`}
         description={props.description}
         canonical={props.canonical}
         openGraph={{
-          title: props.title,
+          title: props.title || t('site_name'),
           description: props.description,
           url: props.canonical,
           locale: router.locale,

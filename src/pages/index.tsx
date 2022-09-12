@@ -17,7 +17,7 @@ const Index = () => {
   });
   return (
     <>
-      <Meta title={t('title')} description={description} />
+      <Meta description={description} />
       <Navbar />
       <main className="flex flex-col">
         <div className="grow h-screen">
