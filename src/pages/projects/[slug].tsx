@@ -32,7 +32,7 @@ export default function ProjectsTemplate({
           secondaryTitle={project.title}
         />
       </div>
-      <main className="pt-32 md:pt-24 pb-32">
+      <main className="pt-32">
         <Link href="/projects/">
           <a>
             <Arrow className="absolute left-8 h-6 hidden lg:block" />

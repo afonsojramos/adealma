@@ -61,7 +61,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
       <div className="child:bg-primary-100">
         <Navbar title={t('projects_title')} />
       </div>
-      <main className="inline-block w-full mt-32 lg:mt-32 rounded-lg">
+      <main className="inline-block w-full pt-32 rounded-lg">
         <Link href={`/`}>
           <a>
             <Arrow className="absolute left-8 h-6 hidden lg:block" />
