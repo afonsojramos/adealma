@@ -1,18 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 
 import { Navbar, Meta, Footer, Tooltip, Arrow, LinkChain } from 'Components';
-import { IProject, SortStatus } from 'Interfaces';
+import { IProject, SortStatus as Sort } from 'Interfaces';
 import { getProjectYear, groupBy } from 'Utils';
 
 import content from '../../../public/projects.json';
 
 const Projects = ({ projects }: { projects: IProject[] }) => {
-  const [sort, setSort] = useState(SortStatus.Date);
-  const [tableData] = useState(projects);
+  const [sort, setSort] = useState(Sort.Date);
+  const [tableData, setTableData] = useState(projects);
   const [mobileTableData] = useState(
     groupBy(tableData, (project: IProject) => getProjectYear(project.date))
   );
@@ -23,36 +23,37 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
     returnObjects: true,
   });
 
-  const sortRotation = (sortArrow: SortStatus) => {
+  const sortRotation = (sortArrow: Sort) => {
     if (sort % 2 === 0)
       return sort === sortArrow ? '-rotate-90' : '-rotate-90 opacity-0';
     return sort === sortArrow + 1 ? 'rotate-90' : '-rotate-90 opacity-0';
   };
 
-  const handleSorting = () => {
-    tableData.sort((proj1, proj2) => {
-      if (sort === SortStatus.Location) {
+  useEffect(() => {
+    projects.sort((proj1, proj2) => {
+      if (sort === Sort.Location) {
         return proj1.location.localeCompare(proj2.location);
       }
-      if (sort === SortStatus.InverseLocation) {
+      if (sort === Sort.InvLocation) {
         return proj2.location.localeCompare(proj1.location);
       }
-      if (sort === SortStatus.Status) {
+      if (sort === Sort.Status) {
         return proj1.status.localeCompare(proj2.status);
       }
-      if (sort === SortStatus.InverseStatus) {
+      if (sort === Sort.InvStatus) {
         return proj2.status.localeCompare(proj1.status);
       }
-      if (sort === SortStatus.Date) {
-        return getProjectYear(proj1.date) - getProjectYear(proj2.date);
+      if (sort === Sort.Date) {
+        return getProjectYear(proj2.date) - getProjectYear(proj1.date);
       }
-      if (sort === SortStatus.InverseDate) {
-        return -getProjectYear(proj1.date) - getProjectYear(proj2.date);
+      if (sort === Sort.InvDate) {
+        return getProjectYear(proj1.date) - getProjectYear(proj2.date);
       }
 
       return 0;
     });
-  };
+    setTableData([...projects]);
+  }, [sort, projects]);
 
   return (
     <>
@@ -80,18 +81,15 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               <th className="hidden md:table-cell md:w-[27%]">
                 <button
                   className="group inline-flex items-center leading-10"
-                  onClick={() => {
+                  onClick={() =>
                     setSort(
-                      sort === SortStatus.Location
-                        ? SortStatus.InverseLocation
-                        : SortStatus.Location
-                    );
-                    handleSorting();
-                  }}
+                      sort === Sort.Location ? Sort.InvLocation : Sort.Location
+                    )
+                  }
                 >
                   <Arrow
                     className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
-                      SortStatus.Location
+                      Sort.Location
                     )}`}
                   />
                   {t('location')}
@@ -100,18 +98,13 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               <th className="hidden md:table-cell md:w-[20%] px-5">
                 <button
                   className="group inline-flex items-center leading-10"
-                  onClick={() => {
-                    setSort(
-                      sort === SortStatus.Status
-                        ? SortStatus.InverseStatus
-                        : SortStatus.Status
-                    );
-                    handleSorting();
-                  }}
+                  onClick={() =>
+                    setSort(sort === Sort.Status ? Sort.InvStatus : Sort.Status)
+                  }
                 >
                   <Arrow
                     className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
-                      SortStatus.Status
+                      Sort.Status
                     )}`}
                   />
                   {t('status')}
@@ -120,18 +113,13 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               <th className="flex items-center md:w-3/12 pl-8 md:px-5">
                 <button
                   className="group inline-flex items-center leading-10"
-                  onClick={() => {
-                    setSort(
-                      sort === SortStatus.Date
-                        ? SortStatus.InverseDate
-                        : SortStatus.Date
-                    );
-                    handleSorting();
-                  }}
+                  onClick={() =>
+                    setSort(sort === Sort.Date ? Sort.InvDate : Sort.Date)
+                  }
                 >
                   <Arrow
                     className={`hidden md:block h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
-                      SortStatus.Date
+                      Sort.Date
                     )}`}
                   />
                   {t('year')}
