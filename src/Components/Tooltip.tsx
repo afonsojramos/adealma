@@ -2,13 +2,9 @@ import { cloneElement, useEffect, useMemo, useState } from 'react';
 
 import {
   offset,
-  autoUpdate,
   useFloating,
   useInteractions,
   useHover,
-  useFocus,
-  useRole,
-  useDismiss,
 } from '@floating-ui/react-dom-interactions';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,16 +19,12 @@ const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
     placement: 'right',
     onOpenChange: setOpen,
     middleware: [offset(25)],
-    whileElementsMounted: autoUpdate,
   });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useHover(context, {
       mouseOnly: true,
     }),
-    useFocus(context),
-    useRole(context, { role: 'tooltip' }),
-    useDismiss(context),
   ]);
 
   const ref = useMemo(
