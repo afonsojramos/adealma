@@ -24,6 +24,7 @@ const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useHover(context, {
       mouseOnly: true,
+      restMs: 1,
     }),
   ]);
 
