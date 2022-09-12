@@ -1,8 +1,9 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Image from 'next/image';
 import Link from 'next/link';
 
-import { Navbar, Meta, Arrow } from 'Components';
+import { Navbar, Meta, Arrow, Footer } from 'Components';
 import { IProject, IProjectDetails } from 'Interfaces';
 
 import projectsData from '../../../public/projects.json';
@@ -14,6 +15,7 @@ export default function ProjectsTemplate({
   project: IProject;
   nextProject: string;
 }) {
+  const { t } = useTranslation('common');
   const details = useTranslation('projects').t<string, IProjectDetails>(
     project.slug,
     {
@@ -24,16 +26,44 @@ export default function ProjectsTemplate({
   return (
     <>
       <Meta title={project.title} description={details.description} />
-      <Navbar />
-      <main className="pt-20 pb-32">
+      <Navbar title={`${t('projects_title')}`} secondaryTitle={project.title} />
+      <main className="pt-32 md:pt-24 pb-32">
         <Link href="/projects/">
           <a>
             <Arrow className="absolute left-8 h-6 hidden lg:block" />
           </a>
         </Link>
-        <h1 className="text-neutral-800 text-10xl">{project.title}</h1>
-        <div>
-          <span>{details.description}</span>
+        <div className="px-8 md:px-[27%] xl:px-[33%] leading-[28px] md:leading-[30px] xl:leading-[40px] text-2xl xl:text-3xl mb-12 break-normal">
+          {details.description}
+        </div>
+        <div className="flex flex-row items-center w-screen px-5">
+          <div className="w-1/3 px-2">
+            <Image
+              src="/assets/casa-do-cristelo.png"
+              alt="Casa do Cristelo"
+              width={820}
+              height={1260}
+              layout="responsive"
+            ></Image>
+          </div>
+          <div className="w-1/3 px-2">
+            <Image
+              src="/assets/casa-do-pescador.png"
+              alt="Casa do Pescador"
+              width={820}
+              height={1260}
+              layout="responsive"
+            ></Image>
+          </div>
+          <div className="w-1/3 px-2">
+            <Image
+              src="/assets/casas-da-matriz.png"
+              alt="Casas da Matriz"
+              width={820}
+              height={1260}
+              layout="responsive"
+            ></Image>
+          </div>
         </div>
         <div className="flex flex-row-reverse w-screen justify-between">
           <Link href={`/projects/${nextProject || ''}`}>
@@ -42,6 +72,7 @@ export default function ProjectsTemplate({
             </a>
           </Link>
         </div>
+        <Footer />
       </main>
     </>
   );
@@ -64,7 +95,7 @@ export async function getStaticProps({
     props: {
       project: projectsData[projectIndex],
       nextProject: projectsData[projectIndex + 1]?.slug || null,
-      ...(await serverSideTranslations(locale, ['projects'])),
+      ...(await serverSideTranslations(locale, ['common', 'projects'])),
     },
   };
 }
