@@ -1,6 +1,4 @@
-import A from '../../public/assets/a.svg';
-import Alma from '../../public/assets/alma.svg';
-import De from '../../public/assets/de.svg';
+import { A, De, Alma } from './Icons';
 
 const Banner = () => {
   const common = 'fixed -z-10 h-20 xl:h-48 lg:h-40 md:h-32 sm:h-24';

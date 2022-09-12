@@ -1,6 +1,7 @@
 export * from './Banner';
 export * from './Footer';
 export * from './Hero';
+export * from './Icons';
 export * from './LanguageSwitcher';
 export * from './Logo';
 export * from './Meta';
