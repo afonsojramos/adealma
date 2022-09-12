@@ -157,18 +157,42 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                 </tr>
               </Tooltip>
             ))}
-            {projects.map((project) => (
-              <tr
-                key={project.slug}
-                className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 hover:bg-primary-300 hover:text-primary-100 md:hidden"
-              >
-                <td className="text-center md:text-left px-5">
-                  <button className="" onClick={() => expandYear(project.date)}>
-                    {getProjectYear(project.date)}
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {Array.from(mobileTableData.keys()).map((year) => {
+              return (
+                <>
+                  <tr
+                    key={year}
+                    className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 hover:bg-primary-300 hover:text-primary-100 md:hidden"
+                  >
+                    <td className="text-center md:text-left px-5">
+                      <button
+                        onClick={() =>
+                          setExpandYear(expandYear !== year ? year : '')
+                        }
+                        className="w-screen h-max"
+                      >
+                        {year}
+                      </button>
+                    </td>
+                  </tr>
+                  {expandYear === year &&
+                    mobileTableData.get(year)?.map((project) => (
+                      <tr
+                        key={`${year}-expanded-${project.slug}`}
+                        className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 bg-primary-300 text-primary-100 md:hidden"
+                      >
+                        <td className="text-center md:text-left px-5">
+                          <Link href={`/projects/${project.slug}`}>
+                            <a>
+                              <p className="w-screen h-max">{project.title}</p>
+                            </a>
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                </>
+              );
+            })}
           </tbody>
         </table>
         <div className="flex flex-row-reverse w-screen justify-between">
