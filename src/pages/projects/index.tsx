@@ -4,50 +4,54 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 
-import { Navbar, Meta, Footer, Tooltip } from 'Components';
+import { Navbar, Meta, Footer, Tooltip, Arrow, LinkChain } from 'Components';
+import { IProject, SortStatus } from 'Interfaces';
+import { getProjectYear, groupBy } from 'Utils';
 
-import Arrow from '../../../public/assets/arrow.svg';
-import LinkChain from '../../../public/assets/link-chain.svg';
 import content from '../../../public/projects.json';
 
-export type IProject = {
-  title: string;
-  location: string;
-  status: string;
-  date: string;
-  slug: string;
-};
-
-enum Status {
-  Location,
-  InverseLocation,
-  Status,
-  InverseStatus,
-  Date,
-  InverseDate,
-}
-
 const Projects = ({ projects }: { projects: IProject[] }) => {
-  const [sort, setSort] = useState(Status.Date);
+  const [sort, setSort] = useState(SortStatus.Date);
+  const [tableData] = useState(projects);
+  const [mobileTableData] = useState(
+    groupBy(tableData, (project: IProject) => getProjectYear(project.date))
+  );
+  const [expandYear, setExpandYear] = useState('');
+
   const { t } = useTranslation('common');
   const projectsDescription = t<string, string[]>('projects_description', {
     returnObjects: true,
   });
 
-  const sortRotation = (sortArrow: Status) => {
+  const sortRotation = (sortArrow: SortStatus) => {
     if (sort % 2 === 0)
       return sort === sortArrow ? '-rotate-90' : '-rotate-90 opacity-0';
     return sort === sortArrow + 1 ? 'rotate-90' : '-rotate-90 opacity-0';
   };
 
-  const getProjectYear = (date: string) => {
-    return new Date(date).getFullYear();
-  };
+  const handleSorting = () => {
+    tableData.sort((proj1, proj2) => {
+      if (sort === SortStatus.Location) {
+        return proj1.location.localeCompare(proj2.location);
+      }
+      if (sort === SortStatus.InverseLocation) {
+        return proj2.location.localeCompare(proj1.location);
+      }
+      if (sort === SortStatus.Status) {
+        return proj1.status.localeCompare(proj2.status);
+      }
+      if (sort === SortStatus.InverseStatus) {
+        return proj2.status.localeCompare(proj1.status);
+      }
+      if (sort === SortStatus.Date) {
+        return getProjectYear(proj1.date) - getProjectYear(proj2.date);
+      }
+      if (sort === SortStatus.InverseDate) {
+        return -getProjectYear(proj1.date) - getProjectYear(proj2.date);
+      }
 
-  const expandYear = (year: string) => {
-    const date = new Date();
-    const currentYear = date.getFullYear();
-    return year === currentYear.toString() ? t('current_year') : year;
+      return 0;
+    });
   };
 
   return (
@@ -76,17 +80,18 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               <th className="hidden md:table-cell md:w-[27%]">
                 <button
                   className="group inline-flex items-center leading-10"
-                  onClick={() =>
+                  onClick={() => {
                     setSort(
-                      sort === Status.Location
-                        ? Status.InverseLocation
-                        : Status.Location
-                    )
-                  }
+                      sort === SortStatus.Location
+                        ? SortStatus.InverseLocation
+                        : SortStatus.Location
+                    );
+                    handleSorting();
+                  }}
                 >
                   <Arrow
                     className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
-                      Status.Location
+                      SortStatus.Location
                     )}`}
                   />
                   {t('location')}
@@ -95,17 +100,18 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               <th className="hidden md:table-cell md:w-[20%] px-5">
                 <button
                   className="group inline-flex items-center leading-10"
-                  onClick={() =>
+                  onClick={() => {
                     setSort(
-                      sort === Status.Status
-                        ? Status.InverseStatus
-                        : Status.Status
-                    )
-                  }
+                      sort === SortStatus.Status
+                        ? SortStatus.InverseStatus
+                        : SortStatus.Status
+                    );
+                    handleSorting();
+                  }}
                 >
                   <Arrow
                     className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
-                      Status.Status
+                      SortStatus.Status
                     )}`}
                   />
                   {t('status')}
@@ -114,15 +120,18 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               <th className="flex items-center md:w-3/12 pl-8 md:px-5">
                 <button
                   className="group inline-flex items-center leading-10"
-                  onClick={() =>
+                  onClick={() => {
                     setSort(
-                      sort === Status.Date ? Status.InverseDate : Status.Date
-                    )
-                  }
+                      sort === SortStatus.Date
+                        ? SortStatus.InverseDate
+                        : SortStatus.Date
+                    );
+                    handleSorting();
+                  }}
                 >
                   <Arrow
-                    className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
-                      Status.Date
+                    className={`hidden md:block h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
+                      SortStatus.Date
                     )}`}
                   />
                   {t('year')}
@@ -131,23 +140,19 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
             </tr>
           </thead>
           <tbody>
-            {projects.map((project) => (
+            {tableData.map((project) => (
               <Tooltip key={project.slug} slug={project.slug}>
-                <tr className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group hover:bg-primary-300 hover:text-primary-100 hidden md:table-row cursor-pointer">
-                  <td className="hidden md:table-cell pl-8 lg:pl-24 xl:pl-48 pr-16 lg:pr-64">
+                <tr className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group hover:bg-primary-300 hover:text-primary-100 hidden md:table-row child:hidden child:md:table-cell cursor-pointer">
+                  <td className="pl-8 lg:pl-24 xl:pl-48 pr-16 lg:pr-64">
                     <div className="flex flex-row items-center w-max">
                       <span>{project.title}</span>
                       <LinkChain className="px-2 w-max opacity-0 group-hover:opacity-100 transform transition duration-500 text-primary-100" />
                     </div>
                   </td>
-                  <td className="hidden md:table-cell">{project.location}</td>
-                  <td className="hidden md:table-cell px-5">
-                    {t(project.status)}
-                  </td>
+                  <td>{project.location}</td>
+                  <td className="px-5">{t(project.status)}</td>
                   <td className="text-center md:text-left px-5">
-                    <span className="hidden md:table-cell">
-                      {getProjectYear(project.date)}
-                    </span>
+                    <span>{getProjectYear(project.date)}</span>
                   </td>
                 </tr>
               </Tooltip>
