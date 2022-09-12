@@ -49,7 +49,7 @@ export default function ProjectsTemplate({
               width={820}
               height={1260}
               layout="responsive"
-            ></Image>
+            />
           </div>
           <div className="w-1/3 px-2">
             <Image
@@ -58,7 +58,7 @@ export default function ProjectsTemplate({
               width={820}
               height={1260}
               layout="responsive"
-            ></Image>
+            />
           </div>
           <div className="w-1/3 px-2">
             <Image
@@ -67,8 +67,19 @@ export default function ProjectsTemplate({
               width={820}
               height={1260}
               layout="responsive"
-            ></Image>
+            />
           </div>
+        </div>
+        <div className="flex flex-row items-center w-screen px-7">
+          {details.construction}
+        </div>
+        <div className="flex flex-row items-center w-screen px-7 mt-10">
+          <Image
+            src="/assets/casas.png"
+            alt="Casas"
+            width={2476}
+            height={1416}
+          />
         </div>
         <div className="flex flex-row-reverse w-screen justify-between">
           <Link href={`/projects/${nextProject || ''}`}>
