@@ -27,7 +27,7 @@ const Navbar = ({ title = '', secondaryTitle = '' }: INavbarProps) => {
         </span>
         <span className="md:hidden">{secondaryTitle || title}</span>
       </div>
-      <div className="pr-8 md:pr-12 lg:pr-16 xl:pr-20 2xl:pr-24 text-base sm:text-lg">
+      <div className="pr-6 lg:pr-6 xl:pr-10 2xl:pr-[3.6rem] text-base sm:text-lg">
         <LanguageSwitcher />
       </div>
     </nav>
