@@ -10,9 +10,9 @@ type INavbarProps = {
 
 const Navbar = ({ title = '', secondaryTitle = '' }: INavbarProps) => {
   return (
-    <nav className="flex tracking-widest fixed pt-8 lg:pt-8 pl-8 lg:pl-40 w-screen z-10">
+    <nav className="flex tracking-widest items-center fixed pt-8 lg:pt-8 pl-8 lg:pl-40 w-screen z-10">
       {title && (
-        <div className="flex-none md:ml-8 text-base sm:text-xl">
+        <div className="flex-none md:ml-8 text-xl">
           <Link href="/">
             <a>
               <Logo />
@@ -20,7 +20,7 @@ const Navbar = ({ title = '', secondaryTitle = '' }: INavbarProps) => {
           </Link>
         </div>
       )}
-      <div className="grow text-left w-20 pl-20 md:pl-32 lg:pl-64 text-base sm:text-xl">
+      <div className="grow text-left w-20 pl-12 md:pl-24 lg:pl-32 xl:pl-64 text-xl">
         <span className="hidden md:inline">
           <span className="mr-24">{`${title}${secondaryTitle && ':'}`}</span>
           {secondaryTitle}
