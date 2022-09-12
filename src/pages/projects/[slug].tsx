@@ -1,18 +1,19 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Link from 'next/link';
 
-import { Navbar, Meta } from 'Components';
+import { Navbar, Meta, Arrow } from 'Components';
+import { IProject, IProjectDetails } from 'Interfaces';
 
-import { IProject } from '.';
 import projectsData from '../../../public/projects.json';
 
-type IProjectDetails = {
-  description: string;
-  floors: string;
-  construction: string;
-};
-
-export default function ProjectsTemplate({ project }: { project: IProject }) {
+export default function ProjectsTemplate({
+  project,
+  nextProject,
+}: {
+  project: IProject;
+  nextProject: string;
+}) {
   const details = useTranslation('projects').t<string, IProjectDetails>(
     project.slug,
     {
@@ -25,9 +26,21 @@ export default function ProjectsTemplate({ project }: { project: IProject }) {
       <Meta title={project.title} description={details.description} />
       <Navbar />
       <main className="pt-20 pb-32">
+        <Link href="/projects/">
+          <a>
+            <Arrow className="absolute left-8 h-6 hidden lg:block" />
+          </a>
+        </Link>
         <h1 className="text-neutral-800 text-10xl">{project.title}</h1>
         <div>
           <span>{details.description}</span>
+        </div>
+        <div className="flex flex-row-reverse w-screen justify-between">
+          <Link href={`/projects/${nextProject || ''}`}>
+            <a>
+              <Arrow className="h-6 m-8 rotate-180" />
+            </a>
+          </Link>
         </div>
       </main>
     </>
@@ -43,9 +56,14 @@ export async function getStaticProps({
 }) {
   const { slug } = ctx.params;
 
+  const projectIndex = projectsData.findIndex(
+    (project) => project.slug === slug
+  );
+
   return {
     props: {
-      project: projectsData.filter((project) => project.slug === slug)[0]!,
+      project: projectsData[projectIndex],
+      nextProject: projectsData[projectIndex + 1]?.slug || null,
       ...(await serverSideTranslations(locale, ['projects'])),
     },
   };
