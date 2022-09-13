@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 
-import { Navbar, Meta, Footer, Tooltip, Arrow, LinkChain } from 'Components';
+import { Navbar, Meta, Tooltip, Arrow, LinkChain } from 'Components';
 import { IProject, SortStatus as Sort } from 'Interfaces';
 import { getProjectYear, groupBy } from 'Utils';
 
@@ -195,7 +195,6 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
             </a>
           </Link>
         </div>
-        <Footer />
       </main>
     </>
   );

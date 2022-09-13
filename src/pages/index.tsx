@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 import { useSwipeable } from 'react-swipeable';
 
-import { Navbar, Hero, Meta, Banner, Footer, Arrow } from 'Components';
+import { Navbar, Hero, Meta, Banner, Arrow } from 'Components';
 
 const Index = () => {
   const { t } = useTranslation('common');
@@ -32,7 +32,6 @@ const Index = () => {
               </a>
             </Link>
           </div>
-          <Footer />
         </div>
       </main>
     </>

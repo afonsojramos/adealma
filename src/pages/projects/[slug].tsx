@@ -3,7 +3,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Navbar, Meta, Arrow, Footer } from 'Components';
+import { Navbar, Meta, Arrow } from 'Components';
 import { IProject, IProjectDetails } from 'Interfaces';
 
 import projectsData from '../../../public/projects.json';
@@ -93,7 +93,6 @@ export default function ProjectsTemplate({
             </a>
           </Link>
         </div>
-        <Footer />
       </main>
     </>
   );
