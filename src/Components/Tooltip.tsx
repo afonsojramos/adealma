@@ -6,7 +6,7 @@ import {
   useInteractions,
   useHover,
 } from '@floating-ui/react-dom-interactions';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Link from 'next/link';
 import { mergeRefs } from 'react-merge-refs';
 
@@ -75,8 +75,8 @@ const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
             <Image
               src={`/assets/${slug}.png`}
               alt="tooltip"
-              width={`${width}px`}
-              height={`${height}px`}
+              width={width}
+              height={height}
               className="z-10"
             />
           </td>

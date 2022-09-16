@@ -58,9 +58,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
   return (
     <>
       <Meta title={t('projects_title')} description={t('description')} />
-      <div className="child:bg-primary-100">
-        <Navbar title={t('projects_title')} />
-      </div>
+      <Navbar title={t('projects_title')} background />
       <main className="inline-block w-full pt-32 rounded-lg">
         <Link href={`/`}>
           <a>
