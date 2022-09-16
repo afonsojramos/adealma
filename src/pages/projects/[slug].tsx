@@ -38,7 +38,7 @@ export default function ProjectsTemplate({
             <Arrow className="absolute left-8 h-6 hidden lg:block" />
           </a>
         </Link>
-        <div className="px-8 md:px-[27%] xl:px-[33%] leading-[28px] md:leading-[30px] xl:leading-[40px] text-2xl xl:text-3xl mb-12 break-normal">
+        <div className="px-8 md:px-[27%] xl:px-[33%] leading-[28px] md:leading-[30px] xl:leading-[40px] text-lg md:text-2xl xl:text-3xl mb-12 break-normal">
           {details.description}
         </div>
         <div className="flex flex-row items-center w-screen px-5">
