@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Link from 'next/link';
 
 import { Navbar, Meta, Arrow } from 'Components';
@@ -42,45 +42,38 @@ export default function ProjectsTemplate({
           {details.description}
         </div>
         <div className="flex flex-row items-center w-screen px-5">
-          <div className="w-1/3 px-2">
-            <Image
-              src="/assets/casa-do-cristelo.png"
-              alt="Casa do Cristelo"
-              width={820}
-              height={1260}
-              layout="responsive"
-            />
-          </div>
-          <div className="w-1/3 px-2">
-            <Image
-              src="/assets/casa-do-pescador.png"
-              alt="Casa do Pescador"
-              width={820}
-              height={1260}
-              layout="responsive"
-            />
-          </div>
-          <div className="w-1/3 px-2">
-            <Image
-              src="/assets/casas-da-matriz.png"
-              alt="Casas da Matriz"
-              width={820}
-              height={1260}
-              layout="responsive"
-            />
-          </div>
+          <Image
+            src="/assets/casa-do-cristelo.png"
+            alt="Casa do Cristelo"
+            width={820}
+            height={1260}
+            className="w-1/3 px-2"
+          />
+          <Image
+            src="/assets/casa-do-pescador.png"
+            alt="Casa do Pescador"
+            width={820}
+            height={1260}
+            className="w-1/3 px-2"
+          />
+          <Image
+            src="/assets/casas-da-matriz.png"
+            alt="Casas da Matriz"
+            width={820}
+            height={1260}
+            className="w-1/3 px-2"
+          />
         </div>
         <div className="flex flex-row items-center w-screen px-7">
           {details.construction}
         </div>
-        <div className="flex flex-row items-center w-screen px-7 mt-10">
-          <Image
-            src="/assets/casas.png"
-            alt="Casas"
-            width={2476}
-            height={1416}
-          />
-        </div>
+        <Image
+          src="/assets/casas.png"
+          alt="Casas"
+          width={2476}
+          height={1416}
+          className="flex flex-row items-center w-screen px-7 mt-10"
+        />
         <div className="flex flex-row-reverse w-screen justify-between">
           <Link href={`/projects/${nextProject || ''}`}>
             <a>
