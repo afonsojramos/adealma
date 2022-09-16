@@ -29,7 +29,7 @@ const Navbar = ({
           </Link>
         </div>
       )}
-      <div className="grow text-left w-20 pl-12 md:pl-24 lg:pl-32 text-xl leading-none">
+      <div className="grow text-left w-20 pl-12 md:pl-24 lg:pl-32 text-xl pr-6 leading-none">
         <span className="hidden md:inline xl:absolute xl:top-10 xl:px-[33%] xl:left-0">
           <span className="mr-24">{`${title}${secondaryTitle && ':'}`}</span>
           {secondaryTitle}
