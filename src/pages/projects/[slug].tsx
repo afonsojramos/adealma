@@ -37,7 +37,7 @@ export default function ProjectsTemplate({
             <Arrow className="absolute left-8 h-6 hidden lg:block" />
           </a>
         </Link>
-        <div className="px-8 md:px-[27%] xl:px-[33%] leading-[28px] md:leading-[25px] xl:leading-[30px] text-md md:text-xl xl:text-2xl mb-12 break-normal">
+        <div className="px-8 md:px-[27%] xl:px-[33%] leading-[28px] md:leading-[25px] xl:leading-[30px] text-xl xl:text-2xl mb-12 break-normal">
           {details.description}
         </div>
         <div className="flex flex-row items-center w-screen px-5">
@@ -47,6 +47,7 @@ export default function ProjectsTemplate({
             width={820}
             height={1260}
             className="w-1/3 px-2"
+            priority
           />
           <Image
             src="/assets/casa-do-pescador.png"
@@ -54,6 +55,7 @@ export default function ProjectsTemplate({
             width={820}
             height={1260}
             className="w-1/3 px-2"
+            priority
           />
           <Image
             src="/assets/casas-da-matriz.png"
@@ -61,6 +63,7 @@ export default function ProjectsTemplate({
             width={820}
             height={1260}
             className="w-1/3 px-2"
+            priority
           />
         </div>
         <div className="flex flex-row items-center w-screen px-7">
