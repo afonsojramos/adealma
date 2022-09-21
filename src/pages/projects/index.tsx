@@ -65,7 +65,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
             <Arrow className="absolute left-8 h-6 hidden lg:block" />
           </a>
         </Link>
-        <div className="px-8 lg:pl-24 xl:pl-48 md:pr-32 lg:pr-64 xl:pr-96 2xl:pr-[35rem] leading-[28px] md:leading-[30px] xl:leading-[40px] text-lg md:text-2xl xl:text-3xl mb-12 break-normal">
+        <div className="px-8 lg:pl-24 xl:pl-48 md:pr-32 lg:pr-64 xl:pr-96 2xl:pr-[35rem] leading-[28px] md:leading-[30px] xl:leading-[40px] text-xl md:text-2xl xl:text-3xl mb-12 break-normal">
           {projectsDescription.map((paragraph, pNum) => (
             <p key={pNum} className="mb-2">
               {paragraph}
