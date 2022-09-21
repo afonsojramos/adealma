@@ -21,7 +21,7 @@ const Navbar = ({
       }`}
     >
       {title && (
-        <div className="flex-none md:ml-8 text-xl">
+        <div className="flex-none md:ml-8 text-xl z-20">
           <Link href="/">
             <a>
               <Logo />
