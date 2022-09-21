@@ -1,3 +1,5 @@
-# Next.JS Boilerplate
+# A de Alma
 
-🚀 Landing Page theme in Next.js, Tailwind CSS, and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged, PostCSS, Tailwind CSS.
+🚀 Landing Page for [a de alma](adealma.com) written in Next.js, Tailwind CSS, and TypeScript.
+
+![A de Alma](public/assets/adealma.svg)
