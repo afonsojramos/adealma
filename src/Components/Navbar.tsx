@@ -21,7 +21,7 @@ const Navbar = ({
       }`}
     >
       {title && (
-        <div className="flex-none md:ml-8 text-xl z-20">
+        <div className="flex-none md:ml-8 text-base sm:text-xl z-20">
           <Link href="/">
             <a>
               <Logo />
@@ -29,14 +29,14 @@ const Navbar = ({
           </Link>
         </div>
       )}
-      <div className="grow text-left w-20 pl-12 md:pl-24 lg:pl-32 text-xl pr-6 leading-none">
+      <div className="grow text-left w-20 pl-12 md:pl-24 lg:pl-32 text-base sm:text-xl pr-6 leading-none">
         <span className="hidden md:inline xl:absolute xl:top-10 xl:px-[33%] xl:left-0">
           <span className="mr-24">{`${title}${secondaryTitle && ':'}`}</span>
           {secondaryTitle}
         </span>
         <span className="md:hidden">{secondaryTitle || title}</span>
       </div>
-      <div className="pr-6 lg:pr-6 xl:pr-10 2xl:pr-[3.6rem] text-base sm:text-lg">
+      <div className="pr-6 lg:pr-6 xl:pr-10 2xl:pr-[3.6rem] text-sm sm:text-lg">
         <LanguageSwitcher />
       </div>
     </nav>
