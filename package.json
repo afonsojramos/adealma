@@ -33,7 +33,7 @@
 		"@commitlint/config-conventional": "^17.2.0",
 		"@next/bundle-analyzer": "^13.0.2",
 		"@svgr/webpack": "^6.5.1",
-		"@types/node": "^16.18.3",
+		"@types/node": "^18.11.9",
 		"@types/react": "^18.0.25",
 		"@types/webpack-env": "^1.18.0",
 		"@typescript-eslint/eslint-plugin": "^5.42.1",
