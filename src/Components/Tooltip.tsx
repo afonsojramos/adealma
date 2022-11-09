@@ -7,7 +7,6 @@ import {
   useHover,
 } from '@floating-ui/react-dom-interactions';
 import Image from 'next/image';
-import Link from 'next/link';
 import { mergeRefs } from 'react-merge-refs';
 
 const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
@@ -54,9 +53,7 @@ const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
 
   return (
     <>
-      <Link href={`/projects/${slug}`}>
-        {cloneElement(children, getReferenceProps({ ref, ...children.props }))}
-      </Link>
+      {cloneElement(children, getReferenceProps({ ref, ...children.props }))}
       {open && (
         <tr
           {...getFloatingProps({

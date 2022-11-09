@@ -128,7 +128,12 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
           <tbody>
             {tableData.map((project) => (
               <Tooltip key={project.slug} slug={project.slug}>
-                <tr className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group hover:bg-primary-300 hover:text-primary-100 hidden md:table-row child:hidden child:md:table-cell cursor-pointer">
+                <tr
+                  onClick={() => {
+                    router.push(`/projects/${project.slug}`);
+                  }}
+                  className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group hover:bg-primary-300 hover:text-primary-100 hidden md:table-row child:hidden child:md:table-cell cursor-pointer"
+                >
                   <td className="pl-8 lg:pl-24 xl:pl-48 pr-16 lg:pr-64">
                     <div className="flex flex-row items-center w-max">
                       <span>{project.title}</span>
