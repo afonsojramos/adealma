@@ -6,7 +6,7 @@ import {
   useInteractions,
   useHover,
 } from '@floating-ui/react-dom-interactions';
-import Image from 'next/future/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { mergeRefs } from 'react-merge-refs';
 
