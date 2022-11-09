@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { Navbar, Meta, Tooltip, Arrow, LinkChain } from 'Components';
 import { IProject, SortStatus as Sort } from 'Interfaces';
@@ -11,6 +12,7 @@ import { getProjectYear, groupBy } from 'Utils';
 import content from '../../../public/projects.json';
 
 const Projects = ({ projects }: { projects: IProject[] }) => {
+  const router = useRouter();
   const [sort, setSort] = useState(Sort.Date);
   const [tableData, setTableData] = useState(projects);
   const [mobileTableData] = useState(
@@ -61,9 +63,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
       <Navbar title={t('projects_title')} background />
       <main className="inline-block w-full pt-32 rounded-lg">
         <Link href={`/`}>
-          <a>
-            <Arrow className="absolute left-8 h-6 hidden lg:block" />
-          </a>
+          <Arrow className="absolute left-8 h-6 hidden lg:block" />
         </Link>
         <div className="px-8 lg:pl-24 xl:pl-48 md:pr-32 lg:pr-64 xl:pr-96 2xl:pr-[35rem] leading-[28px] md:leading-[30px] xl:leading-[40px] text-xl md:text-2xl xl:text-3xl mb-12 break-normal">
           {projectsDescription.map((paragraph, pNum) => (
@@ -174,9 +174,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                         >
                           <td className="text-center md:text-left px-5">
                             <Link href={`/projects/${project.slug}`}>
-                              <a>
-                                <p className="w-100% h-max">{project.title}</p>
-                              </a>
+                              <p className="w-100% h-max">{project.title}</p>
                             </Link>
                           </td>
                         </tr>
@@ -188,14 +186,10 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
         </table>
         <div className="flex flex-row-reverse w-screen justify-between">
           <Link href={`/projects/${projects[0]?.slug}`}>
-            <a>
-              <Arrow className="h-6 m-8 rotate-180" />
-            </a>
+            <Arrow className="h-6 m-8 rotate-180" />
           </Link>
           <Link href="/">
-            <a>
-              <Arrow className="h-6 m-8 flex lg:hidden" />
-            </a>
+            <Arrow className="h-6 m-8 flex lg:hidden" />
           </Link>
         </div>
       </main>

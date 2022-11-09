@@ -26,10 +26,8 @@ const Index = () => {
         <div className="flex flex-col bg-primary-100 w-full" {...handlers}>
           <div className="relative">
             <Hero description={description} />
-            <Link href="/projects">
-              <a title="projects">
-                <Arrow className="absolute h-6 md:h-8 rotate-180 right-6 lg:right-8 xl:right-12 2xl:right-14 bottom-2 md:inset-y-1/4" />
-              </a>
+            <Link href="/projects" title="projects">
+              <Arrow className="absolute h-6 md:h-8 rotate-180 right-6 lg:right-8 xl:right-12 2xl:right-14 bottom-2 md:inset-y-1/4" />
             </Link>
           </div>
         </div>

@@ -33,9 +33,7 @@ export default function ProjectsTemplate({
       />
       <main className="pt-32">
         <Link href="/projects/">
-          <a>
-            <Arrow className="absolute left-8 h-6 hidden lg:block" />
-          </a>
+          <Arrow className="absolute left-8 h-6 hidden lg:block" />
         </Link>
         <div className="px-8 md:px-[27%] xl:px-[33%] leading-[28px] md:leading-[25px] xl:leading-[30px] text-xl xl:text-2xl mb-12 break-normal">
           {details.description}
@@ -78,14 +76,10 @@ export default function ProjectsTemplate({
         />
         <div className="flex flex-row-reverse w-screen justify-between">
           <Link href={`/projects/${nextProject || ''}`}>
-            <a>
-              <Arrow className="h-6 m-8 rotate-180" />
-            </a>
+            <Arrow className="h-6 m-8 rotate-180" />
           </Link>
           <Link href="/projects">
-            <a>
-              <Arrow className="h-6 m-8 flex lg:hidden" />
-            </a>
+            <Arrow className="h-6 m-8 flex lg:hidden" />
           </Link>
         </div>
       </main>

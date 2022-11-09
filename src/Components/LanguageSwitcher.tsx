@@ -34,10 +34,9 @@ const LanguageSwitcher = () => {
                       query: { slug: query.slug },
                     }}
                     locale={language.toLocaleLowerCase()}
+                    className="block px-4 py-2 font-light text-primary-900 tracking-[0.25em]"
                   >
-                    <a className="block px-4 py-2 font-light text-primary-900 tracking-[0.25em]">
-                      {language}
-                    </a>
+                    {language}
                   </Link>
                 </Menu.Item>
               );

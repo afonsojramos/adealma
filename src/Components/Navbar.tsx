@@ -23,9 +23,7 @@ const Navbar = ({
       {title && (
         <div className="flex-none md:ml-8 text-base sm:text-xl z-20">
           <Link href="/">
-            <a>
-              <Logo />
-            </a>
+            <Logo />
           </Link>
         </div>
       )}
