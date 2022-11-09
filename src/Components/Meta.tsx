@@ -1,67 +1,154 @@
 import { useTranslation } from 'next-i18next';
-import { NextSeo } from 'next-seo';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 type IMetaProps = {
   title?: string;
-  description: string;
-  canonical?: string;
+  description?: string;
+  date?: string;
 };
+
+type Favicons = {
+  rel: string;
+  href: string;
+  sizes?: string;
+  type?: string;
+};
+
+// Generate favicons in https://www.favicon-generator.org/
+const favicons: Array<Favicons> = [
+  {
+    rel: 'apple-touch-icon',
+    sizes: '57x57',
+    href: '/favicon/apple-icon-57x57.png',
+  },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '60x60',
+    href: '/favicon/apple-icon-60x60.png',
+  },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '72x72',
+    href: '/favicon/apple-icon-72x72.png',
+  },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '76x76',
+    href: '/favicon/apple-icon-76x76.png',
+  },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '114x114',
+    href: '/favicon/apple-icon-114x114.png',
+  },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '120x120',
+    href: '/favicon/apple-icon-120x120.png',
+  },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '144x144',
+    href: '/favicon/apple-icon-144x144.png',
+  },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '152x152',
+    href: '/favicon/apple-icon-152x152.png',
+  },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '180x180',
+    href: '/favicon/apple-icon-180x180.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '192x192',
+    href: '/favicon/android-icon-192x192.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '32x32',
+    href: '/favicon/favicon-32x32.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '96x96',
+    href: '/favicon/favicon-96x96.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '16x16',
+    href: '/favicon/favicon-16x16.png',
+  },
+  {
+    rel: 'manifest',
+    href: '/favicon/manifest.json',
+  },
+];
 
 const Meta = (props: IMetaProps) => {
   const router = useRouter();
   const { t } = useTranslation('common');
 
+  const meta = {
+    title: props.title ? `${props.title} | ${t('site_name')}` : t('site_name'),
+    siteName: t('site_name'),
+    description: t('description'),
+    url: 'https://adealma.com',
+    type: 'website',
+    robots: 'follow, index',
+    image: 'https://adealma.com/assets/og.png',
+    ...props,
+  };
+
   return (
-    <>
-      <Head>
-        <meta charSet="UTF-8" key="charset" />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1"
-          key="viewport"
-        />
-        <link
-          rel="apple-touch-icon"
-          href={`${router.basePath}/assets/icons/apple-touch-icon.png`}
-          key="apple"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={`${router.basePath}/assets/icons/favicon-32x32.png`}
-          key="icon32"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href={`${router.basePath}/assets/icons/favicon-16x16.png`}
-          key="icon16"
-        />
-        <link
-          rel="icon"
-          href={`${router.basePath}/assets/icons/favicon.ico`}
-          key="favicon"
-        />
-      </Head>
-      <NextSeo
-        title={props.title}
-        titleTemplate={`%s | ${t('site_name')}`}
-        defaultTitle={t('site_name')}
-        description={props.description}
-        canonical={props.canonical}
-        openGraph={{
-          title: props.title,
-          description: props.description,
-          url: props.canonical,
-          locale: router.locale,
-          site_name: t('site_name'),
-        }}
+    <Head>
+      <title>{meta.title}</title>
+      <meta name="robots" content={meta.robots} />
+      <meta content={meta.description} name="description" />
+      <meta property="og:url" content={`${meta.url}${router.asPath}`} />
+      <link rel="canonical" href={`${meta.url}${router.asPath}`} />
+      {/* Open Graph */}
+      <meta property="og:type" content={meta.type} />
+      <meta property="og:site_name" content={meta.siteName} />
+      <meta property="og:description" content={meta.description} />
+      <meta property="og:title" content={meta.title} />
+      <meta name="image" property="og:image" content={meta.image} />
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@th_clarence" />
+      <meta name="twitter:title" content={meta.title} />
+      <meta name="twitter:description" content={meta.description} />
+      <meta name="twitter:image" content={meta.image} />
+      {meta.date && (
+        <>
+          <meta property="article:published_time" content={meta.date} />
+          <meta
+            name="publish_date"
+            property="og:publish_date"
+            content={meta.date}
+          />
+          <meta name="author" property="article:author" content="Pedro Lobão" />
+        </>
+      )}
+
+      {/* Favicons */}
+      {favicons.map((linkProps) => (
+        <link key={linkProps.href} {...linkProps} />
+      ))}
+      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta
+        name="msapplication-TileImage"
+        content="/favicon/ms-icon-144x144.png"
       />
-    </>
+      <meta name="theme-color" content="#ffffff" />
+    </Head>
   );
 };
 
