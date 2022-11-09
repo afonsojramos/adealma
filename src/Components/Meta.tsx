@@ -97,6 +97,7 @@ const Meta = (props: IMetaProps) => {
   const { t } = useTranslation('common');
 
   const meta = {
+    ...props,
     title: props.title ? `${props.title} | ${t('site_name')}` : t('site_name'),
     siteName: t('site_name'),
     description: t('description'),
@@ -104,7 +105,6 @@ const Meta = (props: IMetaProps) => {
     type: 'website',
     robots: 'follow, index',
     image: 'https://adealma.com/assets/og.png',
-    ...props,
   };
 
   return (
