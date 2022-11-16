@@ -36,7 +36,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['FavoritPro', 'sans'],
+        sans: ['Favorit', 'sans'],
       },
     },
   },
