@@ -3,8 +3,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Navbar, Meta, Arrow } from 'Components';
-import { IProject, IProjectDetails } from 'Interfaces';
+import { Arrow } from 'components/Icons';
+import Meta from 'components/Meta';
+import Navbar from 'components/Navbar';
+import { IProject, IProjectDetails } from 'interfaces';
 
 import projectsData from '../../../public/projects.json';
 

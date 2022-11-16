@@ -5,7 +5,11 @@ import Link from 'next/link';
 import Router from 'next/router';
 import { useSwipeable } from 'react-swipeable';
 
-import { Navbar, Hero, Meta, Banner, Arrow } from 'Components';
+import Banner from 'components/Banner';
+import Hero from 'components/Hero';
+import { Arrow } from 'components/Icons';
+import Meta from 'components/Meta';
+import Navbar from 'components/Navbar';
 
 const Index = () => {
   const { t } = useTranslation('common');

@@ -1,4 +1,4 @@
-import { IProject } from 'Interfaces/Project';
+import { IProject } from 'interfaces';
 
 const groupBy = (
   list: IProject[],
@@ -17,4 +17,4 @@ const groupBy = (
   return map;
 };
 
-export { groupBy };
+export default groupBy;

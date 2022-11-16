@@ -10,4 +10,4 @@ const Hero = ({ description }: IHeroProps) => {
   );
 };
 
-export { Hero };
+export default Hero;

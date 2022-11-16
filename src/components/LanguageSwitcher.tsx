@@ -4,13 +4,22 @@ import { Menu, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { LangEN, LangPT } from './Icons';
+
+const LanguageImage = ({ locale }: { locale?: string }) => {
+  const langClass = 'w-7 h-7';
+
+  if (locale === 'PT') return <LangPT className={langClass} />;
+  return <LangEN className={langClass} />;
+};
+
 const LanguageSwitcher = () => {
   const languages = ['EN', 'PT'];
   const { locale, pathname, query } = useRouter();
   return (
     <Menu as="div" className="relative">
-      <Menu.Button className="font-light py-1 tracking-[0.25em]">
-        <span>{locale?.toLocaleUpperCase()}</span>
+      <Menu.Button>
+        <LanguageImage locale={locale?.toLocaleUpperCase()} />
       </Menu.Button>
 
       <Transition
@@ -34,9 +43,9 @@ const LanguageSwitcher = () => {
                       query: { slug: query.slug },
                     }}
                     locale={language.toLocaleLowerCase()}
-                    className="block px-4 py-2 font-light text-primary-900 tracking-[0.25em]"
+                    className="block px-4 py-2"
                   >
-                    {language}
+                    <LanguageImage locale={language} />
                   </Link>
                 </Menu.Item>
               );
@@ -47,4 +56,4 @@ const LanguageSwitcher = () => {
   );
 };
 
-export { LanguageSwitcher };
+export default LanguageSwitcher;

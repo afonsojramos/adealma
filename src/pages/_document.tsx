@@ -1,12 +1,20 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-import { Footer } from '../Components';
+import Footer from '../components/Footer';
 
 class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link
+            rel="preload"
+            href="/fonts/Favorit-Regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin=""
+          />
+        </Head>
         <body className="relative bg-primary-100 antialiased scroll-smooth">
           <Main />
           <NextScript />

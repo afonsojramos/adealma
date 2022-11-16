@@ -83,4 +83,4 @@ const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
   );
 };
 
-export { Tooltip };
+export default Tooltip;

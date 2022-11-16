@@ -5,9 +5,13 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { Navbar, Meta, Tooltip, Arrow, LinkChain } from 'Components';
-import { IProject, SortStatus as Sort } from 'Interfaces';
-import { getProjectYear, groupBy } from 'Utils';
+import { Arrow, LinkChain } from 'components/Icons';
+import Meta from 'components/Meta';
+import Navbar from 'components/Navbar';
+import Tooltip from 'components/Tooltip';
+import { IProject, SortStatus as Sort } from 'interfaces';
+import getProjectYear from 'utils/Dates';
+import groupBy from 'utils/GroupBy';
 
 import content from '../../../public/projects.json';
 
