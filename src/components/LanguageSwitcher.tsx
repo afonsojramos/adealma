@@ -18,7 +18,7 @@ const LanguageSwitcher = () => {
   const { locale, pathname, query } = useRouter();
   return (
     <Menu as="div" className="relative">
-      <Menu.Button>
+      <Menu.Button aria-label="switch language">
         <LanguageImage locale={locale?.toLocaleUpperCase()} />
       </Menu.Button>
 
