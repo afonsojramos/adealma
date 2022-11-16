@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { LanguageSwitcher } from './LanguageSwitcher';
-import { Logo } from './Logo';
+import LanguageSwitcher from './LanguageSwitcher';
+import Logo from './Logo';
 
 type INavbarProps = {
   title?: string;
@@ -41,4 +41,4 @@ const Navbar = ({
   );
 };
 
-export { Navbar };
+export default Navbar;

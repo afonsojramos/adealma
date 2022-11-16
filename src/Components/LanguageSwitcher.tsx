@@ -47,4 +47,4 @@ const LanguageSwitcher = () => {
   );
 };
 
-export { LanguageSwitcher };
+export default LanguageSwitcher;
