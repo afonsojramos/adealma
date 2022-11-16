@@ -12,6 +12,7 @@ class MyDocument extends Document {
             href="/fonts/Favorit-Regular.woff2"
             as="font"
             type="font/woff2"
+            crossOrigin=""
           />
         </Head>
         <body className="relative bg-primary-100 antialiased scroll-smooth">
