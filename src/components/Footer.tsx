@@ -9,7 +9,7 @@ const Footer = () => {
           <Link href="mailto:formulaobliqua@gmail.com">info@adealma.com</Link>
         </div>
       </div>{' '}
-      <div className="text-right sm:text-left sm:pl-64 lg:pl-96 pt-2">
+      <div className="text-right sm:text-left sm:pl-64 lg:pl-96 pt-4 sm:pt-2">
         <div className="inline-flex">
           <Link href="/">adealma.com</Link>
         </div>{' '}
