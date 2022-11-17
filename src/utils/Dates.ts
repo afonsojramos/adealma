@@ -1,5 +1,3 @@
-const getProjectYear = (date: string) => {
-  return new Date(date).getFullYear();
-};
+const getProjectYear = (date: string) => new Date(date).getFullYear();
 
 export default getProjectYear;

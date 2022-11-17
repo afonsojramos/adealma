@@ -33,55 +33,55 @@ export default function ProjectsTemplate({
         secondaryTitle={project.title}
         background
       />
-      <main className="pt-32">
-        <Link href="/projects/">
-          <Arrow className="absolute left-8 h-6 hidden lg:block" />
+      <main className='pt-32'>
+        <Link href='/projects/'>
+          <Arrow className='absolute left-8 hidden h-6 lg:block' />
         </Link>
-        <div className="px-8 md:px-[27%] xl:px-[33%] leading-[28px] md:leading-[25px] xl:leading-[30px] text-xl xl:text-2xl mb-12 break-normal">
+        <div className='mb-12 break-normal px-8 text-xl leading-[28px] md:px-[27%] md:leading-[25px] xl:px-[33%] xl:text-2xl xl:leading-[30px]'>
           {details.description}
         </div>
-        <div className="flex flex-row items-center w-screen px-5">
+        <div className='flex w-screen flex-row items-center px-5'>
           <Image
-            src="/assets/casa-do-cristelo.png"
-            alt="Casa do Cristelo"
+            src='/assets/casa-do-cristelo.png'
+            alt='Casa do Cristelo'
             width={820}
             height={1260}
-            className="w-1/3 px-2"
+            className='w-1/3 px-2'
             priority
           />
           <Image
-            src="/assets/casa-do-pescador.png"
-            alt="Casa do Pescador"
+            src='/assets/casa-do-pescador.png'
+            alt='Casa do Pescador'
             width={820}
             height={1260}
-            className="w-1/3 px-2"
+            className='w-1/3 px-2'
             priority
           />
           <Image
-            src="/assets/casas-da-matriz.png"
-            alt="Casas da Matriz"
+            src='/assets/casas-da-matriz.png'
+            alt='Casas da Matriz'
             width={820}
             height={1260}
-            className="w-1/3 px-2"
+            className='w-1/3 px-2'
             priority
           />
         </div>
-        <div className="flex flex-row items-center w-screen px-7">
+        <div className='flex w-screen flex-row items-center px-7'>
           {details.construction}
         </div>
         <Image
-          src="/assets/casas.png"
-          alt="Casas"
+          src='/assets/casas.png'
+          alt='Casas'
           width={2476}
           height={1416}
-          className="flex flex-row items-center w-screen px-7 mt-10"
+          className='mt-10 flex w-screen flex-row items-center px-7'
         />
-        <div className="flex flex-row-reverse w-screen justify-between">
+        <div className='flex w-screen flex-row-reverse justify-between'>
           <Link href={`/projects/${nextProject || ''}`}>
-            <Arrow className="h-6 m-8 rotate-180" />
+            <Arrow className='m-8 h-6 rotate-180' />
           </Link>
-          <Link href="/projects">
-            <Arrow className="h-6 m-8 flex lg:hidden" />
+          <Link href='/projects'>
+            <Arrow className='m-8 flex h-6 lg:hidden' />
           </Link>
         </div>
       </main>

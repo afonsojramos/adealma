@@ -30,8 +30,9 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
   });
 
   const sortRotation = (sortArrow: Sort) => {
-    if (sort % 2 === 0)
+    if (sort % 2 === 0) {
       return sort === sortArrow ? '-rotate-90' : '-rotate-90 opacity-0';
+    }
     return sort === sortArrow + 1 ? 'rotate-90' : '-rotate-90 opacity-0';
   };
 
@@ -65,24 +66,24 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
     <>
       <Meta title={t('projects_title')} description={t('description')} />
       <Navbar title={t('projects_title')} background />
-      <main className="inline-block w-full pt-32 rounded-lg">
-        <Link href={`/`}>
-          <Arrow className="absolute left-8 h-6 hidden lg:block" />
+      <main className='inline-block w-full rounded-lg pt-32'>
+        <Link href={'/'}>
+          <Arrow className='absolute left-8 hidden h-6 lg:block' />
         </Link>
-        <div className="px-8 lg:pl-24 xl:pl-48 md:pr-32 lg:pr-64 xl:pr-96 2xl:pr-[35rem] leading-[28px] md:leading-[30px] xl:leading-[40px] text-xl md:text-2xl xl:text-3xl mb-12 break-normal">
+        <div className='mb-12 break-normal px-8 text-xl leading-[28px] md:pr-32 md:text-2xl md:leading-[30px] lg:pl-24 lg:pr-64 xl:pl-48 xl:pr-96 xl:text-3xl xl:leading-[40px] 2xl:pr-[35rem]'>
           {projectsDescription.map((paragraph, pNum) => (
-            <p key={pNum} className="mb-2">
+            <p key={pNum} className='mb-2'>
               {paragraph}
             </p>
           ))}
         </div>
-        <table className="table-fixed w-screen text-left border-spacing-2">
+        <table className='w-screen table-fixed border-spacing-2 text-left'>
           <thead>
-            <tr className="border-b-[1px] border-primary-900 tracking-widest text-lg child:font-light">
-              <th className="hidden md:table-cell md:w-[36%]" />
-              <th className="hidden md:table-cell md:w-[27%]">
+            <tr className='border-b-[1px] border-primary-900 text-lg tracking-widest child:font-light'>
+              <th className='hidden md:table-cell md:w-[36%]' />
+              <th className='hidden md:table-cell md:w-[27%]'>
                 <button
-                  className="group inline-flex items-center leading-10"
+                  className='group inline-flex items-center leading-10'
                   onClick={() =>
                     setSort(
                       sort === Sort.Location ? Sort.InvLocation : Sort.Location
@@ -90,37 +91,37 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                   }
                 >
                   <Arrow
-                    className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
+                    className={`mr-2 h-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
                       Sort.Location
                     )}`}
                   />
                   {t('location')}
                 </button>
               </th>
-              <th className="hidden md:table-cell md:w-[20%] px-5">
+              <th className='hidden px-5 md:table-cell md:w-[20%]'>
                 <button
-                  className="group inline-flex items-center leading-10"
+                  className='group inline-flex items-center leading-10'
                   onClick={() =>
                     setSort(sort === Sort.Status ? Sort.InvStatus : Sort.Status)
                   }
                 >
                   <Arrow
-                    className={`h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
+                    className={`mr-2 h-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
                       Sort.Status
                     )}`}
                   />
                   {t('status')}
                 </button>
               </th>
-              <th className="flex items-center md:w-3/12 pl-8 md:px-5">
+              <th className='flex items-center pl-8 md:w-3/12 md:px-5'>
                 <button
-                  className="group inline-flex items-center leading-10"
+                  className='group inline-flex items-center leading-10'
                   onClick={() =>
                     setSort(sort === Sort.Date ? Sort.InvDate : Sort.Date)
                   }
                 >
                   <Arrow
-                    className={`hidden md:block h-2 mr-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
+                    className={`mr-2 hidden h-2 transform transition duration-500 group-hover:opacity-100 md:block ${sortRotation(
                       Sort.Date
                     )}`}
                   />
@@ -136,17 +137,17 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                   onClick={() => {
                     router.push(`/projects/${project.slug}`);
                   }}
-                  className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 group hover:bg-primary-300 hover:text-primary-100 hidden md:table-row child:hidden child:md:table-cell cursor-pointer"
+                  className='group hidden cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:hidden child:py-2 md:table-row child:md:table-cell'
                 >
-                  <td className="pl-8 lg:pl-24 xl:pl-48 pr-16 lg:pr-64">
-                    <div className="flex flex-row items-center w-max">
+                  <td className='pl-8 pr-16 lg:pl-24 lg:pr-64 xl:pl-48'>
+                    <div className='flex w-max flex-row items-center'>
                       <span>{project.title}</span>
-                      <LinkChain className="px-2 w-max opacity-0 group-hover:opacity-100 transform transition duration-500 text-primary-100" />
+                      <LinkChain className='w-max transform px-2 text-primary-100 opacity-0 transition duration-500 group-hover:opacity-100' />
                     </div>
                   </td>
                   <td>{project.location}</td>
-                  <td className="px-5">{t(project.status)}</td>
-                  <td className="text-center md:text-left px-5">
+                  <td className='px-5'>{t(project.status)}</td>
+                  <td className='px-5 text-center md:text-left'>
                     <span>{getProjectYear(project.date)}</span>
                   </td>
                 </tr>
@@ -154,46 +155,44 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
             ))}
             {Array.from(mobileTableData.keys())
               .sort((_proj1, proj2) => -proj2)
-              .map((year) => {
-                return (
-                  <>
-                    <tr
-                      key={year}
-                      className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 hover:bg-primary-300 hover:text-primary-100 md:hidden"
+              .map((year) => (
+                <>
+                  <tr
+                    key={year}
+                    className='border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:py-2 md:hidden'
+                  >
+                    <td
+                      className='px-5 text-center md:text-left'
+                      onClick={() =>
+                        setExpandYear(expandYear === year ? '' : year)
+                      }
                     >
-                      <td
-                        className="text-center md:text-left px-5"
-                        onClick={() =>
-                          setExpandYear(expandYear === year ? '' : year)
-                        }
+                      {year}
+                    </td>
+                  </tr>
+                  {expandYear === year &&
+                    mobileTableData.get(year)?.map((project) => (
+                      <tr
+                        key={`${year}-expanded-${project.slug}`}
+                        className='border-b-[1px] border-primary-900 bg-primary-300 text-2xl tracking-widest text-primary-100 child:py-2 md:hidden'
                       >
-                        {year}
-                      </td>
-                    </tr>
-                    {expandYear === year &&
-                      mobileTableData.get(year)!.map((project) => (
-                        <tr
-                          key={`${year}-expanded-${project.slug}`}
-                          className="border-b-[1px] border-primary-900 tracking-widest text-2xl child:py-2 bg-primary-300 text-primary-100 md:hidden"
-                        >
-                          <td className="text-center md:text-left px-5">
-                            <Link href={`/projects/${project.slug}`}>
-                              <p className="w-100% h-max">{project.title}</p>
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
-                  </>
-                );
-              })}
+                        <td className='px-5 text-center md:text-left'>
+                          <Link href={`/projects/${project.slug}`}>
+                            <p className='w-100% h-max'>{project.title}</p>
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                </>
+              ))}
           </tbody>
         </table>
-        <div className="flex flex-row-reverse w-screen justify-between">
+        <div className='flex w-screen flex-row-reverse justify-between'>
           <Link href={`/projects/${projects[0]?.slug}`}>
-            <Arrow className="h-6 m-8 rotate-180" />
+            <Arrow className='m-8 h-6 rotate-180' />
           </Link>
-          <Link href="/">
-            <Arrow className="h-6 m-8 flex lg:hidden" />
+          <Link href='/'>
+            <Arrow className='m-8 flex h-6 lg:hidden' />
           </Link>
         </div>
       </main>

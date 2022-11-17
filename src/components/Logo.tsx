@@ -4,7 +4,9 @@ const Logo = () => {
   const { t } = useTranslation('common');
   return (
     <span
-      className={`text-primary-900 inline-flex items-center tracking-[.15em] font-bold`}
+      className={
+        'inline-flex items-center font-bold tracking-[.15em] text-primary-900'
+      }
     >
       {t('site_name')}
     </span>

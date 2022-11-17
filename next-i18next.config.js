@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
 // Workaround if config is included client side.
@@ -6,5 +7,7 @@ module.exports = {
     defaultLocale: 'en',
     locales: ['en', 'pt'],
   },
-  ...(typeof window === 'undefined' ? { localePath: path.resolve('./public/locales') } : {}),
+  ...(typeof window === 'undefined'
+    ? { localePath: path.resolve('./public/locales') }
+    : {}),
 };

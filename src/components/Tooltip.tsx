@@ -9,6 +9,7 @@ import {
 import Image from 'next/image';
 import { mergeRefs } from 'react-merge-refs';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
   const [open, setOpen] = useState(false);
   const { width, height } = { width: 270, height: 420 };
@@ -67,14 +68,14 @@ const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
             },
           })}
         >
-          {/* This is just so that browsers do not output an error due to the parent element being a tbody */}
+          {/* Tweak for browsers do not output an error due to the parent element being a tbody */}
           <td>
             <Image
               src={`/assets/${slug}.png`}
-              alt="tooltip"
+              alt='tooltip'
               width={width}
               height={height}
-              className="z-10"
+              className='z-10'
             />
           </td>
         </tr>

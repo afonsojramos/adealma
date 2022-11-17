@@ -23,15 +23,15 @@ const Index = () => {
     <>
       <Meta description={description} />
       <Navbar />
-      <main className="flex flex-col">
-        <div className="grow h-screen">
+      <main className='flex flex-col'>
+        <div className='h-screen grow'>
           <Banner />
         </div>
-        <div className="flex flex-col bg-primary-100 w-full" {...handlers}>
-          <div className="relative">
+        <div className='flex w-full flex-col bg-primary-100' {...handlers}>
+          <div className='relative'>
             <Hero description={description} />
-            <Link href="/projects" title="projects">
-              <Arrow className="absolute h-6 md:h-8 rotate-180 right-6 lg:right-8 xl:right-12 2xl:right-14 bottom-2 md:inset-y-1/4" />
+            <Link href='/projects' title='projects'>
+              <Arrow className='absolute right-6 bottom-2 h-6 rotate-180 md:inset-y-1/4 md:h-8 lg:right-8 xl:right-12 2xl:right-14' />
             </Link>
           </div>
         </div>

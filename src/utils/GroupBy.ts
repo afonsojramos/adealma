@@ -2,7 +2,7 @@ import { IProject } from 'interfaces';
 
 const groupBy = (
   list: IProject[],
-  keyGetter: Function
+  keyGetter: (item: IProject) => number
 ): Map<string, Array<IProject>> => {
   const map = new Map();
   list.forEach((item) => {

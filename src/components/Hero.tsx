@@ -2,12 +2,10 @@ type IHeroProps = {
   description: string;
 };
 
-const Hero = ({ description }: IHeroProps) => {
-  return (
-    <div className="justify-center leading-[28px] sm:leading-[34px] md:leading-[44px] xl:leading-[54px] w-fit text-2xl sm:text-3xl md:text-4xl xl:text-5xl px-8 pr-12 sm:pr-48 md:pr-64 lg:pr-[24rem] xl:pr-[36rem] 2xl:pr-[48rem] lg:pl-12 pb-36 md:pb-48">
-      <p>{description}</p>
-    </div>
-  );
-};
+const Hero = ({ description }: IHeroProps) => (
+  <div className='w-fit justify-center px-8 pr-12 pb-36 pt-2 text-2xl leading-[28px] sm:pr-48 sm:pt-0 sm:text-3xl sm:leading-[34px] md:pr-64 md:pb-48 md:text-4xl md:leading-[44px] lg:pr-[24rem] lg:pl-12 xl:pr-[36rem] xl:text-5xl xl:leading-[54px] 2xl:pr-[48rem]'>
+    <p>{description}</p>
+  </div>
+);
 
 export default Hero;
