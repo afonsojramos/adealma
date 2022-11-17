@@ -98,7 +98,9 @@ const Meta = (props: IMetaProps) => {
 
   const meta = {
     ...props,
-    title: props.title ? `${props.title} | ${t('site_name')}` : t('site_name'),
+    title: props.title
+      ? `${props.title} | ${t('site_name')}`
+      : `${t('site_name')} - ${t('site_slogan')}`,
     siteName: t('site_name'),
     description: t('description'),
     url: 'https://adealma.com',

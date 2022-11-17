@@ -3,7 +3,9 @@ import Link from 'next/link';
 const Footer = () => (
   <footer className='bg-primary-100 p-10 text-sm md:pt-20 md:text-lg'>
     <div className='inline-flex sm:pl-32'>
-      <div>@a_dealma</div>{' '}
+      <div>
+        <Link href='https://instagram.com/a_dealma'>@a_dealma</Link>
+      </div>
       <div className='inline-flex pl-16 sm:pl-32 lg:pl-64'>
         <Link href='mailto:formulaobliqua@gmail.com'>info@adealma.com</Link>
       </div>

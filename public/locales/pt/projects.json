@@ -1,17 +1,17 @@
 {
-	"casa-do-cristelo": {
-		"description": "Situada a cinco minutos da praia de Moledo e com vista de mar, esta moradia V3 goza da tranquilidade rural de Cristelo e do acesso fácil aos centros urbanos. Piscina, amplo jardim e um terreiro central, ligando os dois módulos da casa, convidam à fruição da vida ao ar livre. A moradia preserva a fachada principal e elementos em pedra e madeira da construção original, o que lhe atribui um carácter notável.",
-		"floors": "Piso 0: sala de estar com acesso direto ao jardim, sala de refeições, cozinha equipada, lavandaria, hall de entrada, WC e quarto | Piso 1: duas suites e varanda | Exterior: jardim, piscina, terreiro, zona de estacionamento",
-		"construction": "Terreno: 565,2 m2 | área de implementação: 178,4m2 | área de construção total: 253,6m2"
-	},
-	"casas-da-matriz": {
-		"description": "No centro histórico de Caminha, junto à Igreja Matriz, a união de dois edifícios deu origem a cinco apartamentos: dois T0 e três T2. Da intervenção exemplar, realce-se a perfeita distinção das fachadas originais, compondo uma frontaria clássica com as cores do Alto Minho, verde e azul. Destaque-se também a construção de um saguão, que permitiu criar um jardim interior entre apartamentos. Pedra e madeira são os materiais privilegiados.",
-		"floors": "Localização: Rua Direita, centro da vila de Caminha | Acesso fácil às grandes infraestruturas viárias e aos aeroportos do Porto e de Vigo (Galiza, Espanha).",
-		"construction": "Qualidades locais e regionais: património edificado | cultura, gastronomia e tradições | destino de praia, rio e montanha | ambiente cosmopolitas e rurais"
-	},
-	"casa-do-pescador": {
-		"description": "Num velho bairro piscatório de Caminha, perto da praia, as soluções da arquitetura moderna valorizaram esta casa típica de dimensão modesta, hoje um T2 com kitchenette e espaço otimizado. O teto aberto, com asnas de madeira à vista, cria amplitude e luminosidade. A fachada e o mosaico no chão do pátio são elementos tradicionais que harmoniosamente se conciliam com o design minimalista.",
-		"floors": "",
-		"construction": "Área total: 68m2 (56m2 de espaço interior + pátio com 12m2)"
-	}
+  "casa-do-cristelo": {
+    "description": "Situada a cinco minutos da praia de Moledo e com vista de mar, esta moradia V3 goza da tranquilidade rural de Cristelo e do acesso fácil aos centros urbanos. Piscina, amplo jardim e um terreiro central, ligando os dois módulos da casa, convidam à fruição da vida ao ar livre. A moradia preserva a fachada principal e elementos em pedra e madeira da construção original, o que lhe atribui um carácter notável.",
+    "floors": "Piso 0: sala de estar com acesso direto ao jardim, sala de refeições, cozinha equipada, lavandaria, hall de entrada, WC e quarto | Piso 1: duas suites e varanda | Exterior: jardim, piscina, terreiro, zona de estacionamento",
+    "construction": "Terreno: 565,2 m2 | área de implementação: 178,4m2 | área de construção total: 253,6m2"
+  },
+  "casas-da-matriz": {
+    "description": "No centro histórico de Caminha, junto à Igreja Matriz, a união de dois edifícios deu origem a cinco apartamentos: dois T0 e três T2. Da intervenção exemplar, realce-se a perfeita distinção das fachadas originais, compondo uma frontaria clássica com as cores do Alto Minho, verde e azul. Destaque-se também a construção de um saguão, que permitiu criar um jardim interior entre apartamentos. Pedra e madeira são os materiais privilegiados.",
+    "floors": "Localização: Rua Direita, centro da vila de Caminha | Acesso fácil às grandes infraestruturas viárias e aos aeroportos do Porto e de Vigo (Galiza, Espanha).",
+    "construction": "Qualidades locais e regionais: património edificado | cultura, gastronomia e tradições | destino de praia, rio e montanha | ambiente cosmopolitas e rurais"
+  },
+  "casa-do-pescador": {
+    "description": "Num velho bairro piscatório de Caminha, perto da praia, as soluções da arquitetura moderna valorizaram esta casa típica de dimensão modesta, hoje um T2 com kitchenette e espaço otimizado. O teto aberto, com asnas de madeira à vista, cria amplitude e luminosidade. A fachada e o mosaico no chão do pátio são elementos tradicionais que harmoniosamente se conciliam com o design minimalista.",
+    "floors": "",
+    "construction": "Área total: 68m2 (56m2 de espaço interior + pátio com 12m2)"
+  }
 }
