@@ -1,5 +1,5 @@
 # A de Alma
 
-🚀 Landing Page for [a de alma](adealma.com) written in Next.js, Tailwind CSS, and TypeScript.
+🚀 Landing Page for [a de alma](adealma.com) written in NextJS 13, Tailwind CSS 3, and TypeScript.
 
 ![A de Alma](public/assets/adealma.svg)
