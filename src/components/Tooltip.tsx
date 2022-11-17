@@ -76,6 +76,7 @@ const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
               width={width}
               height={height}
               className='z-10'
+              priority
             />
           </td>
         </tr>
