@@ -23,6 +23,9 @@ const Index = () => {
     <>
       <Meta description={description} />
       <Navbar />
+      <h1 className='text-primary-100'>{`${t('site_name')} - ${t(
+        'site_slogan'
+      )}`}</h1>
       <main className='flex flex-col'>
         <div className='h-screen grow'>
           <Banner />
@@ -30,9 +33,6 @@ const Index = () => {
         <div className='flex w-full flex-col bg-primary-100' {...handlers}>
           <div className='relative'>
             <Hero description={description} />
-            <h1 className='hidden'>
-              {`${t('site_name')} - ${t('site_slogan')}`}
-            </h1>
             <Link href='/projects' title='projects'>
               <Arrow className='absolute right-6 bottom-2 h-6 rotate-180 md:inset-y-1/4 md:h-8 lg:right-8 xl:right-12 2xl:right-14' />
             </Link>
