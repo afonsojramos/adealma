@@ -5,6 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import Footer from 'components/Footer';
 import { Arrow, LinkChain } from 'components/Icons';
 import Meta from 'components/Meta';
 import Navbar from 'components/Navbar';
@@ -71,11 +72,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
           <Arrow className='absolute left-8 hidden h-6 lg:block' />
         </Link>
         <div className='mb-12 break-normal px-8 text-xl leading-[28px] md:pr-32 md:text-2xl md:leading-[30px] lg:pl-24 lg:pr-64 xl:pl-48 xl:pr-96 xl:text-3xl xl:leading-[40px] 2xl:pr-[35rem]'>
-          {projectsDescription.map((paragraph, pNum) => (
-            <p key={pNum} className='mb-2'>
-              {paragraph}
-            </p>
-          ))}
+          <p className='mb-2'>{projectsDescription[0]}</p>
         </div>
         <table className='w-screen table-fixed border-spacing-2 text-left'>
           <thead>
@@ -196,6 +193,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
           </Link>
         </div>
       </main>
+      <Footer about={t('about')} />
     </>
   );
 };

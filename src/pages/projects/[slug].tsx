@@ -3,6 +3,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Footer from 'components/Footer';
 import { Arrow } from 'components/Icons';
 import Meta from 'components/Meta';
 import Navbar from 'components/Navbar';
@@ -90,6 +91,7 @@ export default function ProjectsTemplate({
           </Link>
         </div>
       </main>
+      <Footer about={t('about')} />
     </>
   );
 }

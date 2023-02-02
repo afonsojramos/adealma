@@ -6,6 +6,7 @@ import Router from 'next/router';
 import { useSwipeable } from 'react-swipeable';
 
 import Banner from 'components/Banner';
+import Footer from 'components/Footer';
 import Hero from 'components/Hero';
 import { Arrow } from 'components/Icons';
 import Meta from 'components/Meta';
@@ -39,6 +40,7 @@ const Index = () => {
           </div>
         </div>
       </main>
+      <Footer about={t('about')} />
     </>
   );
 };
