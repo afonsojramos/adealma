@@ -3,5 +3,6 @@ export type IProject = {
   location: string;
   status: string;
   date: string;
+  endDate: string;
   slug: string;
 };

@@ -49,14 +49,21 @@ export default function ProjectsTemplate({
             className='w-1/3 px-2'
             priority
           />
-          <Image
-            src='/assets/casa-do-pescador.png'
-            alt='Casa do Pescador'
-            width={820}
-            height={1260}
-            className='w-1/3 px-2'
-            priority
-          />
+          <div className='w-1/3 px-2'>
+            <Image
+              src='/assets/casa-do-pescador.png'
+              alt='Casa do Pescador'
+              width={820}
+              height={1260}
+              className=''
+              priority
+            />
+            <p className='absolute pt-2 sm:text-xs md:text-sm xl:text-base'>
+              {`${project.date} - ${
+                project.endDate ? project.endDate : t(project.status)
+              }`}
+            </p>
+          </div>
           <Image
             src='/assets/casas-da-matriz.png'
             alt='Casas da Matriz'
@@ -66,15 +73,13 @@ export default function ProjectsTemplate({
             priority
           />
         </div>
-        <div className='flex w-screen flex-row items-center px-7'>
-          {details.construction}
-        </div>
+
         <Image
           src='/assets/casas.png'
           alt='Casas'
           width={2476}
           height={1416}
-          className='mt-10 flex w-screen flex-row items-center px-7'
+          className='mt-24 flex w-screen flex-row items-center px-7'
         />
         <div className='flex w-screen flex-row-reverse justify-between'>
           <Link href={`/projects/${nextProject || ''}`}>
