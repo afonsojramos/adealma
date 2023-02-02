@@ -33,7 +33,7 @@ const Navbar = ({
       </h1>
       <span className='md:hidden'>{secondaryTitle || title}</span>
     </div>
-    <div className='pr-6 text-sm sm:text-lg lg:pr-6 xl:pr-10 2xl:pr-[3.6rem]'>
+    <div className='pr-6 lg:pr-6 xl:pr-10 2xl:pr-[3.6rem]'>
       <LanguageSwitcher />
     </div>
   </nav>

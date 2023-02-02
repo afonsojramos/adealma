@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { LangEN, LangPT } from './Icons';
 
 const LanguageImage = ({ locale }: { locale?: string }) => {
-  const langClass = 'w-7 h-7';
+  const langClass = 'h-5 w-5 sm:h-6 sm:w-6 xl:w-7 xl:h-7';
 
   if (locale === 'PT') return <LangPT className={langClass} />;
   return <LangEN className={langClass} />;
