@@ -9,3 +9,8 @@
   font-style: normal;
   font-display: swap;
 }
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}

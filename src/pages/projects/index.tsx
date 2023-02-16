@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Footer from 'components/Footer';
 import { Arrow, LinkChain } from 'components/Icons';
@@ -26,7 +26,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
   const [expandYear, setExpandYear] = useState('');
 
   const { t } = useTranslation('common');
-  const projectsDescription = t<string, string[]>('projects_description', {
+  const projectsDescription = t('projects_description', {
     returnObjects: true,
   });
 

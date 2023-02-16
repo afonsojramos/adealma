@@ -28,7 +28,8 @@
     "react-i18next": "^12.1.5",
     "react-markdown": "^8.0.5",
     "react-merge-refs": "^2.0.1",
-    "react-swipeable": "^7.0.0"
+    "react-swipeable": "^7.0.0",
+    "swiper": "^9.0.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.3",
