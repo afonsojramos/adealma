@@ -1,13 +1,14 @@
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import Carousel from 'components/Carousel';
 import Footer from 'components/Footer';
 import { Arrow } from 'components/Icons';
 import Meta from 'components/Meta';
 import Navbar from 'components/Navbar';
-import { IProject, IProjectDetails } from 'interfaces';
+import { IProject } from 'interfaces';
 
 import projectsData from '../../../public/projects.json';
 
@@ -19,16 +20,13 @@ export default function ProjectsTemplate({
   nextProject: string;
 }) {
   const { t } = useTranslation('common');
-  const details = useTranslation('projects').t<string, IProjectDetails>(
-    project.slug,
-    {
-      returnObjects: true,
-    }
-  );
+  const { description } = useTranslation('projects').t(project.slug, {
+    returnObjects: true,
+  });
 
   return (
     <>
-      <Meta title={project.title} description={details.description} />
+      <Meta title={project.title} description={description} />
       <Navbar
         title={`${t('projects_title')}`}
         secondaryTitle={project.title}
@@ -39,44 +37,16 @@ export default function ProjectsTemplate({
           <Arrow className='absolute left-8 hidden h-6 lg:block' />
         </Link>
         <div className='mb-12 break-normal px-8 text-xl leading-[28px] md:px-[27%] md:leading-[25px] xl:px-[33%] xl:text-2xl xl:leading-[30px]'>
-          {details.description}
+          {description}
         </div>
-        <div className='flex w-screen flex-row items-center px-5'>
-          <Image
-            src='/assets/casa-do-cristelo.png'
-            alt='Casa do Cristelo'
-            width={820}
-            height={1260}
-            className='w-1/3 px-2'
-            priority
-          />
-          <div className='w-1/3 px-2'>
-            <Image
-              src='/assets/casa-do-pescador.png'
-              alt='Casa do Pescador'
-              width={820}
-              height={1260}
-              className=''
-              priority
-            />
-            <p className='absolute pt-2 sm:text-xs md:text-sm xl:text-base'>
-              {`${project.date} - ${
-                project.endDate ? project.endDate : t(project.status)
-              }`}
-            </p>
-          </div>
-          <Image
-            src='/assets/casas-da-matriz.png'
-            alt='Casas da Matriz'
-            width={820}
-            height={1260}
-            className='w-1/3 px-2'
-            priority
-          />
-        </div>
-
+        <Carousel images={project.images} />
+        <p className='absolute px-5 pt-2 sm:right-1/3 sm:w-1/3 sm:px-3 sm:text-xs md:text-sm xl:text-base'>
+          {`${project.date} - ${
+            project.endDate ? project.endDate : t(project.status)
+          }`}
+        </p>
         <Image
-          src='/assets/casas.png'
+          src={`/assets/${project.slug}/banner.png`}
           alt='Casas'
           width={2476}
           height={1416}
