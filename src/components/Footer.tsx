@@ -9,7 +9,7 @@ const Footer = ({ about = 'about' }) => (
       <div className='inline-flex pl-16 sm:pl-32 lg:pl-64'>
         <Link href='mailto:formulaobliqua@gmail.com'>info@adealma.com</Link>
       </div>
-      <div className='inline-flex pl-8 font-bold sm:pl-48 lg:pl-64 xl:pl-96'>
+      <div className='inline-flex pl-8 font-bold sm:pl-28 lg:pl-64 xl:pl-96'>
         <Link href='/about'>{about}</Link>
       </div>
     </div>{' '}
