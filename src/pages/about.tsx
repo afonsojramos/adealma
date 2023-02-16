@@ -1,6 +1,6 @@
+import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Image from 'next/image';
 
 import Footer from 'components/Footer';
 import Meta from 'components/Meta';
@@ -8,7 +8,7 @@ import Navbar from 'components/Navbar';
 
 const About = () => {
   const { t } = useTranslation('common');
-  const about = t<string, string[]>('about_description', {
+  const about = t('about_description', {
     returnObjects: true,
   });
   return (

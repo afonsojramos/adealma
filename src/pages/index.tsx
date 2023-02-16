@@ -1,8 +1,8 @@
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import config from 'next/config';
 import Link from 'next/link';
 import Router from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useSwipeable } from 'react-swipeable';
 
 import Banner from 'components/Banner';
