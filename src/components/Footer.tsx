@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const Footer = ({ about = 'about' }) => (
-  <footer className='bg-primary-100 p-10 text-sm md:pt-20 md:text-lg'>
+  <footer className='bg-primary-100 p-10 text-xs sm:text-sm md:pt-20 md:text-lg'>
     <div className='sm:pl-16 md:pl-24 lg:pl-32'>
       <div className='inline-flex pb-2'>
         <Link href='https://www.instagram.com/adealma.studio'>
