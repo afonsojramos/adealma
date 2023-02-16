@@ -4,10 +4,14 @@ const Footer = ({ about = 'about' }) => (
   <footer className='bg-primary-100 p-10 text-sm md:pt-20 md:text-lg'>
     <div className='inline-flex sm:pl-16 md:pl-24 lg:pl-32'>
       <div>
-        <Link href='https://instagram.com/a_dealma'>@a_dealma</Link>
+        <Link href='https://www.instagram.com/adealma.studio'>
+          @adealma.studio
+        </Link>
       </div>
       <div className='inline-flex pl-16 sm:pl-32 lg:pl-64'>
-        <Link href='mailto:formulaobliqua@gmail.com'>info@adealma.com</Link>
+        <Link href='mailto:formulaobliqua@gmail.com'>
+          formulaobliqua@gmail.com
+        </Link>
       </div>
       <div className='inline-flex pl-8 font-bold sm:pl-28 lg:pl-64 xl:pl-96'>
         <Link href='/about'>{about}</Link>
@@ -18,7 +22,7 @@ const Footer = ({ about = 'about' }) => (
         <Link href='/'>adealma.com</Link>
       </div>{' '}
       <div className='inline-flex pl-16 pr-8 sm:pr-0 sm:pl-32 lg:pl-64'>
-        <Link href='tel:+35193565889'>+351 935 658 89</Link>
+        <Link href='tel:+351936780872'>+351 936 780 872</Link>
       </div>
     </div>
   </footer>
