@@ -7,6 +7,20 @@
     "A de Alma. O nome traduz a nossa paixão pela reabilitação de edifícios e a essência especial de cada projeto a que nos dedicamos.",
     "A preservação do património e a reinterpretação do espaço são as coordenadas das nossas intervenções. Nas casas A de Alma, há o forte sentido de pertença ao território. Existem raízes sólidas, sustentando a leveza e fluidez de ambientes contemporâneos."
   ],
+  "about_images": [
+    {
+      "filename": "about-1",
+      "alt": "barco parado no rio"
+    },
+    {
+      "filename": "about-2",
+      "alt": "pedras a ser usadas na construção"
+    },
+    {
+      "filename": "about-3",
+      "alt": "ruas com propriedades a reabilitar"
+    }
+  ],
   "projects_title": "projetos",
   "projects_description": [
     "Plenamente integradas no meio envolvente, as casas resultam de programas de reabilitação exigentes. Denotam o restauro de elementos icónicos da arquitetura original e o redimensionamento do espaço, feito ao encontro dos padrões atuais de bem-estar.",

@@ -7,6 +7,20 @@
     "A de Alma [alma = soul]. The name reflects our passion for building rehabilitation and the unique essence of each project we undertake.",
     "The preservation of heritage and the reinterpretation of space are the coordinates of our interventions. In A de Alma houses, there is a strong sense of belonging to the territory. There are solid roots, sustaining the lightness and fluidity of contemporary environments."
   ],
+  "about_images": [
+    {
+      "filename": "about-1",
+      "alt": "boat stopped in the river"
+    },
+    {
+      "filename": "about-2",
+      "alt": "stones to be used in construction"
+    },
+    {
+      "filename": "about-3",
+      "alt": "street with houses to be rehabilitated"
+    }
+  ],
   "projects_title": "projects",
   "projects_description": [
     "Fully integrated into their surroundings, the houses are the result of demanding rehabilitation programmes. The restoration of iconic elements of the original architecture and the redimensioning of the space to meet current standards of wellbeing can be seen in them.",
