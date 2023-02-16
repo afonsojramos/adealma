@@ -156,7 +156,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                 <>
                   <tr
                     key={year}
-                    className='border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:py-2 md:hidden'
+                    className='cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:py-2 md:hidden'
                   >
                     <td
                       className='px-5 text-center md:text-left'
@@ -171,7 +171,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                     mobileTableData.get(year)?.map((project) => (
                       <tr
                         key={`${year}-expanded-${project.slug}`}
-                        className='border-b-[1px] border-primary-900 bg-primary-300 text-2xl tracking-widest text-primary-100 child:py-2 md:hidden'
+                        className='border-b-[1px] border-primary-900 bg-primary-300 text-2xl tracking-widest text-primary-100 hover:text-primary-900 child:py-2 md:hidden'
                       >
                         <td className='px-5 text-center md:text-left'>
                           <Link href={`/projects/${project.slug}`}>
