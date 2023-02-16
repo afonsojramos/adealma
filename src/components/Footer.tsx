@@ -10,7 +10,7 @@ const Footer = ({ about = 'about' }) => (
         <Link href='mailto:formulaobliqua@gmail.com'>info@adealma.com</Link>
       </div>
       <div className='inline-flex pl-8 font-bold sm:pl-48 lg:pl-64 xl:pl-96'>
-        <Link href='about'>{about}</Link>
+        <Link href='/about'>{about}</Link>
       </div>
     </div>{' '}
     <div className='pt-2 text-right sm:pl-48 sm:text-left lg:pl-64 xl:pl-96'>
