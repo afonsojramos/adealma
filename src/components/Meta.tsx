@@ -1,6 +1,6 @@
-import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 type IMetaProps = {
   title?: string;
