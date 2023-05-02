@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Footer = ({ about = 'about' }) => (
+const Footer = ({ about = false }) => (
   <footer className='bg-primary-100 p-10 text-xs sm:text-sm md:pt-20 md:text-lg'>
     <div className='flex-row-reverse md:flex md:flex-row md:pl-20 lg:pl-32'>
       <Link href='https://www.instagram.com/adealma.studio'>
@@ -21,10 +21,10 @@ const Footer = ({ about = 'about' }) => (
         adealma.com
       </Link>
       <Link
-        href='/about'
+        href={about ? '/projects' : '/about'}
         className='inline-flex pl-0 pr-8 font-bold md:pl-32 lg:pl-64'
       >
-        {about}
+        {about ? 'projects' : 'about'}
       </Link>
     </div>
   </footer>

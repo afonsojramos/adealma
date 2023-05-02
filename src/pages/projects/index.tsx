@@ -193,7 +193,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
           </Link>
         </div>
       </main>
-      <Footer about={t('about')} />
+      <Footer />
     </>
   );
 };

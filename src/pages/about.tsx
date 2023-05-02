@@ -28,7 +28,7 @@ const About = () => {
           {about[1]}
         </div>
       </main>
-      <Footer about={t('about')} />
+      <Footer about />
     </>
   );
 };

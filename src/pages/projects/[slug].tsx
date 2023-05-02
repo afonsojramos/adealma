@@ -61,7 +61,7 @@ export default function ProjectsTemplate({
           </Link>
         </div>
       </main>
-      <Footer about={t('about')} />
+      <Footer />
     </>
   );
 }

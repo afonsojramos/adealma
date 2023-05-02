@@ -35,12 +35,12 @@ const Index = () => {
           <div className='relative'>
             <Hero description={description} />
             <Link href='/projects' title='projects'>
-              <Arrow className='absolute right-6 bottom-2 h-6 rotate-180 md:inset-y-1/4 md:h-8 lg:right-8 xl:right-12 2xl:right-14' />
+              <Arrow className='absolute bottom-2 right-6 h-6 rotate-180 md:inset-y-1/4 md:h-8 lg:right-8 xl:right-12 2xl:right-14' />
             </Link>
           </div>
         </div>
       </main>
-      <Footer about={t('about')} />
+      <Footer />
     </>
   );
 };
