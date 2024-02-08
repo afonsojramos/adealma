@@ -1,11 +1,17 @@
 import Image from 'next/image';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import {
+  A11y,
+  Autoplay,
+  Navigation,
+  Pagination,
+  Scrollbar,
+} from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
+import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
 
 const Carousel = ({
   images,
