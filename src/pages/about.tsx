@@ -17,7 +17,7 @@ const About = () => {
   return (
     <>
       <Meta description={about[0]} />
-      <Navbar title={t('about')} background />
+      <Navbar title={t('about_title')} background />
 
       <main className='inline-block w-full rounded-lg pt-32'>
         <div className='mb-12 break-normal px-8 text-xl leading-[28px] md:pr-32 md:text-2xl md:leading-[30px] lg:pl-24 lg:pr-64 xl:pl-48 xl:pr-96 xl:text-3xl xl:leading-[40px] 2xl:pr-[35rem]'>
@@ -33,12 +33,10 @@ const About = () => {
   );
 };
 
-export async function getStaticProps({ locale }: { locale: string }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-    },
-  };
-}
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common'])),
+  },
+});
 
 export default About;
