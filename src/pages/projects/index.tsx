@@ -153,34 +153,35 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
             {Array.from(mobileTableData.keys())
               .sort((_proj1, proj2) => -proj2)
               .map((year) => (
-                <>
-                  <tr
-                    key={year}
-                    className='cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:py-2 md:hidden'
+                <tr
+                  key={year}
+                  className={twMerge(
+                    'cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest md:hidden',
+                    expandYear === year && 'bg-primary-300 text-primary-100',
+                  )}
+                >
+                  <td
+                    className='flex flex-col p-0'
+                    onClick={() =>
+                      setExpandYear(expandYear === year ? '' : year)
+                    }
+                    onKeyDown={() =>
+                      setExpandYear(expandYear === year ? '' : year)
+                    }
                   >
-                    <td
-                      className='px-5 text-center md:text-left'
-                      onClick={() =>
-                        setExpandYear(expandYear === year ? '' : year)
-                      }
-                    >
-                      {year}
-                    </td>
-                  </tr>
-                  {expandYear === year &&
-                    mobileTableData.get(year)?.map((project) => (
-                      <tr
-                        key={`${year}-expanded-${project.slug}`}
-                        className='border-b-[1px] border-primary-900 bg-primary-300 text-2xl tracking-widest text-primary-100 hover:text-primary-900 child:py-2 md:hidden'
-                      >
-                        <td className='px-5 text-center md:text-left'>
-                          <Link href={`/projects/${project.slug}`}>
-                            <p className='w-100% h-max'>{project.title}</p>
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                </>
+                    <span className='px-5 py-2 text-center'>{year}</span>
+                    {expandYear === year &&
+                      mobileTableData.get(year)?.map((project) => (
+                        <Link
+                          key={`${year}-expanded-${project.slug}`}
+                          className='border-t-[1px] border-primary-900 bg-primary-300 px-5 py-2 text-center text-2xl tracking-widest text-primary-100 hover:text-primary-900'
+                          href={`/projects/${project.slug}`}
+                        >
+                          {project.title}
+                        </Link>
+                      ))}
+                  </td>
+                </tr>
               ))}
           </tbody>
         </table>
