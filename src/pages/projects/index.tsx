@@ -156,7 +156,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                 <Head>
                   <link
                     rel='preload'
-                    href={`/_next/image/?url=%2Fassets%2F${target}.png&w=640&q=75`}
+                    href={`/_next/image/?url=%2Fassets%2F${project.slug}.png&w=640&q=75`}
                     as='image'
                   />
                 </Head>
