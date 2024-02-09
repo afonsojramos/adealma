@@ -1,16 +1,9 @@
 import Image from 'next/image';
-import {
-  A11y,
-  Autoplay,
-  Navigation,
-  Pagination,
-  Scrollbar,
-} from 'swiper/modules';
+import { A11y, Autoplay, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/autoplay';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const Carousel = ({
@@ -21,7 +14,7 @@ const Carousel = ({
   return (
     <div className='flex w-screen flex-row items-center px-5'>
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+        modules={[Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween={16}
         slidesPerView={1}
         breakpoints={{
@@ -29,7 +22,6 @@ const Carousel = ({
             slidesPerView: 3,
           },
         }}
-        navigation
         pagination={{ clickable: true }}
         onSwiper={(swiper) => swiper.autoplay.resume()}
         rewind
