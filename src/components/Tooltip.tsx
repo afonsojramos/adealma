@@ -1,89 +1,32 @@
-import { cloneElement, useEffect, useMemo, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
-import {
-  offset,
-  useFloating,
-  useInteractions,
-  useHover,
-  flip,
-} from '@floating-ui/react';
-import Image from 'next/image';
-import { mergeRefs } from 'react-merge-refs';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Tooltip = ({ slug, children }: { slug: string; children: any }) => {
-  const [open, setOpen] = useState(false);
-  const { width, height } = { width: 270, height: 420 };
-
-  const { x, y, refs, strategy, context } = useFloating({
-    open,
-    placement: 'right',
-    onOpenChange: setOpen,
-    middleware: [flip({ padding: 30 }), offset(25)],
-  });
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    useHover(context, {
-      mouseOnly: true,
-      restMs: 1,
-    }),
-  ]);
-
-  const ref = useMemo(
-    () => mergeRefs([refs.setReference, children.ref]),
-    [refs, children]
-  );
+export const Tooltip = ({
+  children,
+  offset = { x: 0, y: 0 },
+}: {
+  children: React.ReactNode;
+  offset?: { x: number; y: number };
+}) => {
+  const element = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.addEventListener('mousemove', ({ clientX, clientY }) => {
-      refs.setReference({
-        getBoundingClientRect() {
-          return {
-            width: 0,
-            height: 0,
-            x: clientX,
-            y: clientY,
-            top: clientY,
-            right: clientX,
-            bottom: clientY,
-            left: clientX,
-          };
-        },
-      });
-    });
-  }, [refs]);
+    function handler(e: { clientX: number; clientY: number }) {
+      if (element.current) {
+        const x = e.clientX + offset.x;
+        const y = e.clientY + offset.y;
+        element.current.style.transform = `translate(${x}px, ${y}px)`;
+        element.current.style.visibility = 'visible';
+      }
+    }
+    document.addEventListener('mousemove', handler);
+    return () => document.removeEventListener('mousemove', handler);
+  }, [offset.x, offset.y]);
 
-  return (
-    <>
-      {cloneElement(children, getReferenceProps({ ref, ...children.props }))}
-      {open && (
-        <tr
-          {...getFloatingProps({
-            ref: refs.setFloating,
-            style: {
-              position: strategy,
-              top: y ?? -1000,
-              left: x ?? -1000,
-              width,
-              height,
-            },
-          })}
-        >
-          {/* Tweak for browsers do not output an error due to the parent element being a tbody */}
-          <td>
-            <Image
-              src={`/assets/${slug}.png`}
-              alt='tooltip'
-              width={width}
-              height={height}
-              className='z-10'
-              priority
-            />
-          </td>
-        </tr>
-      )}
-    </>
+  return createPortal(
+    <div className='fixed top-0 pointer-events-none invisible' ref={element}>
+      {children}
+    </div>,
+    document.body,
   );
 };
-
-export default Tooltip;

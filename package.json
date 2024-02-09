@@ -27,7 +27,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.5",
-    "react-merge-refs": "^2.1.1",
     "react-swipeable": "^7.0.1",
     "swiper": "^11.0.6"
   },
@@ -38,6 +37,7 @@
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.11.17",
     "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
     "@types/webpack-env": "^1.18.4",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
