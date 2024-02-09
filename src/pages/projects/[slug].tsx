@@ -50,7 +50,7 @@ export default function ProjectsTemplate({
           alt='Casas'
           width={2476}
           height={1416}
-          className='mt-24 flex w-screen flex-row items-center px-7'
+          className='mt-24 flex w-screen flex-row items-center px-5'
         />
         <div className='flex w-screen flex-row-reverse justify-between'>
           <Link href={`/projects/${nextProject || ''}`}>
