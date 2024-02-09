@@ -2,45 +2,20 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true
+    "node": true,
   },
-  "plugins": ["@typescript-eslint", "unused-imports", "prettier"],
+  "plugins": ["@typescript-eslint", "unused-imports", "jsx-a11y"],
   "extends": [
     "eslint:recommended",
     "next",
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
   ],
-  "rules": {
-    "import/order": [
-      "error",
-      {
-        "groups": ["builtin", "external", "internal"],
-        "pathGroups": [
-          {
-            "pattern": "react",
-            "group": "external",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["react"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ],
-    "@typescript-eslint/comma-dangle": "off", // Avoid conflict rule between Eslint and Prettier
-    "import/prefer-default-export": "off", // Named export is easier to refactor automatically
-    "class-methods-use-this": "off", // _document.tsx use render method without `this` keyword
-    "@typescript-eslint/no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
-  },
   "globals": {
     "React": true,
-    "JSX": true
-  }
+    "JSX": true,
+  },
 }

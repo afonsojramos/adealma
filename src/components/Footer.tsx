@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Footer = ({ about = false }) => (
+const Footer = ({ about = false }: { about: boolean }) => (
   <footer className='bg-primary-100 p-10 text-xs sm:text-sm md:pt-20 md:text-lg'>
     <div className='flex-row-reverse md:flex md:flex-row md:pl-20 lg:pl-32'>
       <Link href='https://www.instagram.com/adealma.studio'>
