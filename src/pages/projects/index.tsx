@@ -184,10 +184,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               ))}
           </tbody>
         </table>
-        <div className='flex w-screen flex-row-reverse justify-between'>
-          <Link href={`/projects/${projects[0]?.slug}`}>
-            <Arrow className='m-8 h-6 rotate-180' />
-          </Link>
+        <div className='flex w-screen flex-row justify-between'>
           <Link href='/'>
             <Arrow className='m-8 flex h-6 lg:hidden' />
           </Link>
