@@ -35,5 +35,5 @@ local
 .vercel
 
 # sitemap
-sitemap.xml
+sitemap*.xml
 robots.txt
