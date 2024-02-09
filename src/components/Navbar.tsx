@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 import { ReactNode } from 'react';
-import LanguageSwitcher from './LanguageSwitcher';
-import Logo from './Logo';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { Logo } from './Logo';
 
 type INavbarProps = {
   title?: ReactNode;
@@ -10,7 +10,7 @@ type INavbarProps = {
   background?: boolean;
 };
 
-const Navbar = ({
+export const Navbar = ({
   title = '',
   secondaryTitle = '',
   background = false,
@@ -42,5 +42,3 @@ const Navbar = ({
     </div>
   </nav>
 );
-
-export default Navbar;

@@ -13,7 +13,7 @@ const LanguageImage = ({ locale }: { locale?: string }) => {
   return <LangEN className={langClass} />;
 };
 
-const LanguageSwitcher = () => {
+export const LanguageSwitcher = () => {
   const languages = ['EN', 'PT'];
   const { locale, pathname, query } = useRouter();
   return (
@@ -53,5 +53,3 @@ const LanguageSwitcher = () => {
     </Menu>
   );
 };
-
-export default LanguageSwitcher;

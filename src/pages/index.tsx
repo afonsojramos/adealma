@@ -1,16 +1,15 @@
+import { Banner } from 'components/Banner';
+import { Footer } from 'components/Footer';
+import { Hero } from 'components/Hero';
+import { Arrow } from 'components/Icons';
+import { Meta } from 'components/Meta';
+import { Navbar } from 'components/Navbar';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import config from 'next/config';
 import Link from 'next/link';
 import Router from 'next/router';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useSwipeable } from 'react-swipeable';
-
-import Banner from 'components/Banner';
-import Footer from 'components/Footer';
-import Hero from 'components/Hero';
-import { Arrow } from 'components/Icons';
-import Meta from 'components/Meta';
-import Navbar from 'components/Navbar';
 
 const Index = () => {
   const { t } = useTranslation('common');
@@ -25,7 +24,7 @@ const Index = () => {
       <Meta description={description} />
       <Navbar />
       <h1 className='text-primary-100'>{`${t('site_name')} - ${t(
-        'site_slogan'
+        'site_slogan',
       )}`}</h1>
       <main className='flex flex-col'>
         <div className='h-screen grow'>

@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 
-const Carousel = ({
+export const Carousel = ({
   images,
 }: {
   images: { filename: string; alt: string }[];
@@ -42,5 +42,3 @@ const Carousel = ({
     </div>
   );
 };
-
-export default Carousel;

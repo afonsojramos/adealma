@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next';
 
-const Logo = () => {
+export const Logo = () => {
   const { t } = useTranslation('common');
   return (
     <span
@@ -12,5 +12,3 @@ const Logo = () => {
     </span>
   );
 };
-
-export default Logo;

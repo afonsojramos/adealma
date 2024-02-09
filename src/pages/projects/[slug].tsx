@@ -3,11 +3,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Carousel from 'components/Carousel';
-import Footer from 'components/Footer';
+import { Carousel } from 'components/Carousel';
+import { Footer } from 'components/Footer';
 import { Arrow } from 'components/Icons';
-import Meta from 'components/Meta';
-import Navbar from 'components/Navbar';
+import { Meta } from 'components/Meta';
+import { Navbar } from 'components/Navbar';
 import { IProject } from 'interfaces';
 
 import projectsData from '../../../public/projects.json';

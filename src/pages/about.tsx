@@ -1,10 +1,10 @@
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import Carousel from 'components/Carousel';
-import Footer from 'components/Footer';
-import Meta from 'components/Meta';
-import Navbar from 'components/Navbar';
+import { Carousel } from 'components/Carousel';
+import { Footer } from 'components/Footer';
+import { Meta } from 'components/Meta';
+import { Navbar } from 'components/Navbar';
 
 const About = () => {
   const { t } = useTranslation('common');
