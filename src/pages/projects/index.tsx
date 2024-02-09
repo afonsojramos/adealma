@@ -6,6 +6,7 @@ import { Tooltip } from 'components/Tooltip';
 import { IProject, SortStatus as Sort } from 'interfaces';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -152,6 +153,13 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                 onMouseEnter={() => setTarget(project.slug)}
                 onMouseLeave={() => setTarget('')}
               >
+                <Head>
+                  <link
+                    rel='preload'
+                    href={`/assets/${target}.png`}
+                    as='image'
+                  />
+                </Head>
                 <td className='pl-8 pr-16 lg:pl-24 lg:pr-64 xl:pl-48'>
                   <div className='flex w-max flex-row items-center'>
                     <span>{project.title}</span>
