@@ -17,7 +17,7 @@ const LanguageSwitcher = () => {
   const languages = ['EN', 'PT'];
   const { locale, pathname, query } = useRouter();
   return (
-    <Menu as='div' className='relative'>
+    <Menu as='div' className='relative flex'>
       <Menu.Button aria-label='switch language'>
         <LanguageImage locale={locale?.toLocaleUpperCase()} />
       </Menu.Button>
