@@ -28,7 +28,8 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.5",
     "react-swipeable": "^7.0.1",
-    "swiper": "^11.0.6"
+    "swiper": "^11.0.6",
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",

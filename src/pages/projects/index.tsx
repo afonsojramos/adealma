@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react';
-
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { Footer } from 'components/Footer';
+import { Arrow, LinkChain } from 'components/Icons';
+import { Meta } from 'components/Meta';
+import { Navbar } from 'components/Navbar';
+import { Tooltip } from 'components/Tooltip';
+import { IProject, SortStatus as Sort } from 'interfaces';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-
-import Footer from 'components/Footer';
-import { Arrow, LinkChain } from 'components/Icons';
-import Meta from 'components/Meta';
-import Navbar from 'components/Navbar';
-import Tooltip from 'components/Tooltip';
-import { IProject, SortStatus as Sort } from 'interfaces';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import getProjectYear from 'utils/Dates';
 import groupBy from 'utils/GroupBy';
-
 import content from '../../../public/projects.json';
 
 const Projects = ({ projects }: { projects: IProject[] }) => {
@@ -21,9 +20,10 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
   const [sort, setSort] = useState(Sort.Date);
   const [tableData, setTableData] = useState(projects);
   const [mobileTableData] = useState(
-    groupBy(tableData, (project: IProject) => getProjectYear(project.date))
+    groupBy(tableData, (project: IProject) => getProjectYear(project.date)),
   );
   const [expandYear, setExpandYear] = useState('');
+  const [target, setTarget] = useState('');
 
   const { t } = useTranslation('common');
   const projectsDescription = t('projects_description', {
@@ -80,16 +80,17 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               <th className='hidden md:table-cell md:w-[36%]' />
               <th className='hidden md:table-cell md:w-[27%]'>
                 <button
+                  type='button'
                   className='group inline-flex items-center leading-10'
                   onClick={() =>
                     setSort(
-                      sort === Sort.Location ? Sort.InvLocation : Sort.Location
+                      sort === Sort.Location ? Sort.InvLocation : Sort.Location,
                     )
                   }
                 >
                   <Arrow
                     className={`mr-2 h-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
-                      Sort.Location
+                      Sort.Location,
                     )}`}
                   />
                   {t('location')}
@@ -97,6 +98,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               </th>
               <th className='hidden px-5 md:table-cell md:w-[20%]'>
                 <button
+                  type='button'
                   className='group inline-flex items-center leading-10'
                   onClick={() =>
                     setSort(sort === Sort.Status ? Sort.InvStatus : Sort.Status)
@@ -104,7 +106,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                 >
                   <Arrow
                     className={`mr-2 h-2 transform transition duration-500 group-hover:opacity-100 ${sortRotation(
-                      Sort.Status
+                      Sort.Status,
                     )}`}
                   />
                   {t('status')}
@@ -112,6 +114,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               </th>
               <th className='flex items-center pl-8 md:w-3/12 md:px-5'>
                 <button
+                  type='button'
                   className='group inline-flex items-center leading-10'
                   onClick={() =>
                     setSort(sort === Sort.Date ? Sort.InvDate : Sort.Date)
@@ -119,7 +122,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                 >
                   <Arrow
                     className={`mr-2 hidden h-2 transform transition duration-500 group-hover:opacity-100 md:block ${sortRotation(
-                      Sort.Date
+                      Sort.Date,
                     )}`}
                   />
                   {t('year')}
@@ -127,28 +130,40 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
               </th>
             </tr>
           </thead>
+          {target && (
+            <Tooltip offset={{ x: 25, y: -210 }}>
+              <Image
+                src={`/assets/${target}.png`}
+                alt={`${target} tooltip`}
+                width={270}
+                height={420}
+                className='z-10 hidden md:block'
+                priority
+              />
+            </Tooltip>
+          )}
           <tbody>
             {tableData.map((project) => (
-              <Tooltip key={project.slug} slug={project.slug}>
-                <tr
-                  onClick={() => {
-                    router.push(`/projects/${project.slug}`);
-                  }}
-                  className='group hidden cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:hidden child:py-2 md:table-row child:md:table-cell'
-                >
-                  <td className='pl-8 pr-16 lg:pl-24 lg:pr-64 xl:pl-48'>
-                    <div className='flex w-max flex-row items-center'>
-                      <span>{project.title}</span>
-                      <LinkChain className='w-max transform px-2 text-primary-100 opacity-0 transition duration-500 group-hover:opacity-100' />
-                    </div>
-                  </td>
-                  <td>{project.location}</td>
-                  <td className='px-5'>{t(project.status)}</td>
-                  <td className='px-5 text-center md:text-left'>
-                    <span>{getProjectYear(project.date)}</span>
-                  </td>
-                </tr>
-              </Tooltip>
+              <tr
+                key={project.slug}
+                className='group hidden cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:hidden child:py-2 md:table-row child:md:table-cell'
+                onClick={() => router.push(`/projects/${project.slug}`)}
+                onKeyDown={() => router.push(`/projects/${project.slug}`)}
+                onMouseEnter={() => setTarget(project.slug)}
+                onMouseLeave={() => setTarget('')}
+              >
+                <td className='pl-8 pr-16 lg:pl-24 lg:pr-64 xl:pl-48'>
+                  <div className='flex w-max flex-row items-center'>
+                    <span>{project.title}</span>
+                    <LinkChain className='w-max transform px-2 text-primary-100 opacity-0 transition duration-500 group-hover:opacity-100' />
+                  </div>
+                </td>
+                <td>{project.location}</td>
+                <td className='px-5'>{t(project.status)}</td>
+                <td className='px-5 text-center md:text-left'>
+                  <span>{getProjectYear(project.date)}</span>
+                </td>
+              </tr>
             ))}
             {Array.from(mobileTableData.keys())
               .sort((_proj1, proj2) => -proj2)
