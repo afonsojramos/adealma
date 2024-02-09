@@ -1,10 +1,11 @@
 import Link from 'next/link';
 
+import { ReactNode } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 import Logo from './Logo';
 
 type INavbarProps = {
-  title?: string;
+  title?: ReactNode;
   secondaryTitle?: string;
   background?: boolean;
 };
@@ -15,7 +16,7 @@ const Navbar = ({
   background = false,
 }: INavbarProps) => (
   <nav
-    className={`fixed z-10 flex w-screen items-center pb-2 pt-8 pl-8 tracking-widest lg:pt-8 lg:pl-40 ${
+    className={`fixed z-10 flex w-screen items-center pb-2 pl-8 pt-8 tracking-widest lg:pl-40 lg:pt-8 ${
       background && 'bg-primary-100'
     }`}
   >
@@ -27,8 +28,11 @@ const Navbar = ({
       </div>
     )}
     <div className='w-20 grow pl-12 pr-6 text-left text-base leading-none sm:text-xl md:pl-24 lg:pl-32'>
-      <h1 className='hidden md:inline xl:absolute xl:top-10 xl:left-0 xl:px-[33%]'>
-        <span className='mr-24'>{`${title}${secondaryTitle && ':'}`}</span>
+      <h1 className='hidden md:inline xl:absolute xl:left-0 xl:top-10 xl:px-[33%]'>
+        <span className='mr-24'>
+          {title}
+          {secondaryTitle && ':'}
+        </span>
         {secondaryTitle}
       </h1>
       <span className='md:hidden'>{secondaryTitle || title}</span>

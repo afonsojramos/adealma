@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import Carousel from 'components/Carousel';
 import Footer from 'components/Footer';
@@ -28,7 +28,7 @@ export default function ProjectsTemplate({
     <>
       <Meta title={project.title} description={description} />
       <Navbar
-        title={`${t('projects_title')}`}
+        title={<Link href='/projects/'>{t('projects_title')}</Link>}
         secondaryTitle={project.title}
         background
       />
@@ -76,7 +76,7 @@ export async function getStaticProps({
   const { slug } = ctx.params;
 
   const projectIndex = projectsData.findIndex(
-    (project) => project.slug === slug
+    (project) => project.slug === slug,
   );
 
   return {
@@ -103,8 +103,8 @@ export async function getStaticPaths() {
           slug,
         },
         locale,
-      })
-    )
+      }),
+    ),
   );
 
   return {
