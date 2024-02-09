@@ -2,10 +2,10 @@ import { IProject } from 'interfaces';
 
 const groupBy = (
   list: IProject[],
-  keyGetter: (item: IProject) => number
+  keyGetter: (item: IProject) => number,
 ): Map<string, Array<IProject>> => {
   const map = new Map();
-  list.forEach((item) => {
+  for (const item of list) {
     const key = keyGetter(item);
     const collection = map.get(key);
     if (!collection) {
@@ -13,7 +13,7 @@ const groupBy = (
     } else {
       collection.push(item);
     }
-  });
+  }
   return map;
 };
 
