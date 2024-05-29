@@ -1,13 +1,13 @@
 {
-	"headers": [
-		{
-			"source": "/fonts/Favorit-Regular.woff2",
-			"headers": [
-				{
-					"key": "Cache-Control",
-					"value": "public, max-age=31536000, immutable"
-				}
-			]
-		}
-	]
+  "headers": [
+    {
+      "source": "/fonts/Favorit-Regular.woff2",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }

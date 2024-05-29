@@ -1,6 +1,10 @@
-import { Fragment } from 'react';
-
-import { Menu, Transition } from '@headlessui/react';
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Transition,
+} from '@headlessui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -18,12 +22,11 @@ export const LanguageSwitcher = () => {
   const { locale, pathname, query } = useRouter();
   return (
     <Menu as='div' className='relative flex'>
-      <Menu.Button aria-label='switch language'>
+      <MenuButton aria-label='switch language'>
         <LanguageImage locale={locale?.toLocaleUpperCase()} />
-      </Menu.Button>
+      </MenuButton>
 
       <Transition
-        as={Fragment}
         enter='transition ease-out duration-100'
         enterFrom='transform opacity-0 scale-95'
         enterTo='transform opacity-100 scale-100'
@@ -31,11 +34,11 @@ export const LanguageSwitcher = () => {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute -left-4 top-5 w-16 origin-top ring-opacity-5 focus:outline-none'>
+        <MenuItems className='absolute -left-4 top-5 w-16 origin-top ring-opacity-5 focus:outline-none'>
           {languages
             .filter((language) => language !== locale?.toLocaleUpperCase())
             .map((language) => (
-              <Menu.Item key={language}>
+              <MenuItem key={language}>
                 <Link
                   href={{
                     pathname,
@@ -46,9 +49,9 @@ export const LanguageSwitcher = () => {
                 >
                   <LanguageImage locale={language} />
                 </Link>
-              </Menu.Item>
+              </MenuItem>
             ))}
-        </Menu.Items>
+        </MenuItems>
       </Transition>
     </Menu>
   );
