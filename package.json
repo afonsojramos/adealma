@@ -58,8 +58,12 @@
   },
   "license": "ISC",
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
+    "extends": ["@commitlint/config-conventional"]
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "biome check --apply --no-errors-on-unmatched",
+      "check-types"
     ]
   }
 }
