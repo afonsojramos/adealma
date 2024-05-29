@@ -169,7 +169,12 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
                 <td>{project.location}</td>
                 <td className='px-5'>{t(project.status)}</td>
                 <td className='px-5 text-center md:text-left'>
-                  <span>{getProjectYear(project.date)}</span>
+                  <span>
+                    {getProjectYear(project.date)}
+                    {project.endDate
+                      ? `-${getProjectYear(project.endDate)}`
+                      : ''}
+                  </span>
                 </td>
               </tr>
             ))}
