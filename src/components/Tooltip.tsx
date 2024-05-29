@@ -1,13 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { type ReactPortal, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-export const Tooltip = ({
+export const Tooltip: ({
   children,
-  offset = { x: 0, y: 0 },
+  offset,
 }: {
   children: React.ReactNode;
   offset?: { x: number; y: number };
-}) => {
+}) => ReactPortal = ({ children, offset = { x: 0, y: 0 } }) => {
   const element = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const Tooltip = ({
   }, [offset.x, offset.y]);
 
   return createPortal(
-    <div className='fixed top-0 pointer-events-none invisible' ref={element}>
+    <div className='pointer-events-none invisible fixed top-0' ref={element}>
       {children}
     </div>,
     document.body,

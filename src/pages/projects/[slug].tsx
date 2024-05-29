@@ -8,7 +8,7 @@ import { Footer } from 'components/Footer';
 import { Arrow } from 'components/Icons';
 import { Meta } from 'components/Meta';
 import { Navbar } from 'components/Navbar';
-import { IProject } from 'interfaces';
+import type { IProject } from 'interfaces';
 
 import projectsData from '../../../public/projects.json';
 

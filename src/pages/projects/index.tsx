@@ -3,7 +3,7 @@ import { Arrow, LinkChain } from 'components/Icons';
 import { Meta } from 'components/Meta';
 import { Navbar } from 'components/Navbar';
 import { Tooltip } from 'components/Tooltip';
-import { IProject, SortStatus as Sort } from 'interfaces';
+import { type IProject, SortStatus as Sort } from 'interfaces';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';

@@ -1,4 +1,4 @@
-import { IProject } from 'interfaces';
+import type { IProject } from 'interfaces';
 
 const groupBy = (
   list: IProject[],

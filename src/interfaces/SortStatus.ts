@@ -1,8 +1,8 @@
 export enum SortStatus {
-  Location,
-  InvLocation,
-  Status,
-  InvStatus,
-  Date,
-  InvDate,
+  Location = 0,
+  InvLocation = 1,
+  Status = 2,
+  InvStatus = 3,
+  Date = 4,
+  InvDate = 5,
 }
