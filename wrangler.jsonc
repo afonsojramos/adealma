@@ -5,6 +5,13 @@
   // handler, which the Cron Trigger below drives.
   "main": "src/worker.ts",
   "compatibility_date": "2026-08-01",
+  // The live domain. www redirects to the apex via a zone ruleset in the
+  // cloud repo, so the Worker only ever serves apex traffic.
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "adealma.com", "custom_domain": true },
+    { "pattern": "www.adealma.com", "custom_domain": true },
+  ],
   "compatibility_flags": ["nodejs_compat"],
   "d1_databases": [
     {
