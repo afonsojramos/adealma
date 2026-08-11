@@ -1,4 +1,2 @@
 #!/bin/sh
-# lint-staged is gone with the Next.js toolchain; oxlint and oxfmt are fast
-# enough to run over the whole project.
 nub run format:check && nub run lint

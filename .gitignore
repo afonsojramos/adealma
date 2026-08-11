@@ -14,8 +14,10 @@ emdash-env.d.ts
 
 # environment
 .env
-.env.production
+.env.*
+!.env.example
 .dev.vars
+.dev.vars.*
 
 # macOS
 .DS_Store
