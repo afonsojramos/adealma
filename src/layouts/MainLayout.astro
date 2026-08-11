@@ -1,4 +1,5 @@
 ---
+import { localePath, switchLocalePath } from "../i18n/routes";
 import { defaultLocale, type Locale } from "../i18n/ui";
 import MainHead from "./MainHead.astro";
 import "../styles/global.css";
@@ -12,11 +13,10 @@ interface Props {
 const { title, description, locale = defaultLocale } = Astro.props;
 
 const nav = [
-  { href: locale === defaultLocale ? "/" : `/${locale}/`, key: "home" },
-  { href: locale === defaultLocale ? "/about" : `/${locale}/about`, key: "about" },
-  { href: locale === defaultLocale ? "/projects" : `/${locale}/projects`, key: "projects" },
+  { href: localePath(locale, "/about"), key: "about" },
+  { href: localePath(locale, "/projects"), key: "projects" },
 ];
-const other = locale === "pt" ? "en" : "pt";
+const other: Locale = locale === "pt" ? "en" : "pt";
 ---
 
 <!doctype html>
@@ -26,12 +26,10 @@ const other = locale === "pt" ? "en" : "pt";
   </head>
   <body class="font-primary text-dark">
     <header class="flex items-center justify-between p-6 lg:px-16">
-      <a href={locale === defaultLocale ? "/" : `/${locale}/`} class="tracking-widest lowercase">
-        a de alma
-      </a>
+      <a href={localePath(locale)} class="tracking-widest lowercase">a de alma</a>
       <nav class="flex gap-6 lowercase">
-        {nav.slice(1).map((item) => <a href={item.href}>{item.key}</a>)}
-        <a href={other === defaultLocale ? "/" : `/${other}/`} class="uppercase">{other}</a>
+        {nav.map((item) => <a href={item.href}>{item.key}</a>)}
+        <a href={switchLocalePath(other, Astro.url.pathname)} class="uppercase">{other}</a>
       </nav>
     </header>
     <main>

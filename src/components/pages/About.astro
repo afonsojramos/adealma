@@ -1,0 +1,32 @@
+---
+import { getCopy } from "../../content";
+import type { Locale } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getCopy(locale);
+---
+
+<MainLayout title={copy.about_title} locale={locale}>
+  <section class="p-6 lg:px-16">
+    <h1 class="text-3xl lowercase">{copy.about_title}</h1>
+    {copy.about_description.map((paragraph) => <p class="max-w-2xl pt-6">{paragraph}</p>)}
+    <div class="grid gap-6 pt-10 md:grid-cols-3">
+      {
+        copy.about_images.map((image) => (
+          <img
+            src={`/images/${image.filename}.webp`}
+            alt={image.alt}
+            width="800"
+            height="600"
+            loading="lazy"
+          />
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

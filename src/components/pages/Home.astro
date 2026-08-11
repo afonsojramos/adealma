@@ -1,0 +1,20 @@
+---
+import { getCopy } from "../../content";
+import type { Locale } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getCopy(locale);
+---
+
+<MainLayout description={copy.description} locale={locale}>
+  <section class="p-6 lg:px-16">
+    <h1 class="text-4xl lowercase">{copy.site_name}</h1>
+    <p class="pt-2 lowercase">{copy.site_slogan}</p>
+    <p class="max-w-2xl pt-8">{copy.description}</p>
+  </section>
+</MainLayout>

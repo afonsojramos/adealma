@@ -1,5 +1,5 @@
 ---
-import Home from "../../components/pages/Home.astro";
+import About from "../../components/pages/About.astro";
 import { isLocale } from "../../i18n/ui";
 
 const { locale } = Astro.params;
@@ -8,4 +8,4 @@ if (!isLocale(locale)) {
 }
 ---
 
-<Home locale={locale} />
+<About locale={locale} />

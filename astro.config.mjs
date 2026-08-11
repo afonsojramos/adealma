@@ -7,23 +7,31 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import emdash from "emdash/astro";
 
+import projects from "./src/data/projects.json" with { type: "json" };
+
 const SITE_URL = "https://adealma.com";
+
+// Server-rendered routes are invisible to @astrojs/sitemap, so every page is
+// listed explicitly. English is unprefixed, Portuguese sits under /pt.
+const paths = ["/", "/about", "/projects", ...projects.map((p) => `/projects/${p.slug}`)];
+const customPages = [
+  ...paths.map((path) => `${SITE_URL}${path}`),
+  ...paths.map((path) => `${SITE_URL}/pt${path === "/" ? "" : path}`),
+];
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE_URL,
+  // One canonical form per page: without this both /about and /about/ resolve
+  // and the sitemap advertises both.
+  trailingSlash: "never",
   vite: {
     plugins: [tailwindcss()],
   },
   integrations: [
-    // Required by EmDash: its admin UI is React and stays on
-    // "Loading EmDash..." without this integration registered.
     react(),
-    sitemap(),
-    // EmDash CMS. Content is localised by EmDash itself (row-per-locale, with
-    // translations linked by translation_group), so there is no Paraglide here
-    // unlike critical-mass: project copy and page copy live in the CMS, and the
-    // handful of UI labels that are not content live in src/i18n/ui.ts.
+    sitemap({ customPages }),
+    // D1 holds the content, R2 the media.
     emdash({
       siteUrl: SITE_URL,
       database: d1({ binding: "DB" }),
@@ -35,8 +43,8 @@ export default defineConfig({
     imageService: "compile",
   }),
   i18n: {
-    locales: ["pt", "en"],
-    defaultLocale: "pt",
+    locales: ["en", "pt"],
+    defaultLocale: "en",
     routing: {
       prefixDefaultLocale: false,
     },

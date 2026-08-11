@@ -1,0 +1,48 @@
+---
+import { getProjectDescription, type Project } from "../../content";
+import { t, type Locale } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+interface Props {
+  locale: Locale;
+  project: Project;
+}
+
+const { locale, project } = Astro.props;
+
+const description = getProjectDescription(locale, project.slug);
+const year = project.endDate ? `${project.date} - ${project.endDate}` : project.date;
+---
+
+<MainLayout title={project.title} description={description} locale={locale}>
+  <article class="p-6 lg:px-16">
+    <h1 class="text-3xl lowercase">{project.title}</h1>
+    <dl class="flex gap-8 pt-4 text-sm">
+      <div>
+        <dt class="inline">{t(locale, "location")}:</dt><dd class="inline">{project.location}</dd>
+      </div>
+      <div>
+        <dt class="inline">{t(locale, "status")}:</dt><dd class="inline">
+          {t(locale, project.status)}
+        </dd>
+      </div>
+      <div>
+        <dt class="inline">{t(locale, "year")}:</dt><dd class="inline">{year}</dd>
+      </div>
+    </dl>
+    <p class="max-w-2xl pt-6">{description}</p>
+    <div class="grid gap-6 pt-10 md:grid-cols-2">
+      {
+        project.images.map((image) => (
+          <img
+            src={`/images/${image.filename}.webp`}
+            alt={image.alt}
+            width="1200"
+            height="900"
+            loading="lazy"
+          />
+        ))
+      }
+    </div>
+  </article>
+</MainLayout>

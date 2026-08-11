@@ -1,0 +1,14 @@
+---
+import Project from "../../../components/pages/Project.astro";
+import { getProjects } from "../../../content";
+import { isLocale } from "../../../i18n/ui";
+
+const { locale, slug } = Astro.params;
+const project = getProjects().find((entry) => entry.slug === slug);
+
+if (!isLocale(locale) || !project) {
+  return new Response(null, { status: 404 });
+}
+---
+
+<Project locale={locale} project={project} />
