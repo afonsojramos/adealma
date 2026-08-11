@@ -167,14 +167,16 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
     });
   }
 
-  // Sits to the left of the cursor: the table runs to the right edge, so a
-  // preview on that side is clipped by the viewport.
   const PREVIEW_WIDTH = 270;
   const PREVIEW_GAP = 25;
 
   document.addEventListener("mousemove", (event) => {
     if (!preview) return;
-    const x = event.clientX - PREVIEW_GAP - PREVIEW_WIDTH;
+    // Sits to the right of the cursor, and flips to the left only when that
+    // would take it past the edge of the viewport.
+    const right = event.clientX + PREVIEW_GAP;
+    const overflows = right + PREVIEW_WIDTH > document.documentElement.clientWidth;
+    const x = overflows ? event.clientX - PREVIEW_GAP - PREVIEW_WIDTH : right;
     preview.style.transform = `translate(${x}px, ${event.clientY - 210}px)`;
   });
 
