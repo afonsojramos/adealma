@@ -1,0 +1,12 @@
+---
+import Projects from "../../../components/pages/Projects.astro";
+import { notFound } from "../../../not-found";
+import { isLocale } from "../../../i18n/ui";
+
+const { locale } = Astro.params;
+if (!isLocale(locale)) {
+  return notFound(Astro.rewrite);
+}
+---
+
+<Projects locale={locale} />

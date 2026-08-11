@@ -1,0 +1,15 @@
+---
+import { getCopy } from "../content";
+import type { Locale } from "../i18n/ui";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getCopy(locale);
+---
+
+<span class="inline-flex items-center font-bold tracking-[.15em] text-primary-900">
+  {copy.site_name}
+</span>

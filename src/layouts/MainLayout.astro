@@ -1,0 +1,23 @@
+---
+import { defaultLocale, type Locale } from "../i18n/ui";
+import MainHead from "./MainHead.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: Locale;
+}
+
+const { title, description, locale = defaultLocale } = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale === "pt" ? "pt-PT" : "en"}>
+  <head>
+    <MainHead title={title} description={description} locale={locale} />
+  </head>
+  <body class="relative scroll-smooth bg-primary-100 antialiased">
+    <slot />
+  </body>
+</html>

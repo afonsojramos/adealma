@@ -1,0 +1,11 @@
+{
+  "experimentalSortImports": {},
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/.astro/**",
+    "**/package.json",
+    "**/emdash-env.d.ts",
+    "**/worker-configuration.d.ts"
+  ]
+}

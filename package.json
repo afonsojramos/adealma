@@ -1,56 +1,63 @@
 {
   "name": "adealma",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "postbuild": "next-sitemap",
-    "start": "next start",
-    "analyze": "ANALYZE=true npm run build",
-    "clean": "rimraf .next out",
-    "lint": "biome check --no-errors-on-unmatched .",
-    "check-types": "tsc --noEmit --pretty",
-    "prepare": "husky"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "astro build && wrangler deploy",
+    "check-types": "astro check",
+    "format": "oxfmt --ignore-path .gitignore && prettier --write '**/*.astro'",
+    "format:check": "oxfmt --ignore-path .gitignore --check && prettier --check '**/*.astro'",
+    "lint": "oxlint --type-aware --deny-warnings",
+    "lint:fix": "oxlint --type-aware --fix",
+    "prepare": "husky",
+    "cms:init": "emdash init",
+    "cms:seed": "emdash seed"
   },
   "dependencies": {
-    "@biomejs/biome": "1.7.3",
-    "@headlessui/react": "2.0.4",
-    "@vercel/analytics": "1.3.1",
-    "i18next": "23.11.5",
-    "next": "14.2.3",
-    "next-i18next": "15.3.0",
-    "next-sitemap": "4.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-i18next": "14.1.2",
-    "react-swipeable": "7.0.1",
-    "swiper": "11.1.3",
-    "tailwind-merge": "2.3.0"
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/cloudflare": "^14.2.0",
+    "@astrojs/react": "^6.0.2",
+    "@astrojs/sitemap": "^3.7.3",
+    "@emdash-cms/cloudflare": "^0.32.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.0",
+    "emdash": "^0.32.0",
+    "react": "^19.0.8",
+    "react-dom": "^19.0.8",
+    "sharp": "^0.35.3",
+    "swiper": "^14.1.0",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.3.0",
-    "@commitlint/config-conventional": "19.2.2",
-    "@next/bundle-analyzer": "14.2.3",
-    "@svgr/webpack": "8.1.0",
-    "@types/node": "20.12.12",
-    "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.19",
-    "autoprefixer": "10.4.19",
-    "husky": "9.0.11",
-    "lint-staged": "15.2.5",
-    "postcss": "8.4.38",
-    "rimraf": "5.0.7",
-    "tailwindcss": "3.4.3",
-    "typescript": "5.4.5"
+    "@cloudflare/workers-types": "^5.20260715.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "husky": "^9.1.7",
+    "oxfmt": "^0.62.0",
+    "oxlint": "^1.77.0",
+    "oxlint-tsgolint": "^7.0.2001",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "wrangler": "^4.120.0"
   },
-  "license": "ISC",
-  "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "biome check --apply --no-errors-on-unmatched",
-      "check-types"
-    ]
+  "trustedDependencies": [
+    "@tailwindcss/oxide",
+    "esbuild",
+    "sharp",
+    "workerd"
+  ],
+  "devEngines": {
+    "packageManager": {
+      "name": "nub",
+      "version": "^0.6.0",
+      "onFail": "warn"
+    }
   }
 }

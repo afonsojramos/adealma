@@ -1,0 +1,39 @@
+---
+import Arrow from "../../assets/icons/arrow.svg";
+import { getCopy } from "../../content";
+import { localePath } from "../../i18n/routes";
+import type { Locale } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Banner from "../Banner.astro";
+import Footer from "../Footer.astro";
+import Hero from "../Hero.astro";
+import Navbar from "../Navbar.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getCopy(locale);
+---
+
+<MainLayout description={copy.description} locale={locale}>
+  <Navbar locale={locale} />
+  <h1 class="text-primary-100">{`${copy.site_name} - ${copy.site_slogan}`}</h1>
+  <main class="flex flex-col">
+    <div class="h-screen grow">
+      <Banner />
+    </div>
+    <div class="flex w-full flex-col bg-primary-100">
+      <div class="relative">
+        <Hero description={copy.description} />
+        <a href={localePath(locale, "/projects")} title="projects">
+          <Arrow
+            class="absolute right-6 bottom-2 h-6 rotate-180 md:inset-y-1/4 md:h-8 lg:right-8 xl:right-12 2xl:right-14"
+          />
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer locale={locale} />
+</MainLayout>

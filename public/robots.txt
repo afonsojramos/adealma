@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_emdash/
+
+Sitemap: https://adealma.com/sitemap-index.xml

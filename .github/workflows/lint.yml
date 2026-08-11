@@ -1,0 +1,28 @@
+name: Code Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: Lint, format, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: jdx/mise-action@v3
+      - run: nub install
+      - run: nub run lint
+      - run: nub run format:check
+      - run: nub run build
+
+      # Validates the Worker config and bundle without deploying. The build
+      # passes even when compatibility_date, compatibility_flags or a binding id
+      # would stop the Worker from starting; this catches those.
+      - run: nubx wrangler deploy --dry-run
+
+      # wrangler rewrites this file in place when a binding id is missing,
+      # silently dropping comments and keys.
+      - name: wrangler.jsonc unchanged by build
+        run: git diff --exit-code wrangler.jsonc

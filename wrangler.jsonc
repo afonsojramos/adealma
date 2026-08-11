@@ -1,0 +1,34 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "adealma",
+  // Custom entry: wraps Astro's Cloudflare handler with EmDash's scheduled()
+  // handler, which the Cron Trigger below drives.
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-08-01",
+  // The live domain. www redirects to the apex via a zone ruleset in the
+  // cloud repo, so the Worker only ever serves apex traffic.
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "adealma.com", "custom_domain": true },
+    { "pattern": "www.adealma.com", "custom_domain": true },
+  ],
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "adealma-db",
+      "database_id": "2cf8bec2-dd47-4c34-be70-274e4e248050",
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "adealma-media",
+    },
+  ],
+  // EmDash has no timer fallback on Workers: scheduled publishing, plugin cron
+  // and cleanup all run from this trigger.
+  "triggers": {
+    "crons": ["*/15 * * * *"],
+  },
+}

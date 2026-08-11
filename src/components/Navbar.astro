@@ -1,0 +1,42 @@
+---
+import { localePath } from "../i18n/routes";
+import type { Locale } from "../i18n/ui";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import Logo from "./Logo.astro";
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  secondaryTitle?: string;
+  background?: boolean;
+}
+
+const { locale, title = "", secondaryTitle = "", background = false } = Astro.props;
+---
+
+<nav
+  class:list={[
+    "fixed z-10 flex w-screen items-center pt-8 pb-2 pl-8 tracking-widest lg:pt-8 lg:pl-40",
+    background && "bg-primary-100",
+  ]}
+>
+  {
+    title && (
+      <div class="z-20 flex-none text-base sm:text-xl md:ml-8">
+        <a href={localePath(locale)}>
+          <Logo locale={locale} />
+        </a>
+      </div>
+    )
+  }
+  <div class="w-20 grow pr-6 pl-12 text-left text-base leading-none sm:text-xl md:pl-24 lg:pl-32">
+    <h1 class="hidden md:inline xl:absolute xl:top-10 xl:left-0 xl:px-[33%]">
+      <span class="mr-24">{title}{secondaryTitle && ":"}</span>
+      {secondaryTitle}
+    </h1>
+    <span class="md:hidden">{secondaryTitle || title}</span>
+  </div>
+  <div class="pr-6 lg:pr-6 xl:pr-10 2xl:pr-[3.6rem]">
+    <LanguageSwitcher locale={locale} />
+  </div>
+</nav>

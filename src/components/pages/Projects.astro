@@ -1,0 +1,212 @@
+---
+import Arrow from "../../assets/icons/arrow.svg";
+import LinkChain from "../../assets/icons/link-chain.svg";
+import { getCopy, getProjects } from "../../content";
+import { localePath } from "../../i18n/routes";
+import { t, type Locale } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Footer from "../Footer.astro";
+import Navbar from "../Navbar.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = getCopy(locale);
+
+const year = (date: string) => Number.parseInt(date, 10);
+const projects = getProjects().toSorted((a, b) => year(b.date) - year(a.date));
+
+const byYear = new Map<number, typeof projects>();
+for (const project of projects) {
+  const key = year(project.date);
+  byYear.set(key, [...(byYear.get(key) ?? []), project]);
+}
+const years = [...byYear.keys()].toSorted((a, b) => b - a);
+---
+
+<MainLayout title={copy.projects_title} description={copy.description} locale={locale}>
+  <Navbar locale={locale} title={copy.projects_title} background />
+
+  <main class="inline-block w-full rounded-lg pt-32">
+    <a href={localePath(locale)}>
+      <Arrow class="absolute left-8 hidden h-6 lg:block" />
+    </a>
+    <div
+      class="mb-12 break-normal px-8 text-xl leading-[28px] md:pr-32 md:text-2xl md:leading-[30px] lg:pr-64 lg:pl-24 xl:pr-96 xl:pl-48 xl:text-3xl xl:leading-[40px] 2xl:pr-[35rem]"
+    >
+      <p class="mb-2">{copy.projects_description[0]}</p>
+    </div>
+
+    <table class="w-screen table-fixed border-spacing-2 text-left" data-projects>
+      <thead>
+        <tr class="border-b-[1px] border-primary-900 text-lg tracking-widest child:font-light">
+          <th class="hidden md:table-cell md:w-[36%]"></th>
+          <th class="hidden md:table-cell md:w-[27%]">
+            <button
+              type="button"
+              class="group inline-flex items-center leading-10"
+              data-sort="location"
+            >
+              <Arrow
+                class="mr-2 h-2 -rotate-90 transform opacity-0 transition duration-500 group-hover:opacity-100"
+              />
+              {t(locale, "location")}
+            </button>
+          </th>
+          <th class="hidden px-5 md:table-cell md:w-[20%]">
+            <button
+              type="button"
+              class="group inline-flex items-center leading-10"
+              data-sort="status"
+            >
+              <Arrow
+                class="mr-2 h-2 -rotate-90 transform opacity-0 transition duration-500 group-hover:opacity-100"
+              />
+              {t(locale, "status")}
+            </button>
+          </th>
+          <th class="flex items-center pl-8 md:w-3/12 md:px-5">
+            <button
+              type="button"
+              class="group inline-flex items-center leading-10"
+              data-sort="date"
+            >
+              <Arrow
+                class="mr-2 hidden h-2 -rotate-90 transform transition duration-500 group-hover:opacity-100 md:block"
+              />
+              {t(locale, "year")}
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          projects.map((project) => (
+            <tr
+              class="group hidden cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:hidden child:py-2 md:table-row child:md:table-cell"
+              data-href={localePath(locale, `/projects/${project.slug}`)}
+              data-slug={project.slug}
+              data-location={project.location}
+              data-status={project.status}
+              data-date={year(project.date)}
+            >
+              <td class="pr-16 pl-8 lg:pr-64 lg:pl-24 xl:pl-48">
+                <div class="flex w-max flex-row items-center">
+                  <span>{project.title}</span>
+                  <LinkChain class="w-max transform px-2 text-primary-100 opacity-0 transition duration-500 group-hover:opacity-100" />
+                </div>
+              </td>
+              <td>{project.location}</td>
+              <td class="px-5">{t(locale, project.status)}</td>
+              <td class="px-5 text-center md:text-left">
+                <span>
+                  {year(project.date)}
+                  {project.endDate ? `-${year(project.endDate)}` : ""}
+                </span>
+              </td>
+            </tr>
+          ))
+        }
+        {
+          years.map((y) => (
+            <tr class="cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest md:hidden">
+              <td class="flex flex-col p-0" data-year-toggle={y}>
+                <span class="px-5 py-2 text-center">{y}</span>
+                <div class="hidden flex-col" data-year-panel={y}>
+                  {byYear.get(y)?.map((project) => (
+                    <a
+                      class="border-t-[1px] border-primary-900 bg-primary-300 px-5 py-2 text-center text-2xl tracking-widest text-primary-100 hover:text-primary-900"
+                      href={localePath(locale, `/projects/${project.slug}`)}
+                    >
+                      {project.title}
+                    </a>
+                  ))}
+                </div>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+
+    <div class="pointer-events-none invisible fixed top-0 z-10 hidden md:block" data-preview>
+      <img data-preview-image src="" alt="" width="270" height="420" />
+    </div>
+
+    <div class="flex w-screen flex-row justify-between">
+      <a href={localePath(locale)}>
+        <Arrow class="m-8 flex h-6 lg:hidden" />
+      </a>
+    </div>
+  </main>
+  <Footer locale={locale} />
+</MainLayout>
+
+<script>
+  const table = document.querySelector<HTMLTableElement>("[data-projects]");
+  const tableBody = table?.querySelector<HTMLTableSectionElement>("tbody");
+
+  // The whole row navigates, not just the title.
+  const preview = document.querySelector<HTMLElement>("[data-preview]");
+  const previewImage = preview?.querySelector<HTMLImageElement>("[data-preview-image]");
+
+  for (const row of document.querySelectorAll<HTMLTableRowElement>("tr[data-href]")) {
+    row.addEventListener("click", () => {
+      window.location.href = row.dataset.href ?? "/";
+    });
+    row.addEventListener("mouseenter", () => {
+      if (!preview || !previewImage || !row.dataset.slug) return;
+      previewImage.src = `/images/${row.dataset.slug}.webp`;
+      previewImage.alt = `${row.dataset.slug} preview`;
+      preview.style.visibility = "visible";
+    });
+    row.addEventListener("mouseleave", () => {
+      if (preview) preview.style.visibility = "hidden";
+    });
+  }
+
+  const PREVIEW_WIDTH = 270;
+  const PREVIEW_GAP = 25;
+
+  document.addEventListener("mousemove", (event) => {
+    if (!preview) return;
+    // Sits to the right of the cursor, and flips to the left only when that
+    // would take it past the edge of the viewport.
+    const right = event.clientX + PREVIEW_GAP;
+    const overflows = right + PREVIEW_WIDTH > document.documentElement.clientWidth;
+    const x = overflows ? event.clientX - PREVIEW_GAP - PREVIEW_WIDTH : right;
+    preview.style.transform = `translate(${x}px, ${event.clientY - 210}px)`;
+  });
+
+  // Column sorting, toggling direction on repeat clicks.
+  const direction = new Map<string, number>([["date", -1]]);
+  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-sort]")) {
+    button.addEventListener("click", () => {
+      const key = button.dataset.sort ?? "date";
+      const next = (direction.get(key) ?? 1) * -1;
+      direction.set(key, next);
+      const rows = [...(tableBody?.querySelectorAll<HTMLTableRowElement>("tr[data-href]") ?? [])];
+      rows.sort((a, b) => {
+        const left = a.dataset[key] ?? "";
+        const right = b.dataset[key] ?? "";
+        const result = key === "date" ? Number(left) - Number(right) : left.localeCompare(right);
+        return result * next;
+      });
+      for (const row of rows) tableBody?.appendChild(row);
+    });
+  }
+
+  // Mobile: tapping a year reveals that year's projects.
+  for (const cell of document.querySelectorAll<HTMLElement>("[data-year-toggle]")) {
+    cell.addEventListener("click", () => {
+      const panel = cell.querySelector<HTMLElement>("[data-year-panel]");
+      panel?.classList.toggle("hidden");
+      panel?.classList.toggle("flex");
+      const open = panel?.classList.contains("hidden") === false;
+      cell.closest("tr")?.classList.toggle("bg-primary-300", open);
+      cell.closest("tr")?.classList.toggle("text-primary-100", open);
+    });
+  }
+</script>

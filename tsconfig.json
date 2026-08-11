@@ -1,38 +1,9 @@
 {
-	"compilerOptions": {
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"module": "esnext",
-		"moduleResolution": "node",
-		"baseUrl": "src",
-
-		"allowJs": false,
-		"allowSyntheticDefaultImports": true,
-		"allowUnreachableCode": false,
-		"alwaysStrict": true,
-		"declaration": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"incremental": true,
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"noEmit": true,
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitAny": true,
-		"noImplicitReturns": true,
-		"noImplicitThis": true,
-		"noUncheckedIndexedAccess": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"outDir": "out",
-		"preserveConstEnums": true,
-		"removeComments": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"strict": true,
-		"strictNullChecks": true,
-		"target": "es5"
-	},
-	"exclude": ["./out/**/*", "./node_modules/**/*"],
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"]
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "types": ["@cloudflare/workers-types"],
+    "strictNullChecks": true
+  }
 }

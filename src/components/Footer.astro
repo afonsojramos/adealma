@@ -1,0 +1,30 @@
+---
+import { localePath } from "../i18n/routes";
+import type { Locale } from "../i18n/ui";
+
+interface Props {
+  locale: Locale;
+  about?: boolean;
+}
+
+const { locale, about = false } = Astro.props;
+---
+
+<footer class="bg-primary-100 p-10 text-xs sm:text-sm md:pt-20 md:text-lg">
+  <div class="flex-row-reverse md:flex md:flex-row md:pl-20 lg:pl-32">
+    <a href="https://www.instagram.com/adealma.studio">@adealma.studio</a>
+    <a href="mailto:formulaobliqua@gmail.com" class="flex pl-12 md:pl-16 lg:pl-40 xl:pl-64"
+      >formulaobliqua@gmail.com</a
+    >
+    <a href="tel:+351936780872" class="flex pl-6 lg:pl-32 xl:pl-64">+351 936 780 872</a>
+  </div>
+  <div class="flex-row-reverse pt-2 text-right md:pl-48 md:text-left lg:pl-64 xl:pl-96">
+    <a href={localePath(locale)} class="hidden md:inline-flex">adealma.com</a>
+    <a
+      href={localePath(locale, about ? "/projects" : "/about")}
+      class="inline-flex pr-8 pl-0 font-bold md:pl-32 lg:pl-64"
+    >
+      {about ? "projects" : "about"}
+    </a>
+  </div>
+</footer>

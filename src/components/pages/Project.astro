@@ -1,0 +1,57 @@
+---
+import Arrow from "../../assets/icons/arrow.svg";
+import { getCopy, getProjectDescription, getProjects, type Project } from "../../content";
+import { localePath } from "../../i18n/routes";
+import { t, type Locale } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Carousel from "../Carousel.astro";
+import Footer from "../Footer.astro";
+import Navbar from "../Navbar.astro";
+
+interface Props {
+  locale: Locale;
+  project: Project;
+}
+
+const { locale, project } = Astro.props;
+const copy = getCopy(locale);
+const description = getProjectDescription(locale, project.slug);
+
+const projects = getProjects();
+const index = projects.findIndex((entry) => entry.slug === project.slug);
+const nextProject = projects[index + 1]?.slug ?? "";
+---
+
+<MainLayout title={project.title} description={description} locale={locale}>
+  <Navbar locale={locale} title={copy.projects_title} secondaryTitle={project.title} background />
+  <main class="pt-32">
+    <a href={localePath(locale, "/projects")}>
+      <Arrow class="absolute left-8 hidden h-6 lg:block" />
+    </a>
+    <div
+      class="mb-12 break-normal px-8 text-xl leading-[28px] md:px-[27%] md:leading-[25px] xl:px-[33%] xl:text-2xl xl:leading-[30px]"
+    >
+      {description}
+    </div>
+    <Carousel images={project.images} />
+    <p class="absolute px-5 pt-2 sm:right-1/3 sm:w-1/3 sm:px-3 sm:text-xs md:text-sm xl:text-base">
+      {`${project.date} - ${project.endDate ? project.endDate : t(locale, project.status)}`}
+    </p>
+    <img
+      src={`/images/${project.slug}/banner.webp`}
+      alt={project.title}
+      width="2476"
+      height="1416"
+      class="mt-24 flex w-screen flex-row items-center px-5"
+    />
+    <div class="flex w-screen flex-row-reverse justify-between">
+      <a href={localePath(locale, `/projects/${nextProject}`)}>
+        <Arrow class="m-8 h-6 rotate-180" />
+      </a>
+      <a href={localePath(locale, "/projects")}>
+        <Arrow class="m-8 flex h-6 lg:hidden" />
+      </a>
+    </div>
+  </main>
+  <Footer locale={locale} />
+</MainLayout>

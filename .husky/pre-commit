@@ -1,0 +1,2 @@
+#!/bin/sh
+nub run format:check && nub run lint

@@ -1,0 +1,14 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+// Rewrites land here with a 200 unless the status is set explicitly, which
+// would make every unknown URL a soft 404.
+Astro.response.status = 404;
+---
+
+<MainLayout title="404" locale="en">
+  <section class="p-6 lg:px-16">
+    <h1 class="text-3xl lowercase">page not found</h1>
+    <p class="pt-6"><a href="/" class="underline lowercase">back to home</a></p>
+  </section>
+</MainLayout>
