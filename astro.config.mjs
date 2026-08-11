@@ -25,6 +25,11 @@ export default defineConfig({
   // One canonical form per page: without this both /about and /about/ resolve
   // and the sitemap advertises both.
   trailingSlash: "never",
+  // Shortcut to the EmDash admin, which lives under the reserved /_emdash
+  // prefix that the integration injects.
+  redirects: {
+    "/admin": "/_emdash/admin",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
