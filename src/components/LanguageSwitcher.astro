@@ -1,0 +1,32 @@
+---
+import LangEN from "../assets/icons/en.svg";
+import LangPT from "../assets/icons/pt.svg";
+import { switchLocalePath } from "../i18n/routes";
+import type { Locale } from "../i18n/ui";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const other: Locale = locale === "pt" ? "en" : "pt";
+const langClass = "h-5 w-5 sm:h-6 sm:w-6 xl:w-7 xl:h-7";
+const Current = locale === "pt" ? LangPT : LangEN;
+const Other = other === "pt" ? LangPT : LangEN;
+---
+
+<div class="relative flex">
+  <details class="group">
+    <summary
+      class="cursor-pointer list-none [&::-webkit-details-marker]:hidden"
+      aria-label="switch language"
+    >
+      <Current class={langClass} />
+    </summary>
+    <div class="absolute top-5 -left-4 w-16 origin-top">
+      <a href={switchLocalePath(other, Astro.url.pathname)} class="block px-4 py-2">
+        <Other class={langClass} />
+      </a>
+    </div>
+  </details>
+</div>

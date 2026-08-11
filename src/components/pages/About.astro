@@ -2,6 +2,9 @@
 import { getCopy } from "../../content";
 import type { Locale } from "../../i18n/ui";
 import MainLayout from "../../layouts/MainLayout.astro";
+import Carousel from "../Carousel.astro";
+import Footer from "../Footer.astro";
+import Navbar from "../Navbar.astro";
 
 interface Props {
   locale: Locale;
@@ -9,24 +12,17 @@ interface Props {
 
 const { locale } = Astro.props;
 const copy = getCopy(locale);
+const body =
+  "mb-12 break-normal px-8 text-xl leading-[28px] md:pr-32 md:text-2xl md:leading-[30px] lg:pl-24 lg:pr-64 xl:pl-48 xl:pr-96 xl:text-3xl xl:leading-[40px] 2xl:pr-[35rem]";
 ---
 
-<MainLayout title={copy.about_title} locale={locale}>
-  <section class="p-6 lg:px-16">
-    <h1 class="text-3xl lowercase">{copy.about_title}</h1>
-    {copy.about_description.map((paragraph) => <p class="max-w-2xl pt-6">{paragraph}</p>)}
-    <div class="grid gap-6 pt-10 md:grid-cols-3">
-      {
-        copy.about_images.map((image) => (
-          <img
-            src={`/images/${image.filename}.webp`}
-            alt={image.alt}
-            width="800"
-            height="600"
-            loading="lazy"
-          />
-        ))
-      }
-    </div>
-  </section>
+<MainLayout title={copy.about_title} description={copy.about_description[0]} locale={locale}>
+  <Navbar locale={locale} title={copy.about_title} background />
+
+  <main class="inline-block w-full rounded-lg pt-32">
+    <div class={body}>{copy.about_description[0]}</div>
+    <Carousel images={copy.about_images} />
+    <div class:list={[body, "pt-16"]}>{copy.about_description[1]}</div>
+  </main>
+  <Footer locale={locale} about />
 </MainLayout>

@@ -1,0 +1,56 @@
+---
+interface Props {
+  images: { filename: string; alt: string }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="flex w-screen flex-row items-center px-5">
+  <swiper-container class="w-full" init="false" data-carousel>
+    {
+      images.map((image) => (
+        <swiper-slide>
+          <img src={`/images/${image.filename}.webp`} alt={image.alt} width="820" height="620" />
+        </swiper-slide>
+      ))
+    }
+  </swiper-container>
+</div>
+
+<style>
+  swiper-container:not(.swiper-initialized) {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  swiper-container:not(.swiper-initialized) swiper-slide {
+    flex: 0 0 100%;
+  }
+
+  @media (min-width: 640px) {
+    swiper-container:not(.swiper-initialized) swiper-slide {
+      flex: 0 0 calc((100% - 32px) / 3);
+    }
+  }
+</style>
+
+<script>
+  import { register } from "swiper/element/bundle";
+
+  register();
+
+  for (const element of document.querySelectorAll<HTMLElement>("[data-carousel]")) {
+    Object.assign(element, {
+      spaceBetween: 16,
+      slidesPerView: 1,
+      breakpoints: { 640: { slidesPerView: 3 } },
+      pagination: { clickable: true },
+      rewind: true,
+      autoplay: { delay: 5000 },
+    });
+    // @ts-expect-error initialize is added by the Swiper custom element
+    element.initialize();
+  }
+</script>

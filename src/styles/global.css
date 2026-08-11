@@ -2,35 +2,38 @@
 
 @font-face {
   font-family: "Favorit";
-  src: url("/fonts/Favorit-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Favorit";
   src: url("/fonts/Favorit-Regular.woff2") format("woff2");
   font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Favorit";
-  src: url("/fonts/Favorit-Bold.woff2") format("woff2");
-  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
 @theme {
-  --font-primary: "Favorit", ui-sans-serif, system-ui, sans-serif;
-  --color-dark: #222222;
+  --font-sans: "Favorit", sans-serif;
+
+  --color-primary-100: #ffffff;
+  --color-primary-200: #ebebeb;
+  --color-primary-300: #dadada;
+  --color-primary-400: #cbd5e0;
+  --color-primary-500: #a0aec0;
+  --color-primary-600: #718096;
+  --color-primary-700: #4a5568;
+  --color-primary-800: #1a202c;
+  --color-primary-900: #000000;
+
+  --text-10xl: 8.25rem;
+  --text-11xl: 10rem;
+  --text-12xl: 12.5rem;
+  --text-13xl: 16rem;
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    font-family: var(--font-primary);
   }
 }
