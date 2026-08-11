@@ -131,6 +131,10 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
       </tbody>
     </table>
 
+    <div class="pointer-events-none invisible fixed top-0 z-10 hidden md:block" data-preview>
+      <img data-preview-image src="" alt="" width="270" height="420" />
+    </div>
+
     <div class="flex w-screen flex-row justify-between">
       <a href={localePath(locale)}>
         <Arrow class="m-8 flex h-6 lg:hidden" />
@@ -144,12 +148,29 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
   const table = document.querySelector<HTMLTableElement>("[data-projects]");
   const tableBody = table?.querySelector<HTMLTableSectionElement>("tbody");
 
-  // Row navigation: the original made the whole row clickable.
+  // The whole row navigates, not just the title.
+  const preview = document.querySelector<HTMLElement>("[data-preview]");
+  const previewImage = preview?.querySelector<HTMLImageElement>("[data-preview-image]");
+
   for (const row of document.querySelectorAll<HTMLTableRowElement>("tr[data-href]")) {
     row.addEventListener("click", () => {
       window.location.href = row.dataset.href ?? "/";
     });
+    row.addEventListener("mouseenter", () => {
+      if (!preview || !previewImage || !row.dataset.slug) return;
+      previewImage.src = `/images/${row.dataset.slug}.webp`;
+      previewImage.alt = `${row.dataset.slug} preview`;
+      preview.style.visibility = "visible";
+    });
+    row.addEventListener("mouseleave", () => {
+      if (preview) preview.style.visibility = "hidden";
+    });
   }
+
+  document.addEventListener("mousemove", (event) => {
+    if (!preview) return;
+    preview.style.transform = `translate(${event.clientX + 25}px, ${event.clientY - 210}px)`;
+  });
 
   // Column sorting, toggling direction on repeat clicks.
   const direction = new Map<string, number>();
