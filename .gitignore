@@ -1,39 +1,21 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# build output
+dist/
+.astro/
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+node_modules/
 
-# testing
-/coverage
+# cloudflare
+.wrangler/
+worker-configuration.d.ts
 
-# next.js
-/.next
-/out
+# emdash
+emdash-env.d.ts
 
-# production
-/build
+# environment
+.env
+.env.production
+.dev.vars
 
-# misc
+# macOS
 .DS_Store
-*.pem
-Thumbs.db
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# dotenv local files
-.env*.local
-
-# local folder
-local
-
-# vercel
-.vercel
-
-# sitemap
-sitemap*.xml
-robots.txt

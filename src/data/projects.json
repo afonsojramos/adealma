@@ -1,0 +1,68 @@
+[
+  {
+    "title": "casa do cristelo",
+    "location": "caminha, portugal",
+    "status": "sold",
+    "date": "2022",
+    "endDate": "2024",
+    "slug": "casa-do-cristelo",
+    "images": [
+      {
+        "filename": "casa-do-cristelo/1",
+        "alt": "construction site"
+      },
+      {
+        "filename": "casa-do-cristelo/2",
+        "alt": "stairs"
+      },
+      {
+        "filename": "casa-do-cristelo/3",
+        "alt": "construction structure"
+      }
+    ]
+  },
+  {
+    "title": "casas da matriz",
+    "location": "caminha, portugal",
+    "status": "ongoing",
+    "date": "2022",
+    "endDate": "",
+    "slug": "casas-da-matriz",
+    "images": [
+      {
+        "filename": "casas-da-matriz/1",
+        "alt": "street view"
+      },
+      {
+        "filename": "casas-da-matriz/2",
+        "alt": "one of the houses"
+      },
+      {
+        "filename": "casas-da-matriz/3",
+        "alt": "detail of the facade"
+      }
+    ]
+  },
+  {
+    "title": "casa do pescador",
+    "location": "caminha, portugal",
+    "status": "sold",
+    "date": "2021",
+    "endDate": "2022",
+    "slug": "casa-do-pescador",
+    "images": [
+      {
+        "filename": "casa-do-pescador/1",
+        "alt": "street view"
+      },
+      {
+        "filename": "casa-do-pescador/2",
+        "alt": "detail of vase"
+      },
+      {
+        "filename": "casa-do-pescador/3",
+        "alt": "detail of the door"
+      }
+    ]
+  }
+]

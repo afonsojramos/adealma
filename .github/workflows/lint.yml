@@ -1,0 +1,19 @@
+name: Code Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: Lint, format, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: jdx/mise-action@v3
+      - run: nub install
+      - run: nub run lint
+      - run: nub run format:check
+      # astro check runs as part of build, so this covers types too.
+      - run: nub run build

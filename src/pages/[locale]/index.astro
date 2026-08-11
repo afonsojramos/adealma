@@ -1,0 +1,22 @@
+---
+import { getCopy } from "../../content";
+import { isLocale } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+// Server-rendered: getStaticPaths is ignored under output: "server", so the
+// locale is validated per request instead.
+const { locale } = Astro.params;
+if (!isLocale(locale)) {
+  return new Response(null, { status: 404, statusText: "Not found" });
+}
+
+const copy = getCopy(locale);
+---
+
+<MainLayout description={copy.description} locale={locale}>
+  <section class="p-6 lg:px-16">
+    <h1 class="text-4xl lowercase">{copy.site_name}</h1>
+    <p class="pt-2 lowercase">{copy.site_slogan}</p>
+    <p class="max-w-2xl pt-8">{copy.description}</p>
+  </section>
+</MainLayout>

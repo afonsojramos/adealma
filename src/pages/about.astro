@@ -1,0 +1,20 @@
+---
+import { getCopy } from "../content";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const copy = getCopy("pt");
+---
+
+<MainLayout title={copy.about_title} locale="pt">
+  <section class="p-6 lg:px-16">
+    <h1 class="text-3xl lowercase">{copy.about_title}</h1>
+    {copy.about_description.map((p) => <p class="max-w-2xl pt-6">{p}</p>)}
+    <div class="grid gap-6 pt-10 md:grid-cols-3">
+      {
+        copy.about_images.map((image) => (
+          <img src={`/images/${image.filename}.webp`} alt={image.alt} loading="lazy" />
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

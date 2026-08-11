@@ -1,0 +1,14 @@
+---
+import { getCopy } from "../content";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const copy = getCopy("pt");
+---
+
+<MainLayout description={copy.description} locale="pt">
+  <section class="p-6 lg:px-16">
+    <h1 class="text-4xl lowercase">{copy.site_name}</h1>
+    <p class="pt-2 lowercase">{copy.site_slogan}</p>
+    <p class="max-w-2xl pt-8">{copy.description}</p>
+  </section>
+</MainLayout>

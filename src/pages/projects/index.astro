@@ -1,0 +1,42 @@
+---
+import { getCopy, getProjects } from "../../content";
+import { t } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const locale = "pt" as const;
+const copy = getCopy(locale);
+// toSorted, not sort: getProjects returns the imported JSON array, and module
+// scope is reused across requests in a Worker, so sorting in place would
+// mutate shared state on every render.
+const projects = getProjects().toSorted((a, b) => Number(b.date) - Number(a.date));
+---
+
+<MainLayout title={copy.projects_title} locale={locale}>
+  <section class="p-6 lg:px-16">
+    <h1 class="text-3xl lowercase">{copy.projects_title}</h1>
+    {copy.projects_description.map((p) => <p class="max-w-2xl pt-6">{p}</p>)}
+
+    <ul class="grid gap-8 pt-10 md:grid-cols-3">
+      {
+        projects.map((project) => (
+          <li>
+            <a href={`/projects/${project.slug}`} class="block">
+              <img
+                src={`/images/${project.images[0]?.filename}.webp`}
+                alt={project.images[0]?.alt}
+                loading="lazy"
+              />
+              <h2 class="pt-3 lowercase">{project.title}</h2>
+              <p class="text-sm">
+                {t(locale, "location")}: {project.location}
+              </p>
+              <p class="text-sm">
+                {t(locale, "status")}: {t(locale, project.status)}
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</MainLayout>

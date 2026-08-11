@@ -1,0 +1,41 @@
+---
+import { defaultLocale, type Locale } from "../i18n/ui";
+import MainHead from "./MainHead.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: Locale;
+}
+
+const { title, description, locale = defaultLocale } = Astro.props;
+
+const nav = [
+  { href: locale === defaultLocale ? "/" : `/${locale}/`, key: "home" },
+  { href: locale === defaultLocale ? "/about" : `/${locale}/about`, key: "about" },
+  { href: locale === defaultLocale ? "/projects" : `/${locale}/projects`, key: "projects" },
+];
+const other = locale === "pt" ? "en" : "pt";
+---
+
+<!doctype html>
+<html lang={locale === "pt" ? "pt-PT" : "en"}>
+  <head>
+    <MainHead title={title} description={description} locale={locale} />
+  </head>
+  <body class="font-primary text-dark">
+    <header class="flex items-center justify-between p-6 lg:px-16">
+      <a href={locale === defaultLocale ? "/" : `/${locale}/`} class="tracking-widest lowercase">
+        a de alma
+      </a>
+      <nav class="flex gap-6 lowercase">
+        {nav.slice(1).map((item) => <a href={item.href}>{item.key}</a>)}
+        <a href={other === defaultLocale ? "/" : `/${other}/`} class="uppercase">{other}</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+---
+import { getProjectDescription, getProjects } from "../../content";
+import { t } from "../../i18n/ui";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+// Server-rendered, not prerendered: getStaticPaths is ignored under
+// output: "server", and content is destined for EmDash where it changes
+// without a rebuild. So the slug is resolved per request.
+const locale = "pt" as const;
+const { slug } = Astro.params;
+const project = getProjects().find((entry) => entry.slug === slug);
+
+if (!project) {
+  return new Response(null, { status: 404, statusText: "Not found" });
+}
+
+const description = getProjectDescription(locale, project.slug);
+---
+
+<MainLayout title={project.title} description={description} locale={locale}>
+  <article class="p-6 lg:px-16">
+    <h1 class="text-3xl lowercase">{project.title}</h1>
+    <dl class="flex gap-8 pt-4 text-sm">
+      <div>
+        <dt class="inline">{t(locale, "location")}:</dt><dd class="inline">{project.location}</dd>
+      </div>
+      <div>
+        <dt class="inline">{t(locale, "status")}:</dt><dd class="inline">
+          {t(locale, project.status)}
+        </dd>
+      </div>
+      <div>
+        <dt class="inline">{t(locale, "year")}:</dt><dd class="inline">{project.date}</dd>
+      </div>
+    </dl>
+    <p class="max-w-2xl pt-6">{description}</p>
+    <div class="grid gap-6 pt-10 md:grid-cols-2">
+      {
+        project.images.map((image) => (
+          <img src={`/images/${image.filename}.webp`} alt={image.alt} loading="lazy" />
+        ))
+      }
+    </div>
+  </article>
+</MainLayout>

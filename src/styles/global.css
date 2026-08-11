@@ -1,16 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@font-face {
-  font-family: 'Favorit';
-  src: url('/fonts/Favorit-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+/* Theme tokens move from tailwind.config.js into CSS, as Tailwind 4 expects. */
+@theme {
+  --font-primary: ui-sans-serif, system-ui, sans-serif;
+  --color-dark: #222222;
 }
 
-:root {
-  --swiper-navigation-color: #ffffff;
-  --swiper-pagination-color: #ffffff;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    font-family: var(--font-primary);
+  }
 }
