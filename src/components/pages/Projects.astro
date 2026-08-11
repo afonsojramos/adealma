@@ -167,9 +167,15 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
     });
   }
 
+  // Sits to the left of the cursor: the table runs to the right edge, so a
+  // preview on that side is clipped by the viewport.
+  const PREVIEW_WIDTH = 270;
+  const PREVIEW_GAP = 25;
+
   document.addEventListener("mousemove", (event) => {
     if (!preview) return;
-    preview.style.transform = `translate(${event.clientX + 25}px, ${event.clientY - 210}px)`;
+    const x = event.clientX - PREVIEW_GAP - PREVIEW_WIDTH;
+    preview.style.transform = `translate(${x}px, ${event.clientY - 210}px)`;
   });
 
   // Column sorting, toggling direction on repeat clicks.
