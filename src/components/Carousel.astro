@@ -19,18 +19,18 @@ const { images } = Astro.props;
 </div>
 
 <style>
-  swiper-container:not(.swiper-initialized) {
+  swiper-container:not([data-ready]) {
     display: flex;
     gap: 16px;
     overflow: hidden;
   }
 
-  swiper-container:not(.swiper-initialized) swiper-slide {
+  swiper-container:not([data-ready]) swiper-slide {
     flex: 0 0 100%;
   }
 
   @media (min-width: 640px) {
-    swiper-container:not(.swiper-initialized) swiper-slide {
+    swiper-container:not([data-ready]) swiper-slide {
       flex: 0 0 calc((100% - 32px) / 3);
     }
   }
@@ -52,5 +52,6 @@ const { images } = Astro.props;
     });
     // @ts-expect-error initialize is added by the Swiper custom element
     element.initialize();
+    element.setAttribute("data-ready", "");
   }
 </script>
