@@ -173,7 +173,7 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
   });
 
   // Column sorting, toggling direction on repeat clicks.
-  const direction = new Map<string, number>();
+  const direction = new Map<string, number>([["date", -1]]);
   for (const button of document.querySelectorAll<HTMLButtonElement>("[data-sort]")) {
     button.addEventListener("click", () => {
       const key = button.dataset.sort ?? "date";
@@ -194,7 +194,9 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
   for (const cell of document.querySelectorAll<HTMLElement>("[data-year-toggle]")) {
     cell.addEventListener("click", () => {
       const panel = cell.querySelector<HTMLElement>("[data-year-panel]");
-      const open = panel?.classList.toggle("hidden") === false;
+      panel?.classList.toggle("hidden");
+      panel?.classList.toggle("flex");
+      const open = panel?.classList.contains("hidden") === false;
       cell.closest("tr")?.classList.toggle("bg-primary-300", open);
       cell.closest("tr")?.classList.toggle("text-primary-100", open);
     });

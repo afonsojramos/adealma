@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Tailwind 4 has no built-in `child` variant; the original config supplied one. */
+@custom-variant child (& > *);
+
 @font-face {
   font-family: "Favorit";
   src: url("/fonts/Favorit-Regular.woff2") format("woff2");
