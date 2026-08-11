@@ -8,13 +8,15 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "wrangler deploy",
+    "deploy": "astro build && wrangler deploy",
     "check-types": "astro check",
     "format": "oxfmt --ignore-path .gitignore && prettier --write '**/*.astro'",
     "format:check": "oxfmt --ignore-path .gitignore --check && prettier --check '**/*.astro'",
     "lint": "oxlint --type-aware --deny-warnings",
     "lint:fix": "oxlint --type-aware --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "cms:init": "emdash init",
+    "cms:seed": "emdash seed"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

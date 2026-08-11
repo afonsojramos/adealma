@@ -17,3 +17,13 @@ jobs:
       - run: nub run format:check
       # astro check runs as part of build, so this covers types too.
       - run: nub run build
+
+      # Validates the Worker config and bundle without deploying. The build
+      # passes even when compatibility_date, compatibility_flags or a binding id
+      # would stop the Worker from starting; this catches those.
+      - run: nubx wrangler deploy --dry-run
+
+      # wrangler rewrites this file in place when a binding id is missing,
+      # silently dropping comments and keys.
+      - name: wrangler.jsonc unchanged by build
+        run: git diff --exit-code wrangler.jsonc

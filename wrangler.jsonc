@@ -4,33 +4,24 @@
   // Custom entry: wraps Astro's Cloudflare handler with EmDash's scheduled()
   // handler, which the Cron Trigger below drives.
   "main": "src/worker.ts",
-  "compatibility_date": "2026-08-11",
-  "compatibility_flags": [
-    "nodejs_compat",
-    // With nodejs_compat, Astro returns Response bodies as async iterables;
-    // Workers only accepts those with this flag. Default after 2026-02-19,
-    // set explicitly so the behaviour does not depend on the compat date.
-    "fetch_iterable_type_support",
-  ],
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "adealma-db",
-      // Filled in after `wrangler d1 create adealma-db`.
-      "database_id": "",
-      "remote": true,
+      "database_id": "2cf8bec2-dd47-4c34-be70-274e4e248050",
     },
   ],
   "r2_buckets": [
     {
       "binding": "MEDIA",
       "bucket_name": "adealma-media",
-      "remote": true,
     },
   ],
   // EmDash has no timer fallback on Workers: scheduled publishing, plugin cron
   // and cleanup all run from this trigger.
   "triggers": {
-    "crons": ["* * * * *"],
+    "crons": ["*/15 * * * *"],
   },
 }
