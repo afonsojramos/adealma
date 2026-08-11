@@ -15,7 +15,6 @@ jobs:
       - run: nub install
       - run: nub run lint
       - run: nub run format:check
-      # astro check runs as part of build, so this covers types too.
       - run: nub run build
 
       # Validates the Worker config and bundle without deploying. The build

@@ -1,4 +1,5 @@
 ---
+import { localePath } from "../i18n/routes";
 import type { Locale } from "../i18n/ui";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import Logo from "./Logo.astro";
@@ -22,7 +23,7 @@ const { locale, title = "", secondaryTitle = "", background = false } = Astro.pr
   {
     title && (
       <div class="z-20 flex-none text-base sm:text-xl md:ml-8">
-        <a href={locale === "en" ? "/" : `/${locale}`}>
+        <a href={localePath(locale)}>
           <Logo locale={locale} />
         </a>
       </div>
