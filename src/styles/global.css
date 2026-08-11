@@ -1,8 +1,28 @@
 @import "tailwindcss";
 
-/* Theme tokens move from tailwind.config.js into CSS, as Tailwind 4 expects. */
+@font-face {
+  font-family: "Favorit";
+  src: url("/fonts/Favorit-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Favorit";
+  src: url("/fonts/Favorit-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Favorit";
+  src: url("/fonts/Favorit-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
 @theme {
-  --font-primary: ui-sans-serif, system-ui, sans-serif;
+  --font-primary: "Favorit", ui-sans-serif, system-ui, sans-serif;
   --color-dark: #222222;
 }
 
