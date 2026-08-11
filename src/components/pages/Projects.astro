@@ -13,10 +13,12 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const copy = getCopy(locale);
+const copy = await getCopy(Astro.locals, locale);
 
 const year = (date: string) => Number.parseInt(date, 10);
-const projects = getProjects().toSorted((a, b) => year(b.date) - year(a.date));
+const projects = (await getProjects(Astro.locals, locale)).toSorted(
+  (a, b) => year(b.date) - year(a.date),
+);
 
 const byYear = new Map<number, typeof projects>();
 for (const project of projects) {

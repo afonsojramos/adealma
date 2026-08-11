@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const copy = getCopy(locale);
+const copy = await getCopy(Astro.locals, locale);
 ---
 
 <span class="inline-flex items-center font-bold tracking-[.15em] text-primary-900">

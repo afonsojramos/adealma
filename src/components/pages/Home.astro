@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const copy = getCopy(locale);
+const copy = await getCopy(Astro.locals, locale);
 ---
 
 <MainLayout description={copy.description} locale={locale}>

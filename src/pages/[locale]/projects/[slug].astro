@@ -5,9 +5,14 @@ import { isLocale } from "../../../i18n/ui";
 import { notFound } from "../../../not-found";
 
 const { locale, slug } = Astro.params;
-const project = getProjects().find((entry) => entry.slug === slug);
 
-if (!isLocale(locale) || !project) {
+if (!isLocale(locale)) {
+  return notFound(Astro.rewrite);
+}
+
+const project = (await getProjects(Astro.locals, locale)).find((entry) => entry.slug === slug);
+
+if (!project) {
   return notFound(Astro.rewrite);
 }
 ---

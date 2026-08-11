@@ -14,10 +14,10 @@ interface Props {
 }
 
 const { locale, project } = Astro.props;
-const copy = getCopy(locale);
-const description = getProjectDescription(locale, project.slug);
+const copy = await getCopy(Astro.locals, locale);
+const description = await getProjectDescription(Astro.locals, locale, project.slug);
 
-const projects = getProjects();
+const projects = await getProjects(Astro.locals, locale);
 const index = projects.findIndex((entry) => entry.slug === project.slug);
 const nextProject = projects[index + 1]?.slug ?? "";
 ---

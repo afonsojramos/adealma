@@ -1,0 +1,465 @@
+{
+  "$schema": "https://emdashcms.com/seed.schema.json",
+  "version": "1",
+  "defaultLocale": "en",
+  "meta": {
+    "name": "A de Alma",
+    "description": "Site content for adealma.com"
+  },
+  "collections": [
+    {
+      "slug": "projects",
+      "label": "Projects",
+      "labelSingular": "Project",
+      "description": "The rehabilitation projects listed on the site.",
+      "icon": "image",
+      "supports": ["drafts", "revisions"],
+      "urlPattern": "/projects/{slug}",
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "searchable": true,
+          "translatable": false
+        },
+        {
+          "slug": "location",
+          "label": "Location",
+          "type": "string",
+          "required": true,
+          "translatable": false
+        },
+        {
+          "slug": "sale_status",
+          "label": "Status",
+          "type": "select",
+          "required": true,
+          "translatable": false,
+          "validation": {
+            "options": ["ongoing", "sold", "on_sale"]
+          }
+        },
+        {
+          "slug": "date",
+          "label": "Start year",
+          "type": "string",
+          "required": true,
+          "translatable": false
+        },
+        {
+          "slug": "end_date",
+          "label": "End year",
+          "type": "string",
+          "translatable": false
+        },
+        {
+          "slug": "images",
+          "label": "Images",
+          "type": "repeater",
+          "required": true,
+          "translatable": false,
+          "validation": {
+            "subFields": [
+              {
+                "slug": "filename",
+                "type": "string",
+                "label": "File",
+                "required": true
+              },
+              {
+                "slug": "alt",
+                "type": "string",
+                "label": "Alt text",
+                "required": true
+              }
+            ],
+            "minItems": 1
+          }
+        },
+        {
+          "slug": "description",
+          "label": "Description",
+          "type": "text",
+          "required": true,
+          "searchable": true,
+          "options": {
+            "rows": 8
+          }
+        }
+      ]
+    },
+    {
+      "slug": "site_copy",
+      "label": "Site copy",
+      "labelSingular": "Site copy",
+      "description": "The text on the home, about and projects pages.",
+      "icon": "text",
+      "supports": ["drafts", "revisions"],
+      "fields": [
+        {
+          "slug": "site_name",
+          "label": "Site name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "slug": "site_slogan",
+          "label": "Slogan",
+          "type": "string",
+          "required": true
+        },
+        {
+          "slug": "description",
+          "label": "Home description",
+          "type": "text",
+          "required": true,
+          "options": {
+            "rows": 5
+          }
+        },
+        {
+          "slug": "about_title",
+          "label": "About title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "slug": "about_description",
+          "label": "About paragraphs",
+          "type": "repeater",
+          "required": true,
+          "validation": {
+            "subFields": [
+              {
+                "slug": "text",
+                "type": "text",
+                "label": "Paragraph",
+                "required": true
+              }
+            ],
+            "minItems": 1
+          }
+        },
+        {
+          "slug": "about_images",
+          "label": "About images",
+          "type": "repeater",
+          "required": true,
+          "translatable": false,
+          "validation": {
+            "subFields": [
+              {
+                "slug": "filename",
+                "type": "string",
+                "label": "File",
+                "required": true
+              },
+              {
+                "slug": "alt",
+                "type": "string",
+                "label": "Alt text",
+                "required": true
+              }
+            ],
+            "minItems": 1
+          }
+        },
+        {
+          "slug": "projects_title",
+          "label": "Projects title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "slug": "projects_description",
+          "label": "Projects paragraphs",
+          "type": "repeater",
+          "required": true,
+          "validation": {
+            "subFields": [
+              {
+                "slug": "text",
+                "type": "text",
+                "label": "Paragraph",
+                "required": true
+              }
+            ],
+            "minItems": 1
+          }
+        }
+      ]
+    }
+  ],
+  "content": {
+    "projects": [
+      {
+        "id": "project:casa-do-cristelo:en",
+        "slug": "casa-do-cristelo",
+        "status": "published",
+        "locale": "en",
+        "data": {
+          "title": "casa do cristelo",
+          "location": "caminha, portugal",
+          "date": "2022",
+          "images": [
+            {
+              "filename": "casa-do-cristelo/1",
+              "alt": "construction site"
+            },
+            {
+              "filename": "casa-do-cristelo/2",
+              "alt": "stairs"
+            },
+            {
+              "filename": "casa-do-cristelo/3",
+              "alt": "construction structure"
+            }
+          ],
+          "end_date": "2024",
+          "sale_status": "sold",
+          "description": "Five minutes from Moledo beach and with a sea views, this three bedroom villa enjoys the rural tranquility of Cristelo and easy access to urban centers. Swimming pool, large garden and a central terrace, connecting the two modules of the house, invite to enjoy the outdoor life. The villa preserves the main façade and stone and wood elements of the original construction, which gives it a remarkable character."
+        }
+      },
+      {
+        "id": "project:casa-do-cristelo:pt",
+        "slug": "casa-do-cristelo",
+        "status": "published",
+        "locale": "pt",
+        "data": {
+          "title": "casa do cristelo",
+          "location": "caminha, portugal",
+          "date": "2022",
+          "images": [
+            {
+              "filename": "casa-do-cristelo/1",
+              "alt": "construction site"
+            },
+            {
+              "filename": "casa-do-cristelo/2",
+              "alt": "stairs"
+            },
+            {
+              "filename": "casa-do-cristelo/3",
+              "alt": "construction structure"
+            }
+          ],
+          "end_date": "2024",
+          "sale_status": "sold",
+          "description": "Situada a cinco minutos da praia de Moledo e com vista de mar, esta moradia V3 goza da tranquilidade rural de Cristelo e do acesso fácil aos centros urbanos. Piscina, amplo jardim e um terreiro central, ligando os dois módulos da casa, convidam à fruição da vida ao ar livre. A moradia preserva a fachada principal e elementos em pedra e madeira da construção original, o que lhe atribui um carácter notável."
+        },
+        "translationOf": "project:casa-do-cristelo:en"
+      },
+      {
+        "id": "project:casas-da-matriz:en",
+        "slug": "casas-da-matriz",
+        "status": "published",
+        "locale": "en",
+        "data": {
+          "title": "casas da matriz",
+          "location": "caminha, portugal",
+          "date": "2022",
+          "images": [
+            {
+              "filename": "casas-da-matriz/1",
+              "alt": "street view"
+            },
+            {
+              "filename": "casas-da-matriz/2",
+              "alt": "one of the houses"
+            },
+            {
+              "filename": "casas-da-matriz/3",
+              "alt": "detail of the facade"
+            }
+          ],
+          "end_date": "",
+          "sale_status": "ongoing",
+          "description": "In the historic centre of Caminha, next to the parish church, the union of two buildings gave rise to five flats: two studio flats and three two-bedroom flats. Of the exemplary intervention, one must highlight the perfect distinction of the original façades, composing a classic frontage with the colours of Alto Minho, green and blue. It is also worth mentioning the construction of a lobby, which allowed the creation of an interior garden between flats. Stone and wood are the privileged materials."
+        }
+      },
+      {
+        "id": "project:casas-da-matriz:pt",
+        "slug": "casas-da-matriz",
+        "status": "published",
+        "locale": "pt",
+        "data": {
+          "title": "casas da matriz",
+          "location": "caminha, portugal",
+          "date": "2022",
+          "images": [
+            {
+              "filename": "casas-da-matriz/1",
+              "alt": "street view"
+            },
+            {
+              "filename": "casas-da-matriz/2",
+              "alt": "one of the houses"
+            },
+            {
+              "filename": "casas-da-matriz/3",
+              "alt": "detail of the facade"
+            }
+          ],
+          "end_date": "",
+          "sale_status": "ongoing",
+          "description": "No centro histórico de Caminha, junto à Igreja Matriz, a união de dois edifícios deu origem a cinco apartamentos: dois T0 e três T2. Da intervenção exemplar, realce-se a perfeita distinção das fachadas originais, compondo uma frontaria clássica com as cores do Alto Minho, verde e azul. Destaque-se também a construção de um saguão, que permitiu criar um jardim interior entre apartamentos. Pedra e madeira são os materiais privilegiados."
+        },
+        "translationOf": "project:casas-da-matriz:en"
+      },
+      {
+        "id": "project:casa-do-pescador:en",
+        "slug": "casa-do-pescador",
+        "status": "published",
+        "locale": "en",
+        "data": {
+          "title": "casa do pescador",
+          "location": "caminha, portugal",
+          "date": "2021",
+          "images": [
+            {
+              "filename": "casa-do-pescador/1",
+              "alt": "street view"
+            },
+            {
+              "filename": "casa-do-pescador/2",
+              "alt": "detail of vase"
+            },
+            {
+              "filename": "casa-do-pescador/3",
+              "alt": "detail of the door"
+            }
+          ],
+          "end_date": "2022",
+          "sale_status": "sold",
+          "description": "In an old fishing neighbourhood in Caminha, near the beach, modern architectural solutions have enhanced this modest-sized typical house, now a two-bedroom with kitchenette and optimised space. The open ceiling, with exposed wooden trusses, creates amplitude and luminosity. The façade and the mosaic on the patio floor are traditional elements that harmoniously combine with the minimalist design."
+        }
+      },
+      {
+        "id": "project:casa-do-pescador:pt",
+        "slug": "casa-do-pescador",
+        "status": "published",
+        "locale": "pt",
+        "data": {
+          "title": "casa do pescador",
+          "location": "caminha, portugal",
+          "date": "2021",
+          "images": [
+            {
+              "filename": "casa-do-pescador/1",
+              "alt": "street view"
+            },
+            {
+              "filename": "casa-do-pescador/2",
+              "alt": "detail of vase"
+            },
+            {
+              "filename": "casa-do-pescador/3",
+              "alt": "detail of the door"
+            }
+          ],
+          "end_date": "2022",
+          "sale_status": "sold",
+          "description": "Num velho bairro piscatório de Caminha, perto da praia, as soluções da arquitetura moderna valorizaram esta casa típica de dimensão modesta, hoje um T2 com kitchenette e espaço otimizado. O teto aberto, com asnas de madeira à vista, cria amplitude e luminosidade. A fachada e o mosaico no chão do pátio são elementos tradicionais que harmoniosamente se conciliam com o design minimalista."
+        },
+        "translationOf": "project:casa-do-pescador:en"
+      }
+    ],
+    "site_copy": [
+      {
+        "id": "site-copy:en",
+        "slug": "site-copy",
+        "status": "published",
+        "locale": "en",
+        "data": {
+          "site_name": "a de alma",
+          "site_slogan": "rehabilitation with soul",
+          "description": "To rehabilitate is to feel the identity of the place. It is wanting to hand over history to new protagonists. Rare houses then emerge, houses with soul, open to new plans of life.",
+          "about_title": "about",
+          "about_description": [
+            {
+              "text": "A de Alma [alma = soul]. The name reflects our passion for building rehabilitation and the unique essence of each project we undertake."
+            },
+            {
+              "text": "The preservation of heritage and the reinterpretation of space are the coordinates of our interventions. In A de Alma houses, there is a strong sense of belonging to the territory. There are solid roots, sustaining the lightness and fluidity of contemporary environments."
+            }
+          ],
+          "about_images": [
+            {
+              "filename": "about-1",
+              "alt": "boat stopped in the river"
+            },
+            {
+              "filename": "about-2",
+              "alt": "stones to be used in construction"
+            },
+            {
+              "filename": "about-3",
+              "alt": "street with houses to be rehabilitated"
+            }
+          ],
+          "projects_title": "projects",
+          "projects_description": [
+            {
+              "text": "Fully integrated into their surroundings, the houses are the result of demanding rehabilitation programmes. The restoration of iconic elements of the original architecture and the redimensioning of the space to meet current standards of wellbeing can be seen in them."
+            },
+            {
+              "text": "Both in the great architectural solutions and in the fusion between local tradition and new design, it is the noble materials that allow the ideals of enjoyment, functionality and comfort to be fulfilled."
+            },
+            {
+              "text": "Regardless the common criteria, each house has unique qualities, a charm that is all its own."
+            }
+          ]
+        }
+      },
+      {
+        "id": "site-copy:pt",
+        "slug": "site-copy",
+        "status": "published",
+        "locale": "pt",
+        "data": {
+          "site_name": "a de alma",
+          "site_slogan": "reabilitação com alma",
+          "description": "Reabilitar é sentir a identidade do lugar. É querer entregar a história a novos protagonistas. Surgem então casas raras, casas com alma, abertas a novos planos da vida.",
+          "about_title": "sobre",
+          "about_description": [
+            {
+              "text": "A de Alma. O nome traduz a nossa paixão pela reabilitação de edifícios e a essência especial de cada projeto a que nos dedicamos."
+            },
+            {
+              "text": "A preservação do património e a reinterpretação do espaço são as coordenadas das nossas intervenções. Nas casas A de Alma, há o forte sentido de pertença ao território. Existem raízes sólidas, sustentando a leveza e fluidez de ambientes contemporâneos."
+            }
+          ],
+          "about_images": [
+            {
+              "filename": "about-1",
+              "alt": "barco parado no rio"
+            },
+            {
+              "filename": "about-2",
+              "alt": "pedras a ser usadas na construção"
+            },
+            {
+              "filename": "about-3",
+              "alt": "ruas com propriedades a reabilitar"
+            }
+          ],
+          "projects_title": "projetos",
+          "projects_description": [
+            {
+              "text": "Plenamente integradas no meio envolvente, as casas resultam de programas de reabilitação exigentes. Denotam o restauro de elementos icónicos da arquitetura original e o redimensionamento do espaço, feito ao encontro dos padrões atuais de bem-estar."
+            },
+            {
+              "text": "Tanto nas grandes soluções arquitetónicas como na fusão entre tradição local e novo design, são os materiais nobres que deixam cumprir os ideais de fruição, funcionalidade e conforto."
+            },
+            {
+              "text": "À parte os critérios comuns, cada casa tem qualidades únicas, um charme que é só seu."
+            }
+          ]
+        },
+        "translationOf": "site-copy:en"
+      }
+    ]
+  }
+}
