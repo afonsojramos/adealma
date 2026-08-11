@@ -180,21 +180,50 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
     preview.style.transform = `translate(${x}px, ${event.clientY - 210}px)`;
   });
 
-  // Column sorting, toggling direction on repeat clicks.
-  const direction = new Map<string, number>([["date", -1]]);
+  // Column sorting. The arrow shows which column is sorted and whether it is
+  // in its base or inverted state, which is what the rotation means: base is
+  // ascending for the text columns and descending for the year.
+  const BASE_ASCENDING: Record<string, boolean> = {
+    location: true,
+    status: true,
+    date: false,
+  };
+
+  // The table is server-rendered in the year column's base state.
+  let activeKey = "date";
+  let inverted = false;
+
+  const arrows = new Map<string, SVGElement | null>();
+  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-sort]")) {
+    arrows.set(button.dataset.sort ?? "", button.querySelector<SVGElement>("svg"));
+  }
+
+  function paintArrows() {
+    for (const [key, svg] of arrows) {
+      if (!svg) continue;
+      const active = key === activeKey;
+      svg.classList.toggle("opacity-0", !active);
+      svg.classList.toggle("rotate-90", active && inverted);
+      svg.classList.toggle("-rotate-90", !(active && inverted));
+    }
+  }
+
   for (const button of document.querySelectorAll<HTMLButtonElement>("[data-sort]")) {
     button.addEventListener("click", () => {
       const key = button.dataset.sort ?? "date";
-      const next = (direction.get(key) ?? 1) * -1;
-      direction.set(key, next);
+      inverted = key === activeKey ? !inverted : false;
+      activeKey = key;
+
+      const ascending = BASE_ASCENDING[key] !== inverted;
       const rows = [...(tableBody?.querySelectorAll<HTMLTableRowElement>("tr[data-href]") ?? [])];
       rows.sort((a, b) => {
         const left = a.dataset[key] ?? "";
         const right = b.dataset[key] ?? "";
         const result = key === "date" ? Number(left) - Number(right) : left.localeCompare(right);
-        return result * next;
+        return ascending ? result : -result;
       });
       for (const row of rows) tableBody?.appendChild(row);
+      paintArrows();
     });
   }
 
