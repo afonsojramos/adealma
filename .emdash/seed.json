@@ -21,22 +21,19 @@
           "label": "Title",
           "type": "string",
           "required": true,
-          "searchable": true,
-          "translatable": false
+          "searchable": true
         },
         {
           "slug": "location",
           "label": "Location",
           "type": "string",
-          "required": true,
-          "translatable": false
+          "required": true
         },
         {
           "slug": "sale_status",
           "label": "Status",
           "type": "select",
           "required": true,
-          "translatable": false,
           "validation": {
             "options": ["ongoing", "sold", "on_sale"]
           }
@@ -45,21 +42,18 @@
           "slug": "date",
           "label": "Start year",
           "type": "string",
-          "required": true,
-          "translatable": false
+          "required": true
         },
         {
           "slug": "end_date",
           "label": "End year",
-          "type": "string",
-          "translatable": false
+          "type": "string"
         },
         {
           "slug": "images",
           "label": "Images",
           "type": "repeater",
           "required": true,
-          "translatable": false,
           "validation": {
             "subFields": [
               {
@@ -82,19 +76,27 @@
           "slug": "banner",
           "label": "Banner",
           "type": "image",
-          "required": true,
-          "translatable": false
+          "required": true
         },
         {
           "slug": "preview",
           "label": "Hover preview",
           "type": "image",
-          "required": true,
-          "translatable": false
+          "required": true
         },
         {
-          "slug": "description",
-          "label": "Description",
+          "slug": "description_en",
+          "label": "Description (EN)",
+          "type": "text",
+          "required": true,
+          "searchable": true,
+          "options": {
+            "rows": 8
+          }
+        },
+        {
+          "slug": "description_pt",
+          "label": "Description (PT)",
           "type": "text",
           "required": true,
           "searchable": true,
@@ -195,7 +197,7 @@
   "content": {
     "projects": [
       {
-        "id": "project:casa-do-cristelo:en",
+        "id": "project:casa-do-cristelo",
         "slug": "casa-do-cristelo",
         "status": "published",
         "locale": "en",
@@ -266,87 +268,12 @@
           },
           "end_date": "2024",
           "sale_status": "sold",
-          "description": "Five minutes from Moledo beach and with a sea views, this three bedroom villa enjoys the rural tranquility of Cristelo and easy access to urban centers. Swimming pool, large garden and a central terrace, connecting the two modules of the house, invite to enjoy the outdoor life. The villa preserves the main façade and stone and wood elements of the original construction, which gives it a remarkable character."
+          "description_en": "Five minutes from Moledo beach and with a sea views, this three bedroom villa enjoys the rural tranquility of Cristelo and easy access to urban centers. Swimming pool, large garden and a central terrace, connecting the two modules of the house, invite to enjoy the outdoor life. The villa preserves the main façade and stone and wood elements of the original construction, which gives it a remarkable character.",
+          "description_pt": "Situada a cinco minutos da praia de Moledo e com vista de mar, esta moradia V3 goza da tranquilidade rural de Cristelo e do acesso fácil aos centros urbanos. Piscina, amplo jardim e um terreiro central, ligando os dois módulos da casa, convidam à fruição da vida ao ar livre. A moradia preserva a fachada principal e elementos em pedra e madeira da construção original, o que lhe atribui um carácter notável."
         }
       },
       {
-        "id": "project:casa-do-cristelo:pt",
-        "slug": "casa-do-cristelo",
-        "status": "published",
-        "locale": "pt",
-        "data": {
-          "title": "casa do cristelo",
-          "location": "caminha, portugal",
-          "date": "2022",
-          "images": [
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R1008FB068HSYQWK5G9P",
-                "src": "/_emdash/api/media/file/01K1H8R1008FB068HSYQWK5G9P.webp",
-                "filename": "1.webp",
-                "mimeType": "image/webp",
-                "width": 818,
-                "height": 1260,
-                "alt": "construction site"
-              },
-              "alt": "construction site"
-            },
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R10098ZKFYS3SX880X7M",
-                "src": "/_emdash/api/media/file/01K1H8R10098ZKFYS3SX880X7M.webp",
-                "filename": "2.webp",
-                "mimeType": "image/webp",
-                "width": 820,
-                "height": 1260,
-                "alt": "stairs"
-              },
-              "alt": "stairs"
-            },
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R100GGXXA4WZ1VM6G31H",
-                "src": "/_emdash/api/media/file/01K1H8R100GGXXA4WZ1VM6G31H.webp",
-                "filename": "3.webp",
-                "mimeType": "image/webp",
-                "width": 820,
-                "height": 1260,
-                "alt": "construction structure"
-              },
-              "alt": "construction structure"
-            }
-          ],
-          "banner": {
-            "provider": "local",
-            "id": "01K1H8R100493GH4T56H9Y6BPD",
-            "src": "/_emdash/api/media/file/01K1H8R100493GH4T56H9Y6BPD.webp",
-            "filename": "banner.webp",
-            "mimeType": "image/webp",
-            "width": 2476,
-            "height": 1416,
-            "alt": "casa do cristelo"
-          },
-          "preview": {
-            "provider": "local",
-            "id": "01K1H8R1008FB068HSYQWK5G9P",
-            "src": "/_emdash/api/media/file/01K1H8R1008FB068HSYQWK5G9P.webp",
-            "filename": "casa-do-cristelo.webp",
-            "mimeType": "image/webp",
-            "width": 818,
-            "height": 1260,
-            "alt": "casa do cristelo"
-          },
-          "end_date": "2024",
-          "sale_status": "sold",
-          "description": "Situada a cinco minutos da praia de Moledo e com vista de mar, esta moradia V3 goza da tranquilidade rural de Cristelo e do acesso fácil aos centros urbanos. Piscina, amplo jardim e um terreiro central, ligando os dois módulos da casa, convidam à fruição da vida ao ar livre. A moradia preserva a fachada principal e elementos em pedra e madeira da construção original, o que lhe atribui um carácter notável."
-        },
-        "translationOf": "project:casa-do-cristelo:en"
-      },
-      {
-        "id": "project:casas-da-matriz:en",
+        "id": "project:casas-da-matriz",
         "slug": "casas-da-matriz",
         "status": "published",
         "locale": "en",
@@ -417,87 +344,12 @@
           },
           "end_date": "",
           "sale_status": "ongoing",
-          "description": "In the historic centre of Caminha, next to the parish church, the union of two buildings gave rise to five flats: two studio flats and three two-bedroom flats. Of the exemplary intervention, one must highlight the perfect distinction of the original façades, composing a classic frontage with the colours of Alto Minho, green and blue. It is also worth mentioning the construction of a lobby, which allowed the creation of an interior garden between flats. Stone and wood are the privileged materials."
+          "description_en": "In the historic centre of Caminha, next to the parish church, the union of two buildings gave rise to five flats: two studio flats and three two-bedroom flats. Of the exemplary intervention, one must highlight the perfect distinction of the original façades, composing a classic frontage with the colours of Alto Minho, green and blue. It is also worth mentioning the construction of a lobby, which allowed the creation of an interior garden between flats. Stone and wood are the privileged materials.",
+          "description_pt": "No centro histórico de Caminha, junto à Igreja Matriz, a união de dois edifícios deu origem a cinco apartamentos: dois T0 e três T2. Da intervenção exemplar, realce-se a perfeita distinção das fachadas originais, compondo uma frontaria clássica com as cores do Alto Minho, verde e azul. Destaque-se também a construção de um saguão, que permitiu criar um jardim interior entre apartamentos. Pedra e madeira são os materiais privilegiados."
         }
       },
       {
-        "id": "project:casas-da-matriz:pt",
-        "slug": "casas-da-matriz",
-        "status": "published",
-        "locale": "pt",
-        "data": {
-          "title": "casas da matriz",
-          "location": "caminha, portugal",
-          "date": "2022",
-          "images": [
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R1004H2SFKP7P931Y1TP",
-                "src": "/_emdash/api/media/file/01K1H8R1004H2SFKP7P931Y1TP.webp",
-                "filename": "1.webp",
-                "mimeType": "image/webp",
-                "width": 820,
-                "height": 1260,
-                "alt": "street view"
-              },
-              "alt": "street view"
-            },
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R1005J7R2R28EN8C2RMD",
-                "src": "/_emdash/api/media/file/01K1H8R1005J7R2R28EN8C2RMD.webp",
-                "filename": "2.webp",
-                "mimeType": "image/webp",
-                "width": 818,
-                "height": 1260,
-                "alt": "one of the houses"
-              },
-              "alt": "one of the houses"
-            },
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R100VCSGSCEQ0Q6BNKD1",
-                "src": "/_emdash/api/media/file/01K1H8R100VCSGSCEQ0Q6BNKD1.webp",
-                "filename": "3.webp",
-                "mimeType": "image/webp",
-                "width": 820,
-                "height": 1260,
-                "alt": "detail of the facade"
-              },
-              "alt": "detail of the facade"
-            }
-          ],
-          "banner": {
-            "provider": "local",
-            "id": "01K1H8R1003V2H5ZVSZKASESHK",
-            "src": "/_emdash/api/media/file/01K1H8R1003V2H5ZVSZKASESHK.webp",
-            "filename": "banner.webp",
-            "mimeType": "image/webp",
-            "width": 2476,
-            "height": 1416,
-            "alt": "casas da matriz"
-          },
-          "preview": {
-            "provider": "local",
-            "id": "01K1H8R1004H2SFKP7P931Y1TP",
-            "src": "/_emdash/api/media/file/01K1H8R1004H2SFKP7P931Y1TP.webp",
-            "filename": "casas-da-matriz.webp",
-            "mimeType": "image/webp",
-            "width": 820,
-            "height": 1260,
-            "alt": "casas da matriz"
-          },
-          "end_date": "",
-          "sale_status": "ongoing",
-          "description": "No centro histórico de Caminha, junto à Igreja Matriz, a união de dois edifícios deu origem a cinco apartamentos: dois T0 e três T2. Da intervenção exemplar, realce-se a perfeita distinção das fachadas originais, compondo uma frontaria clássica com as cores do Alto Minho, verde e azul. Destaque-se também a construção de um saguão, que permitiu criar um jardim interior entre apartamentos. Pedra e madeira são os materiais privilegiados."
-        },
-        "translationOf": "project:casas-da-matriz:en"
-      },
-      {
-        "id": "project:casa-do-pescador:en",
+        "id": "project:casa-do-pescador",
         "slug": "casa-do-pescador",
         "status": "published",
         "locale": "en",
@@ -568,84 +420,9 @@
           },
           "end_date": "2022",
           "sale_status": "sold",
-          "description": "In an old fishing neighbourhood in Caminha, near the beach, modern architectural solutions have enhanced this modest-sized typical house, now a two-bedroom with kitchenette and optimised space. The open ceiling, with exposed wooden trusses, creates amplitude and luminosity. The façade and the mosaic on the patio floor are traditional elements that harmoniously combine with the minimalist design."
+          "description_en": "In an old fishing neighbourhood in Caminha, near the beach, modern architectural solutions have enhanced this modest-sized typical house, now a two-bedroom with kitchenette and optimised space. The open ceiling, with exposed wooden trusses, creates amplitude and luminosity. The façade and the mosaic on the patio floor are traditional elements that harmoniously combine with the minimalist design.",
+          "description_pt": "Num velho bairro piscatório de Caminha, perto da praia, as soluções da arquitetura moderna valorizaram esta casa típica de dimensão modesta, hoje um T2 com kitchenette e espaço otimizado. O teto aberto, com asnas de madeira à vista, cria amplitude e luminosidade. A fachada e o mosaico no chão do pátio são elementos tradicionais que harmoniosamente se conciliam com o design minimalista."
         }
-      },
-      {
-        "id": "project:casa-do-pescador:pt",
-        "slug": "casa-do-pescador",
-        "status": "published",
-        "locale": "pt",
-        "data": {
-          "title": "casa do pescador",
-          "location": "caminha, portugal",
-          "date": "2021",
-          "images": [
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R100ZB61RKW2930ETCMY",
-                "src": "/_emdash/api/media/file/01K1H8R100ZB61RKW2930ETCMY.webp",
-                "filename": "1.webp",
-                "mimeType": "image/webp",
-                "width": 820,
-                "height": 1260,
-                "alt": "street view"
-              },
-              "alt": "street view"
-            },
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R10091KVS20AYTNMX5FJ",
-                "src": "/_emdash/api/media/file/01K1H8R10091KVS20AYTNMX5FJ.webp",
-                "filename": "2.webp",
-                "mimeType": "image/webp",
-                "width": 818,
-                "height": 1260,
-                "alt": "detail of vase"
-              },
-              "alt": "detail of vase"
-            },
-            {
-              "image": {
-                "provider": "local",
-                "id": "01K1H8R1007F4BX9NJQ2X6JEMA",
-                "src": "/_emdash/api/media/file/01K1H8R1007F4BX9NJQ2X6JEMA.webp",
-                "filename": "3.webp",
-                "mimeType": "image/webp",
-                "width": 820,
-                "height": 1260,
-                "alt": "detail of the door"
-              },
-              "alt": "detail of the door"
-            }
-          ],
-          "banner": {
-            "provider": "local",
-            "id": "01K1H8R100W79MT78M0AWRH7PV",
-            "src": "/_emdash/api/media/file/01K1H8R100W79MT78M0AWRH7PV.webp",
-            "filename": "banner.webp",
-            "mimeType": "image/webp",
-            "width": 2476,
-            "height": 1416,
-            "alt": "casa do pescador"
-          },
-          "preview": {
-            "provider": "local",
-            "id": "01K1H8R100RXZJYME9E9BDNXGQ",
-            "src": "/_emdash/api/media/file/01K1H8R100RXZJYME9E9BDNXGQ.webp",
-            "filename": "casa-do-pescador.webp",
-            "mimeType": "image/webp",
-            "width": 636,
-            "height": 976,
-            "alt": "casa do pescador"
-          },
-          "end_date": "2022",
-          "sale_status": "sold",
-          "description": "Num velho bairro piscatório de Caminha, perto da praia, as soluções da arquitetura moderna valorizaram esta casa típica de dimensão modesta, hoje um T2 com kitchenette e espaço otimizado. O teto aberto, com asnas de madeira à vista, cria amplitude e luminosidade. A fachada e o mosaico no chão do pátio são elementos tradicionais que harmoniosamente se conciliam com o design minimalista."
-        },
-        "translationOf": "project:casa-do-pescador:en"
       }
     ],
     "pages": [

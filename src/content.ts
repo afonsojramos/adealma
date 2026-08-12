@@ -51,12 +51,20 @@ export interface SiteCopy {
  * and `status` are reserved for the entry itself, so the sale state is held in
  * `sale_status`; `data.slug` is the entry's own slug. Both are renamed back
  * when read.
+ *
+ * A project is one entry rather than one per locale: only the description
+ * differs between languages, so both descriptions live on the same entry and
+ * the rest is edited once.
  */
 interface ProjectRow extends Omit<Project, "endDate" | "status"> {
   end_date: string;
   sale_status: string;
-  description: string;
+  description_en: string;
+  description_pt: string;
 }
+
+/** The locale every project entry is stored under. */
+const PROJECT_LOCALE = "en";
 
 /** A project plus its localised text, in the shape the pages expect. */
 interface ProjectEntry extends Project {
@@ -188,16 +196,17 @@ function getProjectEntries(locals: App.Locals, locale: Locale): Promise<ProjectE
 async function loadProjects(locale: Locale): Promise<ProjectEntry[]> {
   try {
     const { entries } = await getEmDashCollection<"projects", ProjectRow>("projects", {
-      locale,
+      locale: PROJECT_LOCALE,
       status: "published",
     });
     const projects = entries
       .map(({ data }) => data)
       .filter(hasKnownStatus)
-      .map(({ end_date, sale_status, ...data }) => ({
+      .map(({ end_date, sale_status, description_en, description_pt, ...data }) => ({
         ...data,
         endDate: end_date,
         status: sale_status,
+        description: locale === "pt" ? description_pt : description_en,
       }));
     if (projects.length > 0) return projects;
   } catch {
