@@ -26,6 +26,15 @@
       "bucket_name": "adealma-media",
     },
   ],
+  // Transactional mail sends from mail.adealma.com, onboarded to Cloudflare
+  // Email Service. Its SPF, DKIM, MX and DMARC records live in the zone but
+  // deliberately not in the cloud repo's Terraform: Cloudflare rotates the
+  // DKIM key and owns their lifecycle.
+  "send_email": [
+    {
+      "name": "EMAIL",
+    },
+  ],
   // EmDash has no timer fallback on Workers: scheduled publishing, plugin cron
   // and cleanup all run from this trigger.
   "triggers": {
