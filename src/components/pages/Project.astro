@@ -1,6 +1,7 @@
 ---
 import Arrow from "../../assets/icons/arrow.svg";
 import { getCopy, getProjectDescription, getProjects, type Project } from "../../content";
+import { SLOTS, slotImage } from "../../image";
 import { localePath } from "../../i18n/routes";
 import { t, type Locale } from "../../i18n/ui";
 import MainLayout from "../../layouts/MainLayout.astro";
@@ -38,11 +39,11 @@ const nextProject = projects[index + 1]?.slug ?? "";
       {`${project.date} - ${project.endDate ? project.endDate : t(locale, project.status)}`}
     </p>
     <img
-      src={project.banner.src}
+      src={slotImage(project.banner.src, "banner")}
       alt={project.banner.alt ?? project.title}
-      width="2476"
-      height="1416"
-      class="mt-24 flex w-screen flex-row items-center px-5"
+      width={SLOTS.banner.width}
+      height={SLOTS.banner.height}
+      class="mt-24 flex w-screen flex-row items-center object-cover px-5"
     />
     <div class="flex w-screen flex-row-reverse justify-between">
       <a href={localePath(locale, `/projects/${nextProject}`)}>

@@ -1,5 +1,6 @@
 ---
 import type { ProjectImage } from "../content";
+import { SLOTS, slotImage } from "../image";
 
 interface Props {
   images: ProjectImage[];
@@ -13,7 +14,13 @@ const { images } = Astro.props;
     {
       images.map(({ image, alt }) => (
         <swiper-slide>
-          <img src={image.src} alt={alt} width="820" height="620" />
+          <img
+            src={slotImage(image.src, "carousel")}
+            alt={alt}
+            width={SLOTS.carousel.width}
+            height={SLOTS.carousel.height}
+            class="object-cover"
+          />
         </swiper-slide>
       ))
     }

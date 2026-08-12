@@ -2,6 +2,7 @@
 import Arrow from "../../assets/icons/arrow.svg";
 import LinkChain from "../../assets/icons/link-chain.svg";
 import { getCopy, getProjects } from "../../content";
+import { SLOTS, slotImage } from "../../image";
 import { localePath } from "../../i18n/routes";
 import { t, type Locale } from "../../i18n/ui";
 import MainLayout from "../../layouts/MainLayout.astro";
@@ -90,7 +91,7 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
               class="group hidden cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:hidden child:py-2 md:table-row child:md:table-cell"
               data-href={localePath(locale, `/projects/${project.slug}`)}
               data-slug={project.slug}
-              data-preview-src={project.preview.src}
+              data-preview-src={slotImage(project.preview.src, "preview")}
               data-preview-alt={project.preview.alt ?? project.title}
               data-location={project.location}
               data-status={project.status}
@@ -136,7 +137,14 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
     </table>
 
     <div class="pointer-events-none invisible fixed top-0 z-10 hidden md:block" data-preview>
-      <img data-preview-image src="" alt="" width="270" height="420" />
+      <img
+        data-preview-image
+        src=""
+        alt=""
+        width={SLOTS.preview.width}
+        height={SLOTS.preview.height}
+        class="object-cover"
+      />
     </div>
 
     <div class="flex w-screen flex-row justify-between">
