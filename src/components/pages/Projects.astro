@@ -90,7 +90,7 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
               class="group hidden cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:hidden child:py-2 md:table-row child:md:table-cell"
               data-href={localePath(locale, `/projects/${project.slug}`)}
               data-slug={project.slug}
-              data-preview={project.preview.src}
+              data-preview-src={project.preview.src}
               data-preview-alt={project.preview.alt ?? project.title}
               data-location={project.location}
               data-status={project.status}
@@ -161,8 +161,8 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
       window.location.href = row.dataset.href ?? "/";
     });
     row.addEventListener("mouseenter", () => {
-      if (!preview || !previewImage || !row.dataset.preview) return;
-      previewImage.src = row.dataset.preview;
+      if (!preview || !previewImage || !row.dataset.previewSrc) return;
+      previewImage.src = row.dataset.previewSrc;
       previewImage.alt = row.dataset.previewAlt ?? "";
       preview.style.visibility = "visible";
     });
