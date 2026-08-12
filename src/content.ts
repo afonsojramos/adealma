@@ -55,9 +55,15 @@ interface Paragraph {
   text: string;
 }
 
-interface SiteCopyEntry extends Omit<SiteCopy, "about_description" | "projects_description"> {
-  about_description: Paragraph[];
-  projects_description: Paragraph[];
+/** The site-wide settings entry. */
+type SiteRow = Pick<SiteCopy, "site_name" | "site_slogan" | "description">;
+
+/** A page entry: every page is stored with the same three fields. */
+interface PageRow {
+  slug: string;
+  title: string;
+  paragraphs: Paragraph[];
+  images?: ProjectImage[];
 }
 
 const bundledCopy: Record<Locale, SiteCopy> = {
@@ -114,16 +120,27 @@ export function getCopy(locals: App.Locals, locale: Locale): Promise<SiteCopy> {
   return cached(cache.copy, locale, () => loadCopy(locale));
 }
 
+/**
+ * The copy is split across two collections so each page can be edited on its
+ * own: `site_copy` holds what the whole site shares, `pages` holds one entry
+ * per page. They are recombined here so the components keep one flat object.
+ */
 async function loadCopy(locale: Locale): Promise<SiteCopy> {
   try {
-    const { entry } = await getEmDashEntry<"site_copy", SiteCopyEntry>("site_copy", "site-copy", {
-      locale,
-    });
-    if (!entry) return bundledCopy[locale];
+    const [site, pages] = await Promise.all([
+      getEmDashEntry<"site_copy", SiteRow>("site_copy", "site-copy", { locale }),
+      getEmDashCollection<"pages", PageRow>("pages", { locale, status: "published" }),
+    ]);
+    const about = pages.entries.find(({ data }) => data.slug === "about")?.data;
+    const projectsPage = pages.entries.find(({ data }) => data.slug === "projects")?.data;
+    if (!site.entry || !about || !projectsPage) return bundledCopy[locale];
     return {
-      ...entry.data,
-      about_description: entry.data.about_description.map((row) => row.text),
-      projects_description: entry.data.projects_description.map((row) => row.text),
+      ...site.entry.data,
+      about_title: about.title,
+      about_description: about.paragraphs.map((row) => row.text),
+      about_images: about.images ?? [],
+      projects_title: projectsPage.title,
+      projects_description: projectsPage.paragraphs.map((row) => row.text),
     };
   } catch {
     return bundledCopy[locale];
