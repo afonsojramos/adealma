@@ -35,6 +35,17 @@
       "name": "EMAIL",
     },
   ],
+  // Marketplace plugins run in isolated V8 isolates rather than in this
+  // Worker. The loader spawns the isolate and injects PluginBridge into it as
+  // an RPC entrypoint, which is the only way back into the site and is where
+  // capabilities are enforced. PluginBridge is a WorkerEntrypoint, not a
+  // Durable Object: exporting it from src/worker.ts is the whole contract, so
+  // it needs no binding and no migration here.
+  "worker_loaders": [
+    {
+      "binding": "LOADER",
+    },
+  ],
   // EmDash has no timer fallback on Workers: scheduled publishing, plugin cron
   // and cleanup all run from this trigger.
   "triggers": {
