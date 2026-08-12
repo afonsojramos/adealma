@@ -1,6 +1,8 @@
 ---
+import type { ProjectImage } from "../content";
+
 interface Props {
-  images: { filename: string; alt: string }[];
+  images: ProjectImage[];
 }
 
 const { images } = Astro.props;
@@ -9,9 +11,9 @@ const { images } = Astro.props;
 <div class="flex w-screen flex-row items-center px-5">
   <swiper-container class="w-full" init="false" data-carousel>
     {
-      images.map((image) => (
+      images.map(({ image, alt }) => (
         <swiper-slide>
-          <img src={`/images/${image.filename}.webp`} alt={image.alt} width="820" height="620" />
+          <img src={image.src} alt={alt} width="820" height="620" />
         </swiper-slide>
       ))
     }

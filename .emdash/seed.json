@@ -63,9 +63,9 @@
           "validation": {
             "subFields": [
               {
-                "slug": "filename",
-                "type": "string",
-                "label": "File",
+                "slug": "image",
+                "type": "image",
+                "label": "Image",
                 "required": true
               },
               {
@@ -77,6 +77,20 @@
             ],
             "minItems": 1
           }
+        },
+        {
+          "slug": "banner",
+          "label": "Banner",
+          "type": "image",
+          "required": true,
+          "translatable": false
+        },
+        {
+          "slug": "preview",
+          "label": "Hover preview",
+          "type": "image",
+          "required": true,
+          "translatable": false
         },
         {
           "slug": "description",
@@ -131,9 +145,9 @@
           "validation": {
             "subFields": [
               {
-                "slug": "filename",
-                "type": "string",
-                "label": "File",
+                "slug": "image",
+                "type": "image",
+                "label": "Image",
                 "required": true
               },
               {
@@ -192,18 +206,65 @@
           "date": "2022",
           "images": [
             {
-              "filename": "casa-do-cristelo/1",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R1008FB068HSYQWK5G9P",
+                "src": "/_emdash/api/media/file/01K1H8R1008FB068HSYQWK5G9P.webp",
+                "filename": "1.webp",
+                "mimeType": "image/webp",
+                "width": 818,
+                "height": 1260,
+                "alt": "construction site"
+              },
               "alt": "construction site"
             },
             {
-              "filename": "casa-do-cristelo/2",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R10098ZKFYS3SX880X7M",
+                "src": "/_emdash/api/media/file/01K1H8R10098ZKFYS3SX880X7M.webp",
+                "filename": "2.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "stairs"
+              },
               "alt": "stairs"
             },
             {
-              "filename": "casa-do-cristelo/3",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100GGXXA4WZ1VM6G31H",
+                "src": "/_emdash/api/media/file/01K1H8R100GGXXA4WZ1VM6G31H.webp",
+                "filename": "3.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "construction structure"
+              },
               "alt": "construction structure"
             }
           ],
+          "banner": {
+            "provider": "local",
+            "id": "01K1H8R100493GH4T56H9Y6BPD",
+            "src": "/_emdash/api/media/file/01K1H8R100493GH4T56H9Y6BPD.webp",
+            "filename": "banner.webp",
+            "mimeType": "image/webp",
+            "width": 2476,
+            "height": 1416,
+            "alt": "casa do cristelo"
+          },
+          "preview": {
+            "provider": "local",
+            "id": "01K1H8R1008FB068HSYQWK5G9P",
+            "src": "/_emdash/api/media/file/01K1H8R1008FB068HSYQWK5G9P.webp",
+            "filename": "casa-do-cristelo.webp",
+            "mimeType": "image/webp",
+            "width": 818,
+            "height": 1260,
+            "alt": "casa do cristelo"
+          },
           "end_date": "2024",
           "sale_status": "sold",
           "description": "Five minutes from Moledo beach and with a sea views, this three bedroom villa enjoys the rural tranquility of Cristelo and easy access to urban centers. Swimming pool, large garden and a central terrace, connecting the two modules of the house, invite to enjoy the outdoor life. The villa preserves the main façade and stone and wood elements of the original construction, which gives it a remarkable character."
@@ -220,18 +281,65 @@
           "date": "2022",
           "images": [
             {
-              "filename": "casa-do-cristelo/1",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R1008FB068HSYQWK5G9P",
+                "src": "/_emdash/api/media/file/01K1H8R1008FB068HSYQWK5G9P.webp",
+                "filename": "1.webp",
+                "mimeType": "image/webp",
+                "width": 818,
+                "height": 1260,
+                "alt": "construction site"
+              },
               "alt": "construction site"
             },
             {
-              "filename": "casa-do-cristelo/2",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R10098ZKFYS3SX880X7M",
+                "src": "/_emdash/api/media/file/01K1H8R10098ZKFYS3SX880X7M.webp",
+                "filename": "2.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "stairs"
+              },
               "alt": "stairs"
             },
             {
-              "filename": "casa-do-cristelo/3",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100GGXXA4WZ1VM6G31H",
+                "src": "/_emdash/api/media/file/01K1H8R100GGXXA4WZ1VM6G31H.webp",
+                "filename": "3.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "construction structure"
+              },
               "alt": "construction structure"
             }
           ],
+          "banner": {
+            "provider": "local",
+            "id": "01K1H8R100493GH4T56H9Y6BPD",
+            "src": "/_emdash/api/media/file/01K1H8R100493GH4T56H9Y6BPD.webp",
+            "filename": "banner.webp",
+            "mimeType": "image/webp",
+            "width": 2476,
+            "height": 1416,
+            "alt": "casa do cristelo"
+          },
+          "preview": {
+            "provider": "local",
+            "id": "01K1H8R1008FB068HSYQWK5G9P",
+            "src": "/_emdash/api/media/file/01K1H8R1008FB068HSYQWK5G9P.webp",
+            "filename": "casa-do-cristelo.webp",
+            "mimeType": "image/webp",
+            "width": 818,
+            "height": 1260,
+            "alt": "casa do cristelo"
+          },
           "end_date": "2024",
           "sale_status": "sold",
           "description": "Situada a cinco minutos da praia de Moledo e com vista de mar, esta moradia V3 goza da tranquilidade rural de Cristelo e do acesso fácil aos centros urbanos. Piscina, amplo jardim e um terreiro central, ligando os dois módulos da casa, convidam à fruição da vida ao ar livre. A moradia preserva a fachada principal e elementos em pedra e madeira da construção original, o que lhe atribui um carácter notável."
@@ -249,18 +357,65 @@
           "date": "2022",
           "images": [
             {
-              "filename": "casas-da-matriz/1",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R1004H2SFKP7P931Y1TP",
+                "src": "/_emdash/api/media/file/01K1H8R1004H2SFKP7P931Y1TP.webp",
+                "filename": "1.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "street view"
+              },
               "alt": "street view"
             },
             {
-              "filename": "casas-da-matriz/2",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R1005J7R2R28EN8C2RMD",
+                "src": "/_emdash/api/media/file/01K1H8R1005J7R2R28EN8C2RMD.webp",
+                "filename": "2.webp",
+                "mimeType": "image/webp",
+                "width": 818,
+                "height": 1260,
+                "alt": "one of the houses"
+              },
               "alt": "one of the houses"
             },
             {
-              "filename": "casas-da-matriz/3",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100VCSGSCEQ0Q6BNKD1",
+                "src": "/_emdash/api/media/file/01K1H8R100VCSGSCEQ0Q6BNKD1.webp",
+                "filename": "3.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "detail of the facade"
+              },
               "alt": "detail of the facade"
             }
           ],
+          "banner": {
+            "provider": "local",
+            "id": "01K1H8R1003V2H5ZVSZKASESHK",
+            "src": "/_emdash/api/media/file/01K1H8R1003V2H5ZVSZKASESHK.webp",
+            "filename": "banner.webp",
+            "mimeType": "image/webp",
+            "width": 2476,
+            "height": 1416,
+            "alt": "casas da matriz"
+          },
+          "preview": {
+            "provider": "local",
+            "id": "01K1H8R1004H2SFKP7P931Y1TP",
+            "src": "/_emdash/api/media/file/01K1H8R1004H2SFKP7P931Y1TP.webp",
+            "filename": "casas-da-matriz.webp",
+            "mimeType": "image/webp",
+            "width": 820,
+            "height": 1260,
+            "alt": "casas da matriz"
+          },
           "end_date": "",
           "sale_status": "ongoing",
           "description": "In the historic centre of Caminha, next to the parish church, the union of two buildings gave rise to five flats: two studio flats and three two-bedroom flats. Of the exemplary intervention, one must highlight the perfect distinction of the original façades, composing a classic frontage with the colours of Alto Minho, green and blue. It is also worth mentioning the construction of a lobby, which allowed the creation of an interior garden between flats. Stone and wood are the privileged materials."
@@ -277,18 +432,65 @@
           "date": "2022",
           "images": [
             {
-              "filename": "casas-da-matriz/1",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R1004H2SFKP7P931Y1TP",
+                "src": "/_emdash/api/media/file/01K1H8R1004H2SFKP7P931Y1TP.webp",
+                "filename": "1.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "street view"
+              },
               "alt": "street view"
             },
             {
-              "filename": "casas-da-matriz/2",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R1005J7R2R28EN8C2RMD",
+                "src": "/_emdash/api/media/file/01K1H8R1005J7R2R28EN8C2RMD.webp",
+                "filename": "2.webp",
+                "mimeType": "image/webp",
+                "width": 818,
+                "height": 1260,
+                "alt": "one of the houses"
+              },
               "alt": "one of the houses"
             },
             {
-              "filename": "casas-da-matriz/3",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100VCSGSCEQ0Q6BNKD1",
+                "src": "/_emdash/api/media/file/01K1H8R100VCSGSCEQ0Q6BNKD1.webp",
+                "filename": "3.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "detail of the facade"
+              },
               "alt": "detail of the facade"
             }
           ],
+          "banner": {
+            "provider": "local",
+            "id": "01K1H8R1003V2H5ZVSZKASESHK",
+            "src": "/_emdash/api/media/file/01K1H8R1003V2H5ZVSZKASESHK.webp",
+            "filename": "banner.webp",
+            "mimeType": "image/webp",
+            "width": 2476,
+            "height": 1416,
+            "alt": "casas da matriz"
+          },
+          "preview": {
+            "provider": "local",
+            "id": "01K1H8R1004H2SFKP7P931Y1TP",
+            "src": "/_emdash/api/media/file/01K1H8R1004H2SFKP7P931Y1TP.webp",
+            "filename": "casas-da-matriz.webp",
+            "mimeType": "image/webp",
+            "width": 820,
+            "height": 1260,
+            "alt": "casas da matriz"
+          },
           "end_date": "",
           "sale_status": "ongoing",
           "description": "No centro histórico de Caminha, junto à Igreja Matriz, a união de dois edifícios deu origem a cinco apartamentos: dois T0 e três T2. Da intervenção exemplar, realce-se a perfeita distinção das fachadas originais, compondo uma frontaria clássica com as cores do Alto Minho, verde e azul. Destaque-se também a construção de um saguão, que permitiu criar um jardim interior entre apartamentos. Pedra e madeira são os materiais privilegiados."
@@ -306,18 +508,65 @@
           "date": "2021",
           "images": [
             {
-              "filename": "casa-do-pescador/1",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100ZB61RKW2930ETCMY",
+                "src": "/_emdash/api/media/file/01K1H8R100ZB61RKW2930ETCMY.webp",
+                "filename": "1.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "street view"
+              },
               "alt": "street view"
             },
             {
-              "filename": "casa-do-pescador/2",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R10091KVS20AYTNMX5FJ",
+                "src": "/_emdash/api/media/file/01K1H8R10091KVS20AYTNMX5FJ.webp",
+                "filename": "2.webp",
+                "mimeType": "image/webp",
+                "width": 818,
+                "height": 1260,
+                "alt": "detail of vase"
+              },
               "alt": "detail of vase"
             },
             {
-              "filename": "casa-do-pescador/3",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R1007F4BX9NJQ2X6JEMA",
+                "src": "/_emdash/api/media/file/01K1H8R1007F4BX9NJQ2X6JEMA.webp",
+                "filename": "3.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "detail of the door"
+              },
               "alt": "detail of the door"
             }
           ],
+          "banner": {
+            "provider": "local",
+            "id": "01K1H8R100W79MT78M0AWRH7PV",
+            "src": "/_emdash/api/media/file/01K1H8R100W79MT78M0AWRH7PV.webp",
+            "filename": "banner.webp",
+            "mimeType": "image/webp",
+            "width": 2476,
+            "height": 1416,
+            "alt": "casa do pescador"
+          },
+          "preview": {
+            "provider": "local",
+            "id": "01K1H8R100RXZJYME9E9BDNXGQ",
+            "src": "/_emdash/api/media/file/01K1H8R100RXZJYME9E9BDNXGQ.webp",
+            "filename": "casa-do-pescador.webp",
+            "mimeType": "image/webp",
+            "width": 636,
+            "height": 976,
+            "alt": "casa do pescador"
+          },
           "end_date": "2022",
           "sale_status": "sold",
           "description": "In an old fishing neighbourhood in Caminha, near the beach, modern architectural solutions have enhanced this modest-sized typical house, now a two-bedroom with kitchenette and optimised space. The open ceiling, with exposed wooden trusses, creates amplitude and luminosity. The façade and the mosaic on the patio floor are traditional elements that harmoniously combine with the minimalist design."
@@ -334,18 +583,65 @@
           "date": "2021",
           "images": [
             {
-              "filename": "casa-do-pescador/1",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100ZB61RKW2930ETCMY",
+                "src": "/_emdash/api/media/file/01K1H8R100ZB61RKW2930ETCMY.webp",
+                "filename": "1.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "street view"
+              },
               "alt": "street view"
             },
             {
-              "filename": "casa-do-pescador/2",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R10091KVS20AYTNMX5FJ",
+                "src": "/_emdash/api/media/file/01K1H8R10091KVS20AYTNMX5FJ.webp",
+                "filename": "2.webp",
+                "mimeType": "image/webp",
+                "width": 818,
+                "height": 1260,
+                "alt": "detail of vase"
+              },
               "alt": "detail of vase"
             },
             {
-              "filename": "casa-do-pescador/3",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R1007F4BX9NJQ2X6JEMA",
+                "src": "/_emdash/api/media/file/01K1H8R1007F4BX9NJQ2X6JEMA.webp",
+                "filename": "3.webp",
+                "mimeType": "image/webp",
+                "width": 820,
+                "height": 1260,
+                "alt": "detail of the door"
+              },
               "alt": "detail of the door"
             }
           ],
+          "banner": {
+            "provider": "local",
+            "id": "01K1H8R100W79MT78M0AWRH7PV",
+            "src": "/_emdash/api/media/file/01K1H8R100W79MT78M0AWRH7PV.webp",
+            "filename": "banner.webp",
+            "mimeType": "image/webp",
+            "width": 2476,
+            "height": 1416,
+            "alt": "casa do pescador"
+          },
+          "preview": {
+            "provider": "local",
+            "id": "01K1H8R100RXZJYME9E9BDNXGQ",
+            "src": "/_emdash/api/media/file/01K1H8R100RXZJYME9E9BDNXGQ.webp",
+            "filename": "casa-do-pescador.webp",
+            "mimeType": "image/webp",
+            "width": 636,
+            "height": 976,
+            "alt": "casa do pescador"
+          },
           "end_date": "2022",
           "sale_status": "sold",
           "description": "Num velho bairro piscatório de Caminha, perto da praia, as soluções da arquitetura moderna valorizaram esta casa típica de dimensão modesta, hoje um T2 com kitchenette e espaço otimizado. O teto aberto, com asnas de madeira à vista, cria amplitude e luminosidade. A fachada e o mosaico no chão do pátio são elementos tradicionais que harmoniosamente se conciliam com o design minimalista."
@@ -371,15 +667,42 @@
           ],
           "images": [
             {
-              "filename": "about-1",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100XN5RDBERECFH765X",
+                "src": "/_emdash/api/media/file/01K1H8R100XN5RDBERECFH765X.webp",
+                "filename": "about-1.webp",
+                "mimeType": "image/webp",
+                "width": 732,
+                "height": 1030,
+                "alt": "boat stopped in the river"
+              },
               "alt": "boat stopped in the river"
             },
             {
-              "filename": "about-2",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100KSE73QDH1KXNXEAH",
+                "src": "/_emdash/api/media/file/01K1H8R100KSE73QDH1KXNXEAH.webp",
+                "filename": "about-2.webp",
+                "mimeType": "image/webp",
+                "width": 732,
+                "height": 1030,
+                "alt": "stones to be used in construction"
+              },
               "alt": "stones to be used in construction"
             },
             {
-              "filename": "about-3",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R10022Y3P0XVG9FJ6PNN",
+                "src": "/_emdash/api/media/file/01K1H8R10022Y3P0XVG9FJ6PNN.webp",
+                "filename": "about-3.webp",
+                "mimeType": "image/webp",
+                "width": 732,
+                "height": 1030,
+                "alt": "street with houses to be rehabilitated"
+              },
               "alt": "street with houses to be rehabilitated"
             }
           ]
@@ -402,15 +725,42 @@
           ],
           "images": [
             {
-              "filename": "about-1",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100XN5RDBERECFH765X",
+                "src": "/_emdash/api/media/file/01K1H8R100XN5RDBERECFH765X.webp",
+                "filename": "about-1.webp",
+                "mimeType": "image/webp",
+                "width": 732,
+                "height": 1030,
+                "alt": "barco parado no rio"
+              },
               "alt": "barco parado no rio"
             },
             {
-              "filename": "about-2",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R100KSE73QDH1KXNXEAH",
+                "src": "/_emdash/api/media/file/01K1H8R100KSE73QDH1KXNXEAH.webp",
+                "filename": "about-2.webp",
+                "mimeType": "image/webp",
+                "width": 732,
+                "height": 1030,
+                "alt": "pedras a ser usadas na construção"
+              },
               "alt": "pedras a ser usadas na construção"
             },
             {
-              "filename": "about-3",
+              "image": {
+                "provider": "local",
+                "id": "01K1H8R10022Y3P0XVG9FJ6PNN",
+                "src": "/_emdash/api/media/file/01K1H8R10022Y3P0XVG9FJ6PNN.webp",
+                "filename": "about-3.webp",
+                "mimeType": "image/webp",
+                "width": 732,
+                "height": 1030,
+                "alt": "ruas com propriedades a reabilitar"
+              },
               "alt": "ruas com propriedades a reabilitar"
             }
           ]

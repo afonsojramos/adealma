@@ -7,8 +7,19 @@ import copyPt from "./data/copy/pt.json";
 import projectsData from "./data/projects.json";
 import type { Locale } from "./i18n/ui";
 
+/**
+ * An image stored in EmDash. `src` points at the media route, which streams
+ * the file from R2 with a one-year immutable cache header.
+ */
+export interface Media {
+  src: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+}
+
 export interface ProjectImage {
-  filename: string;
+  image: Media;
   alt: string;
 }
 
@@ -20,6 +31,8 @@ export interface Project {
   endDate: string;
   slug: string;
   images: ProjectImage[];
+  banner: Media;
+  preview: Media;
 }
 
 export interface SiteCopy {
@@ -66,9 +79,22 @@ interface PageRow {
   images?: ProjectImage[];
 }
 
+/**
+ * The images that shipped in `public/images` back the CMS: the bundled copy is
+ * still described by filename, so it is turned into the same media shape the
+ * CMS returns, pointing at the static file instead of the media route.
+ */
+function bundledMedia(filename: string, alt: string): Media {
+  return { src: `/images/${filename}.webp`, alt };
+}
+
+function bundledGallery(items: { filename: string; alt: string }[]): ProjectImage[] {
+  return items.map((item) => ({ image: bundledMedia(item.filename, item.alt), alt: item.alt }));
+}
+
 const bundledCopy: Record<Locale, SiteCopy> = {
-  en: copyEn,
-  pt: copyPt,
+  en: { ...copyEn, about_images: bundledGallery(copyEn.about_images) },
+  pt: { ...copyPt, about_images: bundledGallery(copyPt.about_images) },
 };
 
 const bundledDescriptions: Record<Locale, Record<string, { description: string }>> = {
@@ -92,7 +118,13 @@ function bundledProjects(): Project[] {
     if (!isProjectStatus(entry.status)) {
       throw new Error(`Unknown project status "${entry.status}" for ${entry.slug}`);
     }
-    return { ...entry, status: entry.status };
+    return {
+      ...entry,
+      status: entry.status,
+      images: bundledGallery(entry.images),
+      banner: bundledMedia(`${entry.slug}/banner`, entry.title),
+      preview: bundledMedia(entry.slug, entry.title),
+    };
   });
 }
 

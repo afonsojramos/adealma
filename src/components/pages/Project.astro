@@ -38,8 +38,8 @@ const nextProject = projects[index + 1]?.slug ?? "";
       {`${project.date} - ${project.endDate ? project.endDate : t(locale, project.status)}`}
     </p>
     <img
-      src={`/images/${project.slug}/banner.webp`}
-      alt={project.title}
+      src={project.banner.src}
+      alt={project.banner.alt ?? project.title}
       width="2476"
       height="1416"
       class="mt-24 flex w-screen flex-row items-center px-5"
