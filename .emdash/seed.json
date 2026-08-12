@@ -141,7 +141,6 @@
           "slug": "images",
           "label": "Images",
           "type": "repeater",
-          "translatable": false,
           "validation": {
             "subFields": [
               {
