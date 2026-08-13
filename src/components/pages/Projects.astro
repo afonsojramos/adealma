@@ -122,7 +122,7 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
                 <div class="hidden flex-col" data-year-panel={y}>
                   {byYear.get(y)?.map((project) => (
                     <a
-                      class="border-t-[1px] border-primary-900 bg-primary-300 px-5 py-2 text-center text-2xl tracking-widest text-primary-100 hover:text-primary-900"
+                      class="border-t-[1px] border-primary-900 bg-primary-300 px-5 py-2 text-center text-2xl tracking-widest text-primary-900 hover:bg-primary-900 hover:text-primary-100"
                       href={localePath(locale, `/projects/${project.slug}`)}
                     >
                       {project.title}
@@ -247,7 +247,6 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
       panel?.classList.toggle("flex");
       const open = panel?.classList.contains("hidden") === false;
       cell.closest("tr")?.classList.toggle("bg-primary-300", open);
-      cell.closest("tr")?.classList.toggle("text-primary-100", open);
     });
   }
 </script>
