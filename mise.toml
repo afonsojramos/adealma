@@ -2,5 +2,6 @@
 # nub (https://nubjs.com) is the installer and script runner; it reads/writes the
 # existing lockfile, so nothing migrates. `mise install` provisions node + nub.
 [tools]
+hk = "2.6.0"
 node = "24"
 "npm:@nubjs/nub" = "0.4.12"

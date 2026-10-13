@@ -14,7 +14,7 @@
     "format:check": "oxfmt --ignore-path .gitignore --check && prettier --check '**/*.astro'",
     "lint": "oxlint --type-aware --deny-warnings",
     "lint:fix": "oxlint --type-aware --fix",
-    "prepare": "husky",
+    "hooks:install": "hk install --mise",
     "cms:init": "emdash init",
     "cms:seed": "emdash seed"
   },
@@ -39,7 +39,6 @@
     "@cloudflare/workers-types": "^5.20260715.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
-    "husky": "^9.1.7",
     "oxfmt": "^0.62.0",
     "oxlint": "^1.77.0",
     "oxlint-tsgolint": "^7.0.2001",
