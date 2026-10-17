@@ -91,7 +91,7 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
               class="group hidden cursor-pointer border-b-[1px] border-primary-900 text-2xl tracking-widest hover:bg-primary-300 hover:text-primary-100 child:hidden child:py-2 md:table-row child:md:table-cell"
               data-href={localePath(locale, `/projects/${project.slug}`)}
               data-slug={project.slug}
-              data-preview-src={slotImage(project.preview.src, "preview")}
+              data-preview-src={slotImage(project.preview.src, "preview", Astro.url)}
               data-preview-alt={project.preview.alt ?? project.title}
               data-location={project.location}
               data-status={project.status}
@@ -143,6 +143,10 @@ const years = [...byYear.keys()].toSorted((a, b) => b - a);
         alt=""
         width={SLOTS.preview.width}
         height={SLOTS.preview.height}
+        style={{
+          width: `${SLOTS.preview.width}px`,
+          aspectRatio: `${SLOTS.preview.width} / ${SLOTS.preview.height}`,
+        }}
         class="object-cover"
       />
     </div>

@@ -38,13 +38,16 @@ const nextProject = projects[index + 1]?.slug ?? "";
     <p class="absolute px-5 pt-2 sm:right-1/3 sm:w-1/3 sm:px-3 sm:text-xs md:text-sm xl:text-base">
       {`${project.date} - ${project.endDate ? project.endDate : t(locale, project.status)}`}
     </p>
-    <img
-      src={slotImage(project.banner.src, "banner")}
-      alt={project.banner.alt ?? project.title}
-      width={SLOTS.banner.width}
-      height={SLOTS.banner.height}
-      class="mt-24 flex w-screen flex-row items-center object-cover px-5"
-    />
+    <div class="mt-24 px-5">
+      <img
+        src={slotImage(project.banner.src, "banner", Astro.url)}
+        alt={project.banner.alt ?? project.title}
+        width={SLOTS.banner.width}
+        height={SLOTS.banner.height}
+        style={{ aspectRatio: `${SLOTS.banner.width} / ${SLOTS.banner.height}` }}
+        class="w-full object-cover"
+      />
+    </div>
     <div class="flex w-screen flex-row-reverse justify-between">
       <a href={localePath(locale, `/projects/${nextProject}`)}>
         <Arrow class="m-8 h-6 rotate-180" />

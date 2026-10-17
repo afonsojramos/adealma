@@ -10,7 +10,7 @@ import emdash from "emdash/astro";
 
 import projects from "./src/data/projects.json" with { type: "json" };
 
-const SITE_URL = "https://adealma.com";
+const SITE_URL = "https://adealma.afonsojramos.workers.dev";
 
 // Server-rendered routes are invisible to @astrojs/sitemap, so every page is
 // listed explicitly. English is unprefixed, Portuguese sits under /pt.
