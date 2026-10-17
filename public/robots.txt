@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /_emdash/
 
-Sitemap: https://adealma.com/sitemap-index.xml
+Sitemap: https://adealma.afonsojramos.workers.dev/sitemap-index.xml

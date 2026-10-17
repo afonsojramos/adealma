@@ -28,11 +28,11 @@ export type Slot = keyof typeof SLOTS;
 /**
  * Rewrite an image URL to be served through Cloudflare's transform.
  *
- * Only applied in production: `/cdn-cgi/image/` is an edge feature and 404s
- * against the dev server, so development keeps the untouched original.
+ * `/cdn-cgi/image/` requires a Cloudflare zone. Local development and
+ * workers.dev serve the original because that transform route is unavailable.
  */
-export function slotImage(src: string, slot: Slot): string {
-  if (!import.meta.env.PROD) return src;
+export function slotImage(src: string, slot: Slot, url: URL): string {
+  if (!import.meta.env.PROD || url.hostname.endsWith(".workers.dev")) return src;
   const { width, height } = SLOTS[slot];
   const options = `format=auto,width=${width},height=${height},fit=cover,gravity=auto`;
   return `/cdn-cgi/image/${options}${src}`;

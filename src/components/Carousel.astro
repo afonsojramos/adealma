@@ -15,11 +15,12 @@ const { images } = Astro.props;
       images.map(({ image, alt }) => (
         <swiper-slide>
           <img
-            src={slotImage(image.src, "carousel")}
+            src={slotImage(image.src, "carousel", Astro.url)}
             alt={alt}
             width={SLOTS.carousel.width}
             height={SLOTS.carousel.height}
-            class="object-cover"
+            style={{ aspectRatio: `${SLOTS.carousel.width} / ${SLOTS.carousel.height}` }}
+            class="w-full object-cover"
           />
         </swiper-slide>
       ))
